@@ -1,0 +1,4 @@
+1、tf.feature_column.crossed_column：特征交叉，经纬度比如
+2、tf.feature_column.embedding_column 来创建一个 embedding_column。类别数量过大。
+嵌入矢量的维度最低的 3 开始
+3、

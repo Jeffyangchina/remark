@@ -1,0 +1,180 @@
+Sub y()
+
+
+Dim sstext As AcadSelectionSet
+Dim filtert(0) As Integer
+Dim b As Integer
+Dim c As Integer
+Dim filterd(0) As Variant
+
+Dim objDoc As AutoCAD.AcadDocument
+ 
+Dim pdfpth As String
+Dim pos As Integer
+Dim h As String
+Dim nh As String
+Dim x As AcadHyperlinks
+Dim xh As AcadHyperlink
+Dim hs As String
+Dim a As Integer
+
+'Dim exl As Excel.Application
+'Dim wb As Excel.Workbook
+'Dim sht As Excel.Worksheet
+Dim i As Integer
+Dim pickobj As AcadEntity
+Dim array1 As Variant
+
+'Set exl = CreateObject("Excel.Application") '定义excel
+'Set wb = exl.Workbooks.Open("F:\VB\cad二次\focke\" & "yang.xlsx")
+'Set sht = wb.Worksheets("sheet1")
+
+
+MyPath = "E:\x6s\500包项目\fy\20150902\位置图\"
+MyFile = Dir(MyPath & "*.dwg")
+
+
+
+Do While MyFile <> ""
+pos = InStr(MyFile, ".")
+h = MyPath & Left(MyFile, pos - 1) & ".dwg"
+Set objDoc = Documents.Open(MyPath & MyFile)
+
+Set bob = objDoc.Blocks.Item("新原理图_模板")
+  
+
+
+On Error Resume Next
+  With bob
+    cnt = bob.Count
+   
+    
+       
+     For i = 0 To cnt
+
+
+      If .Item(i).TextString = "中国烟草机械集团公司技术中心" Then
+       .Item(i).TextString = "上海烟草机械有限责任公司"
+      End If
+        If .Item(i).TextString = "{\f隶书|b0|i0|c134|p49;\C2; 机\f??|b0|i0|c0|p49;  \f隶书|b0|i0|c134|p49;密 \P\f黑体|b0|i0|c134|p2;\H0.7143x;烟机技术中心}" Then
+       .Item(i).TextString = "{\f隶书|b0|i0|c134|p49;\C2; 机\f??|b0|i0|c0|p49;  \f隶书|b0|i0|c134|p49;密 \P\f黑体|b0|i0|c134|p2;\H0.7143x;上 海 烟 机}"
+      End If
+      On Error Resume Next
+      Next i
+    
+    On Error Resume Next
+     
+ 
+  End With
+  
+ Set bob = objDoc.Blocks.Item("机密")
+  
+                 
+
+On Error Resume Next
+  With bob
+    cnt = bob.Count
+   
+    
+       
+     For i = 0 To cnt
+      
+      If .Item(i).TextString = "{\f隶书|b0|i0|c134|p49;\C2; 机\f??|b0|i0|c0|p49;  \f隶书|b0|i0|c134|p49;密 \P\f黑体|b0|i0|c134|p2;\H0.7143x;烟机技术中心}" Then
+       .Item(i).TextString = "{\f隶书|b0|i0|c134|p49;\C2; 机\f??|b0|i0|c0|p49;  \f隶书|b0|i0|c134|p49;密 \P\f黑体|b0|i0|c134|p2;\H0.7143x;上 海 烟 机}"
+      End If
+      On Error Resume Next
+      Next i
+    
+    On Error Resume Next
+     
+ 
+  End With
+
+
+On Error Resume Next
+
+ Set objlayout = ThisDrawing.ModelSpace.Layout
+ '会报错说简单应用 只要手动在2010里把第一张图纸另存为M6类型 程序就可以顺利运行了
+
+objlayout.PlotType = acExtents '打印当前选定空间范围内的所有对象。
+
+
+objlayout.StyleSheet = "烟机0.3-0.18.ctb"
+
+For Each pickobj In ThisDrawing.ModelSpace  '修改图框内的内容，有个数组，从0开始是第一个参数
+ If pickobj.ObjectName = "AcDbBlockReference" Then
+ If pickobj.HasAttributes Then
+  array1 = pickobj.GetAttributes
+If array1(7).TextString = "52BBG5010100" Then
+   array1(1).TextString = "YB411型硬盒包装机"
+    array1(5).TextString = "20150703"
+ array1(7).TextString = "52BBK5010100"
+ End If
+  End If
+ End If
+On Error Resume Next
+  Next pickobj
+  
+Set sstext = objDoc.SelectionSets.Add("ss")   '修改设计名字
+filtert(0) = 0
+filterd(0) = "MTEXT"
+sstext.Select acSelectionSetAll, , , filtert, filterd
+
+For Each pickobj In sstext
+ If pickobj.ObjectName = "AcDbMText" Then
+  hs = pickobj.TextString
+
+
+
+If hs = "{\fSimSun|b0|i0|c134|p2;潘  捷}" Then
+   pickobj.TextString = ""
+  End If
+
+ If hs = "{\fSimSun|b0|i0|c134|p2;桑伟诚}" Then
+   pickobj.TextString = "{\fSimSun|b0|i0|c134|p2;冯玉}"
+  End If
+
+  
+ If hs = "{\fSimSun|b0|i0|c134|p2;汤尤佳}" Then
+   pickobj.TextString = "{\fSimSun|b0|i0|c134|p2;桑伟诚}"
+  End If
+  If hs = "{\f仿宋_GB2312|b0|i0|c134|p49;}" Then
+   pickobj.TextString = "{\f仿宋_GB2312|b0|i0|c134|p49;桑伟诚}"
+  End If
+  
+  If hs = "{\f仿宋_GB2312|b0|i0|c134|p49;}" Then
+   pickobj.TextString = "{\f仿宋_GB2312|b0|i0|c134|p49;竺海斌}"
+  End If
+
+   If hs = "{\f仿宋_GB2312|b0|i0|c134|p49;}" Then '这个名字如果找不到 则需要f8单步调试看下hs的值
+  pickobj.TextString = "{\f仿宋_GB2312|b0|i0|c134|p49;冯玉}"
+  'sht.Cells(j, 1) = MyFile
+ 'j = j + 1
+  
+  End If
+ End If
+ On Error Resume Next
+  Next pickobj
+  
+ 
+
+
+objDoc.Save
+
+objDoc.Close
+MyFile = Dir
+Loop
+
+'xlsbook1.Save
+  
+  ' xlsbook1.Close
+   ' xlsapp.Quit
+
+End Sub
+
+
+
+
+
+
+

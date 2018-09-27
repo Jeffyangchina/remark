@@ -1,0 +1,37 @@
+Sub bplot()
+
+Dim MyFile, MyPath, MyName
+ Dim objDoc As AutoCAD.AcadDocument
+ Dim blnRet As Boolean
+Dim resl As Boolean
+ Dim point1 As Variant, point2 As Variant
+ Dim pickobj As AcadEntity
+ Dim n As Integer
+  Dim UpperRight(0 To 1) As Double, LowerLeft(0 To 1) As Double
+  
+MyPath = "E:\x6s\全开式辅机\功能图\新建文件夹\新建文件夹\1\"
+MyFile = Dir(MyPath & "*.dwg")
+
+n = 0
+Do While MyFile <> ""
+Set objDoc = Documents.Open(MyPath & MyFile)
+
+Set objlayout = ThisDrawing.ModelSpace.Layout
+ '会报错说简单应用 只要手动在2010里把第一张图纸另存为M6类型 程序就可以顺利运行了
+
+objlayout.PlotType = acExtents '打印当前选定空间范围内的所有对象。
+objlayout.ConfigName = "HP LaserJet 5200L PCL 6"
+ThisDrawing.ModelSpace.Layout.CanonicalMediaName = "A3"
+objlayout.StandardScale = acScaleToFit
+objlayout.StyleSheet = "烟机0.3-0.18.ctb"
+
+
+
+objDoc.Save
+objDoc.Close
+
+MyFile = Dir
+On Error Resume Next
+Loop
+End Sub
+

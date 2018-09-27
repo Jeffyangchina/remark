@@ -1,0 +1,57 @@
+Sub bplot()
+
+Dim sstext As AcadSelectionSet
+
+Dim filtert(0) As Integer
+Dim filterd(0) As Variant
+Dim c As Integer
+
+
+Dim value As String
+Dim pro As String
+Dim array1 As Variant 'AcadBlockReference
+Dim objBlk As AcadEntity
+Dim objDoc As AutoCAD.AcadDocument
+Dim objText As AcadText
+Dim kn As String
+Dim sf As Double
+Dim wz As String
+Dim nh As String
+Dim bobs As AcadBlocks
+Dim bob As AcadBlock
+
+
+Dim hs As String
+Dim a As Integer
+
+Dim i As Integer
+Dim pickobj As AcadBlock
+
+
+MyPath = "E:\BITMAP\bit\"
+
+For Each objBlk In ThisDrawing.ModelSpace
+
+ With objBlk
+ If StrComp(.EntityName, "AcDbBlockReference", 1) = 0 Then
+  If .HasAttributes Then
+  kn = .Name
+    If .Name = "ZZ_KABEL_ZEILE" Then
+     
+      array1 = .GetAttributes
+      wz = array1(5).TagString
+      nh = array1(5).TextString
+      If array1(5).TagString = "CODE_351" Then
+       array1(5).ScaleFactor = 0.8
+      End If
+    End If
+  End If
+ End If
+ End With
+ On Error Resume Next
+Next objBlk
+ThisDrawing.ModelSpace.Save  '指定文件夹和文件名
+
+ThisDrawing.ModelSpace.Close
+
+End Sub

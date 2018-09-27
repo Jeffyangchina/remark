@@ -1,0 +1,43 @@
+先设变量objExlSheet.Rows(某行).WrapText=True
+string="字符" & vbcrlf
+
+////////////////////
+Sub match()
+
+    Dim daima As String, tuhao As String, minchen As String, waidai As String
+
+    Dim i As Integer, a As Integer, n As Integer, b As Integer, t As Integer, x As Integer
+   
+    Dim xlsapp As New Excel.Application
+
+    Dim xlsbook1 As Excel.Workbook
+
+    Dim xlssheet1 As Excel.Worksheet  
+
+    Set xlsbook1 = xlsapp.Workbooks.Open("E:\BITMAP\bit\cai.xls")
+    
+    
+    Set xlssheet1 = xlsbook1.Worksheets("Sheet1")   
+  
+     For i = 3 To 6
+     
+     daima = xlssheet1.Cells(i, "E")
+     
+     If daima <> "" Then
+         
+         xlssheet1.Cells(i, "E").WrapText = True
+         
+         xlssheet1.Cells(i, "E") = daima & vbCrLf & vbCrLf & daima
+        On Error Resume Next
+        End If
+              
+      
+      Next i
+      
+     xlsbook1.Save
+ 
+    xlsbook1.Close
+
+    xlsapp.Quit
+
+End Sub

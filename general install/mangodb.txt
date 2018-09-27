@@ -1,0 +1,8 @@
+1、xb= bson.BSON.encode(xc)
+数据格式是字典，即从mangodb中导出的，要保存为bson文件格式，先转码，然后
+with open(dapth, 'wb') as f:
+    f.write(xb)
+
+2、db_coll.update({"categories":item['categories']},{"$set":{'categories':[]}})
+
+更新

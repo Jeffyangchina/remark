@@ -1,0 +1,73 @@
+Sub bplot()
+
+Dim sstext As AcadSelectionSet
+
+
+Dim c As Integer
+
+
+Dim value As String
+Dim pro As String
+Dim array1 As Variant 'AcadBlockReference
+
+Dim objDoc As AutoCAD.AcadDocument
+ 
+Dim pdfpth As String
+Dim pos As Integer
+Dim h As String
+Dim nh As String
+
+Dim bob As AcadBlock
+
+
+Dim hs As String
+Dim a As Integer
+
+Dim i As Integer
+Dim cnt As Integer
+
+
+Dim blockRefObj As AcadBlockReference
+
+MyPath = "C:\Documents and Settings\yxj4655\桌面\桑的待转化文件\新建文件夹\"
+MyFile = Dir(MyPath & "*.dwg")
+
+          
+Do While MyFile <> ""
+
+Set objDoc = Documents.Open(MyPath & MyFile)
+
+Set bob = objDoc.Blocks.Item("机密")
+  
+                 
+
+On Error Resume Next
+  With bob
+    cnt = bob.Count
+   
+    
+       
+     For i = 0 To cnt
+      
+      If .Item(i).TextString = "{\f隶书|b0|i0|c134|p49;\C2; 机\f??|b0|i0|c0|p49;  \f隶书|b0|i0|c134|p49;密 \P\f黑体|b0|i0|c134|p2;\H0.7143x;烟机技术中心}" Then
+       .Item(i).TextString = "{\f隶书|b0|i0|c134|p49;\C2; 机\f??|b0|i0|c0|p49;  \f隶书|b0|i0|c134|p49;密 \P\f黑体|b0|i0|c134|p2;\H0.7143x;上 海 烟 机}"
+      End If
+      On Error Resume Next
+      Next i
+    
+    On Error Resume Next
+     
+ 
+  End With
+  
+  
+
+
+On Error Resume Next
+ 
+objDoc.Close
+MyFile = Dir
+Loop
+
+wb.Close
+End Sub

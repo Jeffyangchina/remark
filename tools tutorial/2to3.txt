@@ -1,0 +1,2 @@
+2to3.py -w transform.py也可以跟文件名
+C:\Program Files\Python36\Tools\scripts

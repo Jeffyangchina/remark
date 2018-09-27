@@ -1,0 +1,34 @@
+Sub bplot()
+
+Dim MyFile, MyPath, MyName
+ Dim objDoc As AutoCAD.AcadDocument
+ Dim blnRet As Boolean
+Dim resl As Boolean
+ Dim point1 As Variant, point2 As Variant
+ 
+MyPath = "E:\BITMAP\1\"
+MyFile = Dir(MyPath & "*.dwg")
+
+
+Do While MyFile <> ""
+Set objDoc = Documents.Open(MyPath & MyFile)
+
+Set objlayout = ThisDrawing.ModelSpace.Layout
+ '会报错说简单应用 只要手动在2010里把第一张图纸另存为M6类型 程序就可以顺利运行了
+
+objlayout.PlotType = acExtents '打印当前选定空间范围内的所有对象。
+
+
+objlayout.StyleSheet = "烟机0.3-0.18.ctb"
+
+
+
+objDoc.Save
+objDoc.Close
+
+MyFile = Dir
+On Error Resume Next
+Loop
+End Sub
+
+

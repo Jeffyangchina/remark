@@ -1,0 +1,46 @@
+Sub bplot()
+
+Dim cadpth As String
+Dim pdfpth As String
+Dim i As Integer
+Dim u As String
+Dim v As String
+Dim wdapp As Word.Application '定义word接口
+Dim wdbook As Word.Document
+
+Set wdapp = CreateObject("Word.Application") '定义Word
+
+
+
+
+MyPath = "E:\BITMAP\1\"
+MyFile = Dir(MyPath & "*.doc")
+
+
+Do While MyFile <> ""
+cadpth = MyPath & MyFile
+Set wdbook = Documents.Open(cadpth)
+Set myrange = wdbook.Tables(1).Range
+myrange.Copy
+Set myrange = wdbook.Content
+
+myrange.Paragraphs.Add '添加一个空白段落，就是加个回车
+myrange.Paragraphs.Add
+myrange.Collapse (wdCollapseEnd)
+
+myrange.Paste
+
+On Error Resume Next
+wdbook.Save
+wdbook.Close
+
+MyFile = Dir
+Loop
+
+wdapp.Quit '退出
+End Sub
+
+
+
+
+

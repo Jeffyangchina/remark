@@ -1,0 +1,110 @@
+Sub bplot()
+
+Dim sstext As AcadSelectionSet
+Dim filtert(0) As Integer
+Dim b As Integer
+Dim c As Integer
+Dim filterd(0) As Variant
+
+Dim objDoc As AutoCAD.AcadDocument
+ 
+Dim pdfpth As String
+Dim pos As Integer
+Dim h As String
+Dim nh As String
+
+Dim hs As String
+Dim array1 As Variant
+
+'Dim exl As New Excel.Application '校对功能
+'Dim wb As Excel.Workbook
+'Dim sht As Excel.Worksheet
+Dim i As Integer, j As Integer
+'Dim pickobj As AcadEntity
+
+
+
+'Set wb = exl.Workbooks.Open("E:\BITMAP\1.xls")
+'Set sht = wb.Worksheets("sheet1")
+
+MyPath = "E:\BITMAP\1\"
+MyFile = Dir(MyPath & "*.dwg")
+
+
+
+Do While MyFile <> ""
+pos = InStr(MyFile, ".")
+h= MyPath &  Left(MyFile, pos - 1) & ".dwg"
+j = 2
+Set objDoc = Documents.Open(MyPath & MyFile)
+
+'sht.Cells(i, 1) = MyFile
+i = i + 1
+
+ThisDrawing.SaveAs h, acR15_dxf'h应该是全地址+文件名，acR14_dwg是2000格式 按help查看
+
+objDoc.Close
+
+
+
+MyFile = Dir
+Loop
+
+'wb.Close
+'exl.Quit
+End Sub
+/////////////////////////在2010里再转换过来
+Sub bplot()
+
+Dim sstext As AcadSelectionSet
+
+
+
+
+Dim objDoc As AutoCAD.AcadDocument
+ 
+
+Dim pos As Integer
+Dim h As String
+
+
+
+
+
+'Dim exl As New Excel.Application '校对功能
+'Dim wb As Excel.Workbook
+'Dim sht As Excel.Worksheet
+'Dim i As Integer, j As Integer
+'Dim pickobj As AcadEntity
+
+
+
+'Set wb = exl.Workbooks.Open("E:\BITMAP\1.xls")
+'Set sht = wb.Worksheets("sheet1")
+
+MyPath = "E:\BITMAP\1\"
+MyFile = Dir(MyPath & "*.dxf")
+pos = InStr(MyFile, ".")
+h = Left(MyFile, pos - 1) & ".dwg"
+
+Do While MyFile <> ""
+'j = 2
+Set objDoc = Documents.Open(MyPath & MyFile)
+
+'sht.Cells(i, 1) = MyFile
+'i = i + 1
+
+objDoc.SaveAs MyPath & h 
+
+
+objDoc.Close
+
+
+
+MyFile = Dir
+Loop
+
+'wb.Close
+'exl.Quit
+End Sub
+

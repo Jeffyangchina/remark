@@ -1,0 +1,17 @@
+1、from sklearn.feature_extraction.text import CountVectorizer
+cv=CountVectorizer()
+cv=CountVectorizer(ngram_range=(1,3))
+cv_fit=cv.fit_transform([tes])#scipy.sparse,是个矩阵词频
+gfn=cv.get_feature_names()#获取词 是个list,
+gfn=[[x] for x in gfn]
+gfn_np=np.array(gfn)#这样出来才是二维，否则一维无法转置
+gs=np.vstack((cv_fit,gfn))#行拼接，接下np类型排序
+nl=nl[:,nl[1].argsort()] 按照第二行排序
+nl[::-1]降序排列
+
+2、preprocessing.MultiLabelBinarizer()
+ylb.fit_transform(tr_y_)#产生编码，只有0 1，下标可以查到原字符
+ylb.classes_ #获取编码的原字符
+
+
+3、np.expand(pred_ids, axis=1)

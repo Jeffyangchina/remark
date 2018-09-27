@@ -1,0 +1,55 @@
+Sub match()
+
+    Dim daima As String, tuhao As String, minchen As String, waidai As String
+
+    Dim i As Integer, a As Integer, n As Integer, b As Integer, t As Integer, x As Integer
+   
+    Dim xlsapp As New Excel.Application
+
+    Dim xlsbook1 As Excel.Workbook
+
+    Dim xlssheet1 As Excel.Worksheet
+
+ 
+    
+
+    Set xlsbook1 = xlsapp.Workbooks.Open("C:\Documents and Settings\yxj4655\桌面\保润保香项目\all_objects_table_BRBX.xlsx")
+  
+    'Set xlsbook2 = xlsapp.Workbooks.Open("E:\BITMAP\x6s\TRSTSET-ctt01j01.xls")
+    
+    Set xlssheet1 = xlsbook1.Worksheets("CLASNAME")
+    Set xlssheet2 = xlsbook1.Worksheets("Sheet1")
+    
+  a = 2178
+     For i = 1 To 30
+     
+     daima = xlssheet1.Cells(i, "C")
+     
+     If daima <> "" Then
+         Set c = xlssheet2.Range("A1", "A28").Find(daima)
+         
+          If Not c Is Nothing Then
+             j = c.Row
+             xlssheet1.Cells(i, "D") = xlssheet2.Cells(j, "B")
+                
+             End If
+             
+      
+           
+        On Error Resume Next
+        End If
+     
+
+       
+           
+      
+      Next i
+      
+     xlsbook1.Save
+ 
+    xlsbook1.Close
+ ' xlsbook2.Close
+    xlsapp.Quit
+
+End Sub
+

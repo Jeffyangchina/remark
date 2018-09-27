@@ -1,0 +1,49 @@
+Sub bplot()
+'Dim obj As PDFMAKERAPILib.PDFMakerApp
+Dim pos1 As Integer
+Dim pos2 As Integer
+Dim pos As Integer
+Dim cadpth As String
+Dim pth As String
+Dim name As String
+'Dim PDFConvert As New PDFMakerApp
+'Dim exl As Excel.Application
+'Dim wb As Excel.Workbook
+'Dim sht As Excel.Worksheet
+'Dim i As Integer
+'i = 0
+'Set exl = CreateObject("Excel.Application") '定义excel
+'Set wb = exl.Workbooks.Open("e:\BITMAP\pdf\" & "bit.xls")
+'Set sht = wb.Worksheets("sheet1")
+'ht.range("A1:A500").Select
+
+'Selection.NumberFormatLocal = "@"   '设定单元格为文本格式就可以显示首位0了
+Dim objDoc As AutoCAD.AcadDocument
+
+MyPath = "E:\BITMAP\pcj\"
+MyFile = Dir(MyPath & "*.dwg")
+
+
+Do While MyFile <> ""
+
+Set objDoc = Documents.Open(MyPath & MyFile)
+cadpth = MyPath & MyFile
+pos2 = InStr(MyFile, "g")
+pos1 = InStr(MyFile, "(")
+pos = pos2 - pos1 + 2
+pth = "第" & Right(MyFile, pos - 1)
+
+i = i + 1
+'exl.Cells(i, 1) = Left(MyFile, pos - 1) '将文件名写入excel
+
+On Error Resume Next
+objDoc.SaveAs (MyPath & pth) '指定文件夹和文件名
+
+
+objDoc.Close
+MyFile = Dir
+Loop
+
+
+
+End Sub

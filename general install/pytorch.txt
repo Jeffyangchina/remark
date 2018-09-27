@@ -1,0 +1,13 @@
+pip install torch https://pypi.tuna.tsinghua.edu.cn/simple/#用这个源才能安装
+pip install torchvision https://pypi.tuna.tsinghua.edu.cn/simple/#用这个源才能安装
+[global]
+index-url = https://pypi.tuna.tsinghua.edu.cn/simple
+[install]
+trusted-host =pypi.tuna.tsinghua.edu.cn
+
+
+GPU->CPU
+
+torch.load('gen_500000.pkl', map_location=lambda storage, loc: storage)
+
+数据加载用 torch.utils.data.DataLoader()

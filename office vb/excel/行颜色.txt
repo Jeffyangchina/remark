@@ -1,0 +1,421 @@
+Private Sub Command1_Click()
+
+    Dim xlsapp As New Excel.Application
+
+    Dim xlsbook1 As Excel.Workbook
+
+    Dim xlssheet1 As Excel.Worksheet
+
+    Dim xlsbook2 As Excel.Workbook
+
+    Dim xlssheet2 As Excel.Worksheet
+    
+    Dim Rows1() As String, Rows2() As String, Rows3() As String, Rows4() As String, Rows5() As String, Rows6() As String, Rows7() As String
+
+    Set xlsbook1 = xlsapp.Workbooks.Open("G:\532.xls")
+
+    Set xlssheet1 = xlsbook1.Worksheets("sheet1")
+
+    Set xlsbook2 = xlsapp.Workbooks.Open("G:\make 531 boom.xls")
+
+    Set xlssheet2 = xlsbook2.Worksheets("BOM1")
+
+    Dim i As Integer, j As Integer
+    
+    ReDim Rows3(2 To 280)
+    ReDim Rows1(2 To 280)
+    ReDim Rows2(2 To 280)
+    ReDim Rows4(2 To 280)
+    ReDim Rows5(2 To 280)
+    ReDim Rows7(2 To 280)
+    For i = 2 To 280
+    Rows1(i) = xlssheet1.Cells(i, 4) '总报文中33码那列
+    Rows3(i) = xlssheet1.Cells(i, 6) '单位
+    Rows2(i) = xlssheet1.Cells(i, 11) '名称
+    Rows4(i) = xlssheet1.Cells(i, 14)  '描述
+    Rows5(i) = xlssheet1.Cells(i, 22)   '外来码
+    Rows7(i) = xlssheet1.Cells(i, 18)   '来源
+    Next
+
+
+
+    ReDim Rows6(2 To 300)
+    For i = 2 To 300
+    Rows6(i) = xlssheet2.Cells(i, 4)
+    Next
+   'xlsbook2.Close (True)
+
+
+
+    For i = 2 To 300
+
+        For j = 2 To 280
+
+            If Rows6(i) = Rows1(j) And Rows5(j) > "" Then
+
+               xlssheet1.Cells(j, 1) = "前板"
+          xlssheet2.Cells(i, 6) = Rows3(j)
+              xlssheet2.Cells(i, 11) = Rows2(j)
+                xlssheet2.Cells(i, 14) = Rows4(j)
+             xlssheet2.Cells(i, 22) = Rows5(j)
+            xlssheet2.Cells(i, 18) = Rows7(j)
+            End If
+
+        Next
+
+    Next
+
+    xlsbook1.Close
+
+    xlsbook2.Close
+
+    xlsapp.Quit
+
+End Sub
+
+
+
+ 
+
+
+///////////////////////////
+
+Private Sub Command1_Click()   定义行的颜色
+
+    Dim xlsapp As New Excel.Application
+
+    Dim xlsbook1 As Excel.Workbook
+
+    Dim xlssheet1 As Excel.Worksheet
+
+    Dim xlsbook2 As Excel.Workbook
+
+    Dim xlssheet2 As Excel.Worksheet
+    
+    Dim Rows1() As String, Rows2() As String, Rows3() As String, Rows4() As String
+
+    Set xlsbook1 = xlsapp.Workbooks.Open("G:\531 boom.xls")
+
+    Set xlssheet1 = xlsbook1.Worksheets("sheet2")
+
+    Set xlsbook2 = xlsapp.Workbooks.Open("G:\531 boom2.xls")
+
+    Set xlssheet2 = xlsbook2.Worksheets("sheet1")
+
+    Dim i As Integer, j As Integer
+    
+    ReDim Rows3(1 To 810)
+    ReDim Rows1(1 To 810)
+   
+    
+    For i = 1 To 810
+    Rows1(i) = xlssheet1.Cells(i, 2)
+    Rows3(i) = xlssheet1.Cells(i, 5)
+    Next
+
+
+
+    ReDim Rows2(1 To 280)
+    
+    ReDim Rows4(1 To 280) '最大列数自己定义
+    For i = 1 To 280
+    Rows2(i) = xlssheet2.Cells(i, 4)
+    Rows4(i) = xlssheet2.Cells(i, 2)
+    Next
+   'xlsbook2.Close (True)
+
+
+
+    For i = 1 To 280
+
+        For j = 1 To 810
+
+            If Rows2(i) = Rows3(j) And Rows4(i) = Rows1(j) Then
+
+                xlssheet1.Cells(j, 1) = "已有"
+             'Sheets("xlssheet1").Select
+
+            xlssheet1.Cells(j, 1).Interior.ColorIndex = 5
+            
+            End If
+
+        Next
+
+    Next
+
+    xlsbook1.Close
+
+    xlsbook2.Close
+
+    xlsapp.Quit
+
+End Sub
+
+ 
+
+
+///////////////////////前面三个是比较两个表格的内容并合并的程序
+Private Sub Command1_Click()
+
+    Dim xlsapp As New Excel.Application
+
+    Dim xlsbook1 As Excel.Workbook
+
+    Dim xlssheet1 As Excel.Worksheet
+
+    Dim xlsbook2 As Excel.Workbook
+
+    Dim xlssheet2 As Excel.Worksheet
+    
+    Dim Rows1() As String, Rows2() As String, Rows3() As String, Rows4() As String
+
+    Set xlsbook1 = xlsapp.Workbooks.Open("G:\Book1.xls")
+
+    Set xlssheet1 = xlsbook1.Worksheets("sheet1")
+
+    Set xlsbook2 = xlsapp.Workbooks.Open("G:\Book2.xls")
+
+    Set xlssheet2 = xlsbook2.Worksheets("sheet2")
+
+    Dim i As Integer, j As Integer
+    
+    
+    ReDim Rows1(1 To 2000) '最大列数自己定义
+    For i = 1 To 2000
+    Rows1(i) = xlssheet1.Cells(i, 22)
+    Next
+
+
+
+    ReDim Rows2(1 To 1700) '最大列数自己定义
+    ReDim Rows3(1 To 1700)
+    ReDim Rows4(1 To 1700)
+    For i = 1 To 1700
+    Rows2(i) = xlssheet2.Cells(i, 9)
+    Rows3(i) = xlssheet2.Cells(i, 2)
+    Rows4(i) = xlssheet2.Cells(i, 4)
+    Next
+   'xlsbook2.Close (True)
+
+
+
+    For i = 2 To 2000
+
+        For j = 1 To 1700
+
+            If InStr(Rows2(j), Rows1(i)) Then
+
+                xlssheet1.Cells(i, 1) = Rows3(j)
+                xlssheet1.Cells(i, 5) = Rows4(j)
+
+            End If
+
+        Next
+
+    Next
+
+    xlsbook1.Close
+
+    xlsbook2.Close
+
+    xlsapp.Quit
+
+End Sub
+///////////////
+Private Sub Command1_Click()
+
+    Dim xlsapp As New Excel.Application
+
+    Dim xlsbook1 As Excel.Workbook
+
+    Dim xlssheet1 As Excel.Worksheet
+
+    Dim xlsbook2 As Excel.Workbook
+
+    Dim xlssheet2 As Excel.Worksheet
+    
+    Dim Rows1() As String, Rows2() As String, Rows3() As String, Rows4() As String
+
+    Set xlsbook1 = xlsapp.Workbooks.Open("G:\Book1.xls")
+
+    Set xlssheet1 = xlsbook1.Worksheets("sheet1")
+
+    Set xlsbook2 = xlsapp.Workbooks.Open("G:\Book2.xls")
+
+    Set xlssheet2 = xlsbook2.Worksheets("sheet2")
+
+    Dim i As Integer, j As Integer
+    
+    ReDim Rows3(2 To 2000)
+    ReDim Rows4(2 To 2000)
+    ReDim Rows1(2 To 2000) '最大列数自己定义
+    
+    For i = 2 To 2000
+    Rows1(i) = xlssheet1.Cells(i, 22)
+    Rows3(i) = xlssheet1.Cells(i, 4)
+    Rows4(i) = xlssheet1.Cells(i, 11)
+    Next
+
+
+
+    ReDim Rows2(2 To 1700) '最大列数自己定义
+    For i = 2 To 1700
+    Rows2(i) = xlssheet2.Cells(i, 9)
+    Next
+   'xlsbook2.Close (True)
+
+
+
+    For i = 2 To 1700
+
+        For j = 2 To 1993
+
+            If InStr(Rows2(i), Rows1(j)) And Rows1(j) > "" Then
+
+                xlssheet2.Cells(i, 12) = Rows3(j)
+                xlssheet2.Cells(i, 13) = Rows4(j)
+
+            End If
+
+        Next
+
+    Next
+
+    xlsbook1.Close
+
+    xlsbook2.Close
+
+    xlsapp.Quit
+
+End Sub
+
+
+////////////////
+Private Sub Command1_Click()
+
+    Dim xlsapp As New Excel.Application
+
+    Dim xlsbook1 As Excel.Workbook
+
+    Dim xlssheet1 As Excel.Worksheet
+
+    Dim xlsbook2 As Excel.Workbook
+
+    Dim xlssheet2 As Excel.Worksheet
+    
+    Dim Rows1() As String, Rows2() As String, Rows3() As String, Rows4() As String, Rows5() As String, Rows6() As String, Rows7() As String, Rows8() As String
+    Set xlsbook1 = xlsapp.Workbooks.Open("G:\Book3.xls")
+
+    Set xlssheet1 = xlsbook1.Worksheets("sheet1")
+
+    Set xlsbook2 = xlsapp.Workbooks.Open("G:\Book4.xls")
+
+    Set xlssheet2 = xlsbook2.Worksheets("sheet2")
+
+    Dim i As Integer, j As Integer
+    
+    ReDim Rows3(2 To 450)
+    ReDim Rows4(2 To 450)
+    ReDim Rows1(2 To 450) '最大列数自己定义
+    ReDim Rows5(2 To 450)
+    ReDim Rows6(2 To 450)
+    ReDim Rows7(2 To 450)
+    ReDim Rows8(2 To 450)
+    
+    
+    For i = 2 To 450
+    Rows1(i) = xlssheet2.Cells(i, 22)
+    Rows3(i) = xlssheet2.Cells(i, 4)
+    Rows4(i) = xlssheet2.Cells(i, 5)
+    Rows5(i) = xlssheet2.Cells(i, 6)
+    Rows6(i) = xlssheet2.Cells(i, 11)
+    Rows7(i) = xlssheet2.Cells(i, 14)
+    Rows8(i) = xlssheet2.Cells(i, 18)
+    Next
+
+
+
+    ReDim Rows2(2 To 100) '最大列数自己定义
+    For i = 2 To 100
+    Rows2(i) = xlssheet1.Cells(i, 22)
+    Next
+   'xlsbook2.Close (True)
+
+
+
+    For i = 2 To 100
+
+        For j = 2 To 450
+
+            If Rows2(i) = Rows1(j) And Rows2(i) > "" Then
+
+                xlssheet1.Cells(i, 4) = Rows3(j)
+                xlssheet1.Cells(i, 5) = Rows4(j)
+                xlssheet1.Cells(i, 6) = Rows5(j)
+                xlssheet1.Cells(i, 11) = Rows6(j)
+                xlssheet1.Cells(i, 14) = Rows7(j)
+                xlssheet1.Cells(i, 18) = Rows8(j)
+
+            End If
+
+        Next
+
+    Next
+
+    xlsbook1.Close
+
+    xlsbook2.Close
+
+    xlsapp.Quit
+
+End Sub
+///////////////////指定合适的列宽
+Sub Macro1()
+'
+' Macro1 Macro
+' 宏由 杨晓君 录制，时间: 2011-3-16
+'
+
+'
+    Columns("N:N").Select
+    Selection.Columns.AutoFit
+    Application.Goto Reference:="Macro1"
+End Sub
+
+////////////////////////////////////后面的为删除指定的行
+Private Sub Command1_Click()
+
+    Dim xlsapp As New Excel.Application
+
+    Dim xlsbook1 As Excel.Workbook
+
+    Dim xlssheet1 As Excel.Worksheet
+    
+   
+    Set xlsbook1 = xlsapp.Workbooks.Open("G:\Book1.xls")
+
+    Set xlssheet1 = xlsbook1.Worksheets("sheet1")
+
+
+   Dim i As Integer
+   
+
+    For i = 2 To 2000
+
+            If xlssheet1.Cells(i, 22) = "" Then
+
+                xlssheet1.Cells(i, 1).Select
+                Selection.EntireRow.Delete
+                xlssheet1.SaveAs ("G:\hello.xls")
+                
+            End If
+
+        Next
+
+    xlsbook1.Close
+
+    xlsapp.Quit
+
+End Sub
+
+

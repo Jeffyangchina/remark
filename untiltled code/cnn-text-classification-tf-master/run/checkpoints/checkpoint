@@ -1,0 +1,6 @@
+model_checkpoint_path: "/home/dl/Documents/xingye classify/cnn-text-classification-tf-master/runs/1526209087/checkpoints/model-79200"
+all_model_checkpoint_paths: "/home/dl/Documents/xingye classify/cnn-text-classification-tf-master/runs/1526209087/checkpoints/model-78800"
+all_model_checkpoint_paths: "/home/dl/Documents/xingye classify/cnn-text-classification-tf-master/runs/1526209087/checkpoints/model-78900"
+all_model_checkpoint_paths: "/home/dl/Documents/xingye classify/cnn-text-classification-tf-master/runs/1526209087/checkpoints/model-79000"
+all_model_checkpoint_paths: "/home/dl/Documents/xingye classify/cnn-text-classification-tf-master/runs/1526209087/checkpoints/model-79100"
+all_model_checkpoint_paths: "/home/dl/Documents/xingye classify/cnn-text-classification-tf-master/runs/1526209087/checkpoints/model-79200"

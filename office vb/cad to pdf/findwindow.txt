@@ -1,0 +1,50 @@
+很简单啊..
+
+创建一个command
+复制代码
+
+Private Declare Function FindWindow Lib "user32" Alias "FindWindowA" (ByVal lpClassName As String, ByVal lpWindowName As String) As Long 'API函数,不解释
+
+Private Sub Command1_Click()
+Dim hwnd1 As Long '存储句柄的变量
+'hwnd1 = FindWindow(vbNullString, "请填写要查找窗口的标题")
+hwnd1 = FindWindow(vbNullString, InputBox("请输入要查找的车窗口标题", "查找"))
+
+If hwnd1 = 0 Then MsgBox "程序未运行": Exit Sub '为0时退出
+'=======
+'后面写你要做的事
+MsgBox "句柄为" & hwnd1
+
+
+'==========
+End Sub
+//////
+Private Sub Timer1_Timer()
+    hWnd1 = GetForegroundWindow() '得到活动窗口的句柄
+    Label1.Caption = getCaption(hWnd1)
+End Sub
+'根据窗口句柄得到该窗口的标题
+Function getCaption(hWnd As Long)
+    Dim hWndlength As Long, hWndTitle As String, A As Long
+    hWndlength = GetWindowTextLength(hWnd)
+    hWndTitle = String$(hWndlength, 0)搜索
+    A = GetWindowText(hWnd, hWndTitle, (hWndlength + 1))
+    getCaption = hWndTitle
+End Function
+////
+VB查找指定名称窗口并发送消息：
+
+Private Declare Function FindWindow Lib "user32" Alias "FindWindowA" (ByVal lpClassName As String, ByVal lpWindowName As String) As Long '查找窗口
+Private Declare Function PostMessage Lib "user32" Alias "PostMessageA" (ByVal hwnd As Long, ByVal wMsg As Long, ByVal wParam As Long, ByVal lParam As Long) As Long '发送消息
+Private Const WM_QUIT = &H12
+Dim hwnd  As Long                                                               '定义存放"Windows 文件保护"窗口句柄的变量
+hwnd = FindWindow(vbNullString, "Windows 文件保护")                             '查找"Windows 文件保护"窗口，并把对应的句柄存入变量
+If hwnd <> 0 Then Call PostMessage(hwnd, WM_QUIT, 0, 0)                         '如果窗口存在则退出窗口
+
+
+/////
+Shell "arp -s " & ip & " " & mac, vbNormalFocus
+
+/////
+Shell "notepad.exe " & docname, vbNormalFocus
+notepad.exe后有个空格，再加引号

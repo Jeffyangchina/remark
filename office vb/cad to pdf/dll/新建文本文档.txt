@@ -1,0 +1,37 @@
+1.在工程－引用中将asdfg.dll引用过来
+2.dim AAA as asdfg  'asdfg是类模块的名称
+  Private Sub Form_Load() 
+  dim x
+  Set AAA = New asdfg 
+  x = AAA.zxc(参数1,参数2)'参数1，2自己写
+  End Sub 
+
+建议你了解一下下面dll的制作方法，理解就更透彻了。下面内容来自百度。
+
+1.新建一个ActiveX Dll,工程名字为vbmytestdll,类模块名字为mytestdll 
+2.类模块内容只有一个函数,主要返回DLL的HELLO WORLD 
+Public Function dlltest1() As String 
+dlltest1 = "HELLO WORLD" 
+End Function 
+
+3.保存,生成DLL,名字为 
+
+vbmytestdll.dll 
+
+4.新建一个EXE工程,在菜单: 工程---引用---浏览里找到vbmytestdll.dll,把它引用进来 
+
+5.EXE工程代码如下: 
+
+Option Explicit 
+Dim testdll As mytestdll'类模块名字 
+
+Private Sub Form_Load() 
+Set testdll = New mytestdll 'DLL的一个新实例 
+Me.Caption = testdll.dlltest1 '我的标题=返回DLL的HELLO WORLD 
+End Sub 
+
+OK,编译成EXE即可看到效果.
+
+///////////////////////////////////
+1、右击工程》添加引用  把你的dll文件添加进去
+2、然后你定义一个变量作为dll中函数类型的，将变量实例化，最后在调用方法

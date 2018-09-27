@@ -1,0 +1,75 @@
+Sub bplot()
+dim pd As Integer
+Dim wdapp As Word.Application '定义word接口
+Dim wdbook As Word.Document
+Set wdapp = CreateObject("Word.Application") '定义Word
+Set wdbook = Documents.Open("E:\BITMAP\1\检测点卡片.doc")
+
+Set myrange = wdbook.Tables(1).Range  '选中第一个图表
+Set myrange = myrange.Rows(6).Cells(1).Range '选中第六行的第一个单元格
+Set myrange = myrange.Paragraphs(4).Range '在第六行内的第4段内插入图片
+myrange.InlineShapes.AddPicture ("E:\BITMAP\1\2509220032-1.jpg")  '在选定区域内插入图片
+
+wdbook.Save
+wdbook.Close
+wdapp.Quit
+End Sub
+'///////////////////////////////插入两个图片并设置大小,但是要先搜索这个照片是否存在 否则会报错
+
+                              Set hyrange = wdbook.Tables(1).Range '在第六行内的第4段内插入图片
+                              
+                             Set hyrange = hyrange.Rows(6).Cells(1).Range
+                             Set hyrange = hyrange.Paragraphs(1).Range
+                         
+                          Set pic = hyrange.InlineShapes.AddPicture("E:\BITMAP\1\2509220032-1.jpg")
+                           With pic
+                             .Height = 200  '插入两幅图片的合适大小，宽度还可以更宽
+                             .Width = 250
+                                 
+                            End With
+                              Set hyrange = wdbook.Tables(1).Range '在第六行内的第4段内插入图片
+                              
+                             Set hyrange = hyrange.Rows(6).Cells(1).Range
+                             Set hyrange = hyrange.Paragraphs(2).Range
+                        
+                   MyPath = "E:\BITMAP\1\"
+                           MyFile = Dir(MyPath & "*.jpg")
+                    
+                           pd = 2
+                            Do While MyFile <> ""
+                                  
+             
+                    If MyFile = "2509220032-2.jpg" Then
+                       pd = 1
+                       End If
+                       
+                    
+                     MyFile = Dir
+                        Loop
+                     If pd = 1 Then
+                     
+                         Set apic = hyrange.InlineShapes.AddPicture("E:\BITMAP\1\2509220032-2.jpg")
+                          With apic
+                             .Height = 200
+                             .Width = 250
+                                 
+                            End With
+                        End If
+'/////////////////////////////将其他文件的图片插进来
+
+Set myrange = wdbook2.Tables(3).Range  '选中第一个图表
+
+Set myrange = myrange.Rows(6).Cells(1).Range '选中第六行的第一个单元格
+myrange.Copy
+
+Set myrange = wdbook.Tables(1).Range '在第六行内的第4段内插入图片
+
+Set myrange = myrange.Rows(6).Cells(1).Range
+Set myrange = myrange.Paragraphs(2).Range
+myrange.Paste
+'/////////////////////
+
+
+
+
+

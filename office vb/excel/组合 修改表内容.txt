@@ -1,0 +1,137 @@
+Sub match()
+
+    Dim xlsapp As New Excel.Application
+    Dim xlsbook1 As Excel.Workbook
+    Dim xlssheet1 As Excel.Worksheet
+    Dim xlssheet2 As Excel.Worksheet
+
+    Set xlsbook1 = xlsapp.Workbooks.Open("E:\1\1.xls")
+    Set xlssheet1 = xlsbook1.Worksheets("汇总表")
+    Set xlssheet2 = xlsbook1.Worksheets("原始数据")
+    
+   
+    Dim mon As String, pro As String, name As String
+    Dim i As Integer, j As Integer, j1 As Integer, n As Integer, m As Integer, w As Integer, i1 As Integer, t As Integer, x As Integer, t1 As Integer, x1 As Integer
+    n = 20
+    m = 20
+    w = 0
+    t = 6
+    x = 0
+    x1 = 0
+    t1 = 4
+    
+ 
+     For i = 1 To 10000
+     If xlssheet2.Cells(i, 1) <> "" Then
+     w = w + 1
+     End If
+     Next i
+   
+     
+
+   
+    
+  '  xlssheet1.Range("A3:m&n").Select
+  '  Selection.ClearContents
+    
+    'xlssheet1.Range("E1:m&2").Select
+   ' Selection.ClearContents
+   
+  ' xlssheet1.Range("A3:AZ30").Select
+  '  Selection.Delete
+  
+    
+    For j = 2 To w
+    x = 0
+    x1 = 0
+    pro = xlssheet2.Cells(j, 1)
+    name = xlssheet2.Cells(j, 3)
+    
+    If j = 2 Then
+   xlssheet1.Cells(1, 5) = name
+    xlssheet1.Cells(2, 5) = "金额"
+    
+    xlssheet1.Cells(3, 1) = pro
+   
+    End If
+    
+    If j > 2 Then
+    
+      For j1 = 2 To j - 1
+       If xlssheet2.Cells(j1, 3) = name Then
+        x = 1
+       Exit For
+       End If
+      Next j1
+      
+       For j1 = 2 To j - 1
+       If xlssheet2.Cells(j1, 1) = pro Then
+        x1 = 1
+       Exit For
+       End If
+      Next j1
+      
+      If x = 0 Then
+      ' xlssheet1.Cells(1, t) = xlssheet1.Cells(1, 4)
+       xlssheet1.Cells(2, t) = xlssheet1.Cells(2, 4)
+       t = t + 1
+       xlssheet1.Cells(1, t) = name
+       xlssheet1.Cells(2, t) = xlssheet1.Cells(2, 5)
+       t = t + 1
+      End If
+      
+       If x1 = 0 Then
+       xlssheet1.Cells(t1, 1) = pro
+       t1 = t1 + 1
+       End If
+      
+    End If
+    Next j
+    
+     For i = 21 To 50
+    If xlssheet1.Cells(i, 1) <> "" Then 'n是现有行总数，m是列数
+    n = n + 1
+    End If
+    If xlssheet1.Cells(1, i) <> "" Then
+    m = m + 1
+    End If
+    Next i
+    
+     For j = 2 To w
+      pro = xlssheet2.Cells(j, 1)
+      mon = xlssheet2.Cells(j, 2)
+      name = xlssheet2.Cells(j, 3)
+        For i1 = 5 To t
+        If xlssheet1.Cells(1, i1) = name Then
+         For i = 3 To n
+         If xlssheet1.Cells(i, 1) = pro Then
+         xlssheet1.Cells(i, 2) = xlssheet1.Cells(i, 2) + 1
+         xlssheet1.Cells(i, 3) = xlssheet1.Cells(i, 3) + mon
+         xlssheet1.Cells(i, i1) = xlssheet1.Cells(i, i1) + mon
+         xlssheet1.Cells(i, i1 - 1) = xlssheet1.Cells(i, i1 - 1) + 1
+         End If
+         Next i
+         End If
+         Next i1
+         Next j
+
+    
+    
+  xlssheet1.Cells(n + 1, 1) = "合计"
+
+   xlsbook1.SaveAs ("E:\1\汇总表")
+    xlsbook1.Close
+    xlsapp.Quit
+
+End Sub
+
+
+
+
+
+
+
+
+
+
+

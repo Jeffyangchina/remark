@@ -1,0 +1,3 @@
+If (DateDiff("s", n, n1)) > 5 Then '如果跑偏则在5秒内跳出
+Exit Do
+  End If

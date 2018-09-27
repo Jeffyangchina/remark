@@ -1,0 +1,44 @@
+Sub match()
+
+    Dim xlsapp As New Excel.Application
+
+    Dim xlsbook1 As Excel.Workbook
+
+    Dim xlssheet2 As Excel.Worksheet
+
+ Dim xlssheet1 As Excel.Worksheet
+   
+
+    Set xlsbook1 = xlsapp.Workbooks.Open("E:\上海大熊猫项目\XC_CAMS\yang\bit.xls")
+  Set xlssheet1 = xlsbook1.Worksheets("Sheet3")
+  
+  
+  For i = 2 To 361
+  With xlssheet1
+  
+      .Cells(i, "A") = WorksheetFunction.Sum(.Range(.Cells(1, "B"), .Cells(i, "B")))
+     
+      End With
+      Next i
+   
+        On Error Resume Next
+     
+    
+ xlsbook1.Save
+   
+   
+ 
+
+    xlsbook1.Close
+
+    xlsapp.Quit
+
+End Sub
+
+
+
+
+
+
+
+

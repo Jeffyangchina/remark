@@ -1,0 +1,55 @@
+Sub bplot()
+
+
+Dim i As Integer
+
+Dim wdapp As Word.Application '定义word接口
+Dim wdbook As Word.Document
+
+Dim xlsapp As New Excel.Application
+
+   Dim xlsbook1 As Excel.Workbook
+
+Dim xlssheet1 As Excel.Worksheet
+
+ Dim xlssheet2 As Excel.Worksheet
+ 
+    Dim daima As String, v As String, o As String, p As String, w As String, pic As String, bj As String, daima2 As String, daima3 As String
+    
+
+    Dim j As Integer, n As Integer, l As Integer, num As Integer, num1 As Integer, num2 As Integer
+
+   Set xlsbook1 = xlsapp.Workbooks.Open("E:\BITMAP\1\1.xls")
+
+ Set xlssheet1 = xlsbook1.Worksheets("X6S")
+    
+   
+Set wdapp = CreateObject("Word.Application") '定义Word
+Set wdbook = Documents.Open("E:\BITMAP\1\检测点卡片-lwj.doc")
+
+   num = wdbook.Tables.Count
+    For i = 1 To 314
+    daima = xlssheet1.Cells(i + 1, "G")
+    daima2 = "  " & daima & "  "
+      Set myrange = wdbook.Tables(i).Range
+     
+     n = myrange.Find.Execute("yang", , , , , , , , , daima2)'如果没找到n返回为0
+        
+     
+     
+      
+    
+   
+On Error Resume Next
+  Next i
+wdbook.Save
+wdbook.Close
+
+
+ xlsbook1.Close
+
+xlsapp.Quit
+wdapp.Quit
+End Sub
+
+

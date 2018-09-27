@@ -1,0 +1,147 @@
+
+Sub bplot()
+Dim right1 As String
+Dim right2 As String
+Dim cadpth As String
+Dim pdfpth As String
+Dim i As Integer
+
+
+Dim wdapp As Word.Application '定义word接口
+Dim wdbook As Word.Document
+
+Dim xlsapp As New Excel.Application
+
+    Dim xlsbook1 As Excel.Workbook
+
+    Dim xlssheet1 As Excel.Worksheet
+
+
+ Dim xlssheet2 As Excel.Worksheet
+ 
+    Dim daima As String, v As String, o As String, p As String, w As String, y As String
+    Dim chang1 As String, chang2 As String
+
+    Dim j As Integer, n As Integer, l As Integer
+
+    Set xlsbook1 = xlsapp.Workbooks.Open("E:\BITMAP\制作检测点卡片\进口件41所消化清单yang.xls")
+
+    Set xlssheet1 = xlsbook1.Worksheets("41")
+    
+    
+   
+'Set wdapp = CreateObject("Word.Application") '定义Word
+
+right1 = ""
+right2 = ""
+
+MyPath = "E:\BITMAP\制作检测点卡片\"
+MyFile = Dir(MyPath & "上海中臣烟草数控技术有限责任公司国产化元件部套汇总空格表.doc")
+
+
+'Do While MyFile <> ""
+cadpth = MyPath & MyFile
+Set wdbook = Documents.Open(cadpth)
+
+  For i = 2 To 4
+    daima = xlssheet1.Cells(i, "E")  'GD代码
+    daima2 = xlssheet1.Cells(i + 1, "E")
+    v = xlssheet1.Cells(i, "F") '33码
+   
+     y = xlssheet1.Cells(i, "D") '元件名
+    o = xlssheet1.Cells(i, "H") '名称
+    p = xlssheet1.Cells(i, "K") '描述
+    w = xlssheet1.Cells(i, "C") '所属机器
+   chang1 = xlssheet1.Cells(i, "Q")
+   If chang1 = "总厂" Then
+     right1 = "√"
+   Else
+     right1 = ""
+    End If
+   
+     If chang1 = "分厂" Then
+      right2 = "√"
+     Else
+     right2 = ""
+    End If
+    
+    
+    If daima2 <> "" Then
+      Set myrange = wdbook.Tables(i - 1).Range
+      myrange.Copy
+      Set myrange = wdbook.Content
+
+      myrange.Paragraphs.Add '添加一个空白段落，就是加个回车
+      myrange.Paragraphs.Add
+      myrange.Collapse (wdCollapseEnd)
+
+      myrange.Paste
+     End If
+    If daima <> "" Then
+      Set myrange = wdbook.Tables(i - 1).Range
+      With myrange
+      n = myrange.Words.Count
+      l = 1
+      For j = 20 To n
+      
+       If l < 9 Then
+      If .Words(j).Text = "yang" And l = 1 Then
+     .Words(j).Text = o
+     l = l + 1
+      End If
+      
+      If .Words(j).Text = "yang" And l = 2 Then
+        .Words(j).Text = v
+        l = l + 1
+      End If
+      
+      If .Words(j).Text = "yang" And l = 3 Then
+      .Words(j).Text = w
+      l = l + 1
+      End If
+      
+    
+      If .Words(j).Text = "yang" And l = 4 Then
+       .Words(j).Text = daima
+       l = l + 1
+      End If
+      
+     If .Words(j).Text = "yang" And l = 5 Then
+      .Words(j).Text = right1
+          l = l + 1
+      End If
+      
+       If .Words(j).Text = "yang" And l = 6 Then
+      .Words(j).Text = y
+          l = l + 1
+      End If
+      
+       If .Words(j).Text = "yang" And l = 7 Then
+      .Words(j).Text = right2
+          l = l + 1
+      End If
+      
+        If .Words(j).Text = "yang" And l = 8 Then
+      .Words(j).Text = " " & p & " "
+          l = l + 1
+      End If
+      
+     End If
+     Next j
+   
+     End With
+    End If
+On Error Resume Next
+  Next i
+wdbook.Save
+wdbook.Close
+
+
+ xlsbook1.Close
+
+    xlsapp.Quit
+wdapp.Quit
+End Sub
+
+
+

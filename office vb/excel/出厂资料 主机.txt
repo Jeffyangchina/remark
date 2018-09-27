@@ -1,0 +1,109 @@
+Sub match()
+
+    Dim xlsapp As New Excel.Application
+    Dim xlsbook1 As Excel.Workbook
+    Dim xlssheet1 As Excel.Worksheet
+    Dim xlssheet2 As Excel.Worksheet
+
+    Set xlsbook1 = xlsapp.Workbooks.Open("E:\x6s\500包项目\fy\装箱资料汇总\主机\yang.xlsm")
+    Set xlssheet1 = xlsbook1.Worksheets("list2")
+    Set xlssheet2 = xlsbook1.Worksheets("yang1")
+    
+   
+    Dim mon As String, pro As String, name As String
+    Dim i As Integer, j As Integer, j1 As Integer, n As Integer, m As Integer, w As Integer, i1 As Integer, t As Integer, x As Integer, t1 As Integer, x1 As Integer
+  
+
+       
+  t = 0
+  
+       
+     For u = 1 To 10000
+       xlssheet2.Cells(u, "D") = "板组成清单"
+       xlssheet2.Range(xlssheet2.Cells(u, "D"), xlssheet2.Cells(u, "D")).HorizontalAlignment = 2
+       xlssheet2.Cells(u + 2, "A") = "代号"
+       xlssheet2.Cells(u + 2, "B") = "名称    位置图 "
+       xlssheet2.Cells(u + 2, "C") = "功能图"
+       xlssheet2.Cells(u + 2, "D") = "描述"
+       xlssheet2.Cells(u + 2, "E") = "子项代码"
+         xlssheet2.Cells(u + 2, "F") = "数量"
+       xlssheet2.Cells(u + 3, "F") = "1"
+          u = u + 59
+     Next u
+       w = 1
+        For n = 2 To 500
+        If xlssheet1.Cells(n, "G") <> xlssheet1.Cells(n - 1, "G") Then
+           xlssheet2.Cells(w, "C") = Left(xlssheet1.Cells(n, "G"), 4)
+         xlssheet2.Range(xlssheet2.Cells(w, "C"), xlssheet2.Cells(w, "C")).HorizontalAlignment = 4
+           
+            
+            
+              
+                 m = w + 3
+                 xlssheet2.Cells(m, "A") = Right(xlssheet1.Cells(n, "G"), 3)
+                  xlssheet2.Cells(m, "B") = xlssheet1.Cells(n, "P")
+                  xlssheet2.Cells(m, "D") = "c" & xlssheet1.Cells(n, "F")
+                  xlssheet2.Cells(m, "E") = xlssheet1.Cells(n, "F")
+                  xlssheet2.Cells(m + 2, "B") = "a" & xlssheet1.Cells(n, "F")
+                  xlssheet2.Cells(m + 3, "B") = "b" & xlssheet1.Cells(n, "F")
+                  
+          xlssheet2.Cells(m + 5, "A") = xlssheet1.Cells(n, "H")
+            xlssheet2.Cells(m + 5, "C") = xlssheet1.Cells(n, "Q")
+             xlssheet2.Cells(m + 5, "D") = xlssheet1.Cells(n, "B")
+            xlssheet2.Cells(m + 7, "B") = xlssheet1.Cells(n, "O")
+            
+            xlssheet2.Cells(m + 8, "B") = xlssheet1.Cells(n, "N")
+             w = w + 60
+           t = 0
+           
+          
+        End If
+        
+        
+         If xlssheet1.Cells(n, "G") = xlssheet1.Cells(n - 1, "G") Then
+          
+            x = w - 47 + 5 * t
+            
+           xlssheet2.Cells(x, "A") = xlssheet1.Cells(n, "H")
+            xlssheet2.Cells(x, "C") = xlssheet1.Cells(n, "Q")
+            xlssheet2.Cells(x + 2, "B") = xlssheet1.Cells(n, "O")
+            xlssheet2.Cells(x, "D") = xlssheet1.Cells(n, "B")
+            xlssheet2.Cells(x + 3, "B") = xlssheet1.Cells(n, "N")
+            
+              
+                 
+             t = t + 1
+         
+             
+           
+          
+        End If
+        
+        
+       Next n
+       
+   
+   
+    
+    
+        xlsbook1.Save
+   
+    xlsbook1.Close
+    xlsapp.Quit
+
+End Sub
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

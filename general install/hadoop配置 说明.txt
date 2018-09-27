@@ -1,0 +1,103 @@
+配置windows环境：
+1、Java JDK ：环境变量新建 JAVA_HOME，值为C:\Progra~1\Java\jdk1.8.0_51（jdk位置不能有空格）
+2、新建HADOOP_HOME指向hadoop解压目录E:\可移动磁盘\python\hadoop\hadoop-2.8.3\hadoop-2.8.3\bin，
+path环境变量中增加：%HADOOP_HOME%\bin;
+	Hadoop 依赖库：
+winutils相关，hadoop在windows上运行需要winutils支持和hadoop.dll等文件，下载地址：http://download.csdn.net/detail/fly_leopard/9503059
+注意hadoop.dll等文件不要与hadoop冲突。为了不出现依赖性错误可以将hadoop.dll放到c:/windows/System32下一份。
+hadoop基本文件配置：hadoop配置文件位于：hadoop/etc/hadoop下
+core-site.xml / hdfs-site.xml / mapred-site.xml / yarn-site.xml
+core-site.xml:
+
+<configuration>  
+  
+   <property>  
+  
+       <name>fs.defaultFS</name>  
+  
+       <value>hdfs://localhost:9000</value>  
+  
+   </property>  
+  
+</configuration>  
+
+hdfs-site.xml:
+ 
+[html] view plain copy print?
+<configuration>  
+  
+       <property>  
+  
+               <name>dfs.replication</name>  
+  
+                <value>1</value>  
+  
+       </property>  
+  
+       <property>  
+  
+                <name>dfs.namenode.name.dir</name>  
+  
+               <value>file:/hadoop/data/dfs/namenode</value>  #这个文件会在E：盘根目录下出现
+  
+       </property>  
+  
+       <property>  
+  
+               <name>dfs.datanode.data.dir</name>  
+  
+               <value>file:/hadoop/data/dfs/datanode</value>  
+  
+       </property>  
+  
+</configuration>  
+
+mapred-site.xml:
+
+<configuration>  
+  
+       <property>  
+  
+          <name>mapreduce.framework.name</name>  
+  
+          <value>yarn</value>  
+  
+       </property>  
+  
+</configuration>  
+  
+yarn-site.xml:  
+  
+<configuration>  
+  
+       <property>  
+  
+          <name>yarn.nodemanager.aux-services</name>  
+  
+          <value>mapreduce_shuffle</value>  
+  
+       </property>  
+  
+       <property>  
+  
+          <name>yarn.nodemanager.aux-services.mapreduce.shuffle.class</name>  
+  
+          <value>org.apache.hadoop.mapred.ShuffleHandler</value>  
+  
+       </property>  
+  
+</configuration>  
+
+
+
+格式化系统文件：
+hadoop/bin下执行 hdfs namenode -format
+待执行完毕即可，不要重复format。
+格式化完成后到hadoop/sbin下执行 start-dfs启动hadoop
+访问：http://localhost:50070
+
+
+创建目录：用于输入和输出：bin下hadoop fs -mkdir /user/..
+hadoop fs -ls /user查看文件  -XUEJW supergroup
+
+在hadoop/sbin下启动start-yarn，访问http://localhost:8088可查看 资源、节点管理

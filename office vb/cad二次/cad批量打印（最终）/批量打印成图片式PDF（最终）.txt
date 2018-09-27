@@ -1,0 +1,51 @@
+Sub bplot()
+
+Dim MyFile, MyPath, MyName
+ Dim objDoc As AutoCAD.AcadDocument
+ Dim blnRet As Boolean
+Dim resl As Boolean
+ Dim point1 As Variant, point2 As Variant
+ Dim pickobj As AcadEntity
+ Dim n As Integer
+  Dim UpperRight(0 To 1) As Double, LowerLeft(0 To 1) As Double
+  
+MyPath = "E:\BITMAP\yang\"
+MyFile = Dir(MyPath & "*.dwg")
+
+n = 0
+Do While MyFile <> ""
+
+
+Set objDoc = Documents.Open(MyPath & MyFile)
+Set objlayout = ThisDrawing.ModelSpace.Layout
+objlayout.ConfigName = "Adobe PDF" '"\\Pcj4615\HP LJ 5200"
+'If automedia Then '随图纸大小 不加就是自定义大小
+'ThisDrawing.ModelSpace.Layout.CanonicalMediaName = "A4"  '指定图纸大小 如果随图纸大小则不要这条 不要这条下面要布满图纸
+'End If
+objlayout.CenterPlot = True '居中打印
+objlayout.StyleSheet = "烟机0.3-0.18.ctb"
+
+
+ 
+
+'objlayout.PlotType = acExtents '打印当前选定空间范围内的所有对象。
+
+objlayout.StandardScale = acScaleToFit'这条是指布满图纸 如果指定了图纸大小 则不用这条
+
+   objlayout.PlotType = acExtents
+   
+'objDoc.SetVariable "BACKGROUNDPLOT", 0 '这条很重要 是后台打印
+
+Set objPlot = objDoc.Plot
+
+
+blnRet = objPlot.PlotToDevice("Adobe PDF") '"\\Pcj4615\HP LJ 5200"
+On Error Resume Next
+objDoc.Save
+objDoc.Close
+
+MyFile = Dir
+On Error Resume Next
+Loop
+End Sub
+

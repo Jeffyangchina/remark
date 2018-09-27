@@ -1,0 +1,21 @@
+1. print("hello %s" %a) #a is number 
+
+2、from snorkel.models import Document, Sentence
+snorkel目录下models目录下.py文件，而 Document, Sentence只是其某个.py文件内的函数，因为有 __init__.py文件
+内已导入了Document, Sentence，所以可以直接导入。
+再比如from snorkel.models import candidate_subclass，在目录models下只有candidate.py 和__init__.py
+因为在__init__.py中from .candidate import candidate_subclass
+
+3、如果使用python2 可以cmd里直接用，然后要pip的话是python2 -m pip install
+
+词汇比较运算
+
+s.startswith(t) 测试是否t开头
+s.endswith(t) 测试是否t结尾
+t in s 测试s是否包含t
+s.islower() 测试s所有字符是否都是小写字母
+s.isupper() 测试s所有字符是否都是大写字母
+s.isalpha() 测试s所有字符是否都是字母
+s.isalnum() 测试s所有字符是否都是字母或数字
+s.isdigit() 测试s所有字符是否都是数字
+s.istitle() 测试s所有词首字母都是大写

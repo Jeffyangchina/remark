@@ -1,0 +1,65 @@
+使用VB编程时，有时需要调用MicrosoftWord对文字进行编辑、排版及输出。为实现这种调用，可以使用Shell函数、OLE自动化、在包容器中嵌入Word对象等方法。经过试用和比较，总结出了这几种方法的各自特点。
+
+1使用Shell函数直接调用
+　　语法：Shell(pathname[,windowstyle]).Pathname是指要执行的程序的名字和任何必须的参数或命令行开关，可以包括目录和驱动器名；Windowstyle是执行程序的窗口风格的数字。
+　　使用Shell调用Word比较简单，编程量小，但必须明确指定Word所在路径，这不利于移植，而且，不能对Word进行控制，不利于程序和Word之间的数据交换。
+
+2使用OLE自动化控制MicrosoftWord
+　　2.1使用方法
+　　(1)Word为OLE自动化提供一种称为“Basic”的对象，要在VB中控制Word,首先要定义一个引用Word中“Basic”对象的对象变量：DimWordobjasObject
+　　(2)将Word中的“Basic”对象赋给该对象：SetWordobj=CreateObject("Word.Basic")
+　　(3)可以使用大多数WordBasic语句和函数控制Word或Word文档，使用方法和在Word宏中使用WordBasic指令的方法基本相同。
+　　(4)关闭Word:SetWordobj=Nothing。
+　　注意：“Basic”对象不支持关闭它自己的一个方法。即若在OLE自动化中关闭了Word，则对象被置为Nothing，便不能再对对象进行操作，程序出错。
+　　2.2VB指令与WordBasic指令的差异
+　　(1)有一些语句和函数不能使用，包括：控制结构，如While…Wend和If…Then…Else；声明语句，如Dim；定制对话框相关的语句：FileExit语句；要求数组变量作为参数的语句或函数。
+　　(2)也有一些指令使用方法不同。①返回字符串以一个美元符（$）结束的WordBasic函数的关键字必须括在方括号中。例如，在WordBasic宏中的GetBookmark$()语句：mark$=GetBookmark$("Address")，若用VB调用，必须这样写mark$=Wordobj.[Ge-tBookmark$]("Address")。②选择一个命令按钮用“True”,不选择用“False”
+　　2.3对OLE自动化的说明
+　　Word可以为OLE自动化给另一个应用提供对象，但是它不能使用OLE自动化访问其它应用中的对象。例如：VB和Excel可以使用OLE自动化访问Word，但是Word不能使用OLE自动化访问它们。
+
+3在包容器中嵌入Word对象
+　　在VB中，要访问在包容器中嵌入的Word对象，首先要在项目中插入对象。做法如下：在窗体中插入OLE控件，对象类型选择“MicrosoftWord图片”或“MicrosoftWord文档”，再按“确定”。
+　　然后用Object属性访问文档或图片，并使用WordBasic语句和函数作用于它。嵌入的对象必须在可被访问之前被激活，可以使用Action属性激活OLE控件。例如，使用下面指令访问一个嵌入在称为OLE1的OLE控件中的文档：
+　　　　DimWordobjasObject
+　　　　OLE1.Action=7
+　　　　SetWordobj=OLE1.Object.application.WordBasic
+　　其他方面，使用方法同OLE自动化。使用在包容器中嵌入的Word对象，Word显示的窗口大小、位置与OLE控件定义的大小、位置相同，而且工具栏显示位置与Word脱离。这一点与OLE自动化相比，是个不足。
+　　总之，要想在MicrosoftVisualBasic中控制MicrosoftWord，最好使用OLE自动化，通过使用WordBasic指令对Word进行全面控制，而且，用户使用起来与使用MicrosoftWord一样，非常方便。->
+/////////////////
+使用OLE自动化控制Microsoft   Word 
+
+　　2.1   使用方法 
+
+　　(1)Word为OLE自动化提供一种称为“Basic”的对象，要在VB中控制Word   ,首先要定义一个引用Word中“Basic”对象的对象变量：Dim   Wordobj   as   Object 
+
+　　(2)将Word   中的“Basic”对象赋给该对象：Set   Wordobj=CreateObject( "Word.Basic ") 
+
+　　(3)可以使用大多数WordBasic语句和函数控制Word或Word文档，使用方法和在Word宏中使用WordBasic指令的方法基本相同。 
+
+　　(4)关闭Word:Set   Wordobj   =Nothing。 
+
+　　注意：“Basic”对象不支持关闭它自己的一个方法。即若在OLE自动化中关闭了Word，则对象被置为Nothing，便不能再对对象进行操作，程序出错。 
+
+　　2.2   VB指令与WordBasic指令的差异 
+
+　　(1)有一些语句和函数不能使用，包括：控制结构，如While…Wend和If…Then…Else；声明语句，如Dim；定制对话框相关的语句：FileExit语句；要求数组变量作为参数的语句或函数。 
+
+　　(2)也有一些指令使用方法不同。①返回字符串以一个美元符（$）结束的WordBasic函数的关键字必须括在方括号中。例如，在WordBasic宏中的GetBookmark$()语句：mark$=GetBookmark$( "Address ")，若用VB调用，必须这样写mark$=Wordobj.[Ge-tBookmark$]( "Address ")。②选择一个命令按钮用“True”,不选择用“False” 
+
+　　2.3   对OLE自动化的说明 
+
+　　Word可以为OLE自动化给另一个应用提供对象，但是它不能使用OLE自动化访问其它应用中的对象。例如：VB和Excel可以使用OLE自动化访问Word，但是Word不能使用OLE自动化访问它们。 
+　 
+　　3   在包容器中嵌入Word对象 
+
+　　在VB中，要访问在包容器中嵌入的Word对象，首先要在项目中插入对象。做法如下：在窗体中插入OLE控件，对象类型选择“MicrosoftWord图片”或“Microsoft   Word文档”，再按“确定”。 
+
+　　然后用Object属性访问文档或图片，并使用WordBasic语句和函数作用于它。嵌入的对象必须在可被访问之前被激活，可以使用Action属性激活OLE控件。例如，使用下面指令访问一个嵌入在称为OLE1的OLE控件中的文档： 
+
+Dim   Wordobj   as   Object 
+OLE1.Action   =7 
+Set   Wordobj   =OLE1.Object.Application.   WordBasic   
+　　　　   
+　　其他方面，使用方法同OLE自动化。使用在包容器中嵌入的Word对象，Word显示的窗口大小、位置与OLE控件定义的大小、位置相同，而且工具栏显示位置与Word脱离。这一点与OLE自动化相比，是个不足。 
+
+　　总之，要想在Microsoft   Visual   Basic中控制Microsoft   Word，最好使用OLE自动化，通过使用WordBasic指令对Word进行全面控制，而且，用户使用起来与使用Microsoft   Word一样，非常方便。  

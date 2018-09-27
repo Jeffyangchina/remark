@@ -1,0 +1,58 @@
+xhell登入到服务器。
+cd 到kafka文件夹下的bin目录
+
+1、sh zookeeper-server-start.sh -daemon ../config/zookeeper.properties#启动
+
+2、sh kafka-server-start.sh -daemon ../config/server.properties #启动kafka
+bin/kafka-server-start.sh ./config/server.properties# #启动kafka
+bin/zookeeper-server-start.sh -daemon ./config/zookeeper.properties
+
+退出vim：shift +zq，翻页ctrl +f / b 查找 / 加上要查的内容
+
+sh kafka-topics.sh --zookeeper 118.89.182.194:2181 --list
+sh kafka-topics.sh --zookeeper 10.10.6.15:2181 --list
+以上两条查看topic都连接超时，zk的地址是到底是哪个？
+
+
+sh kafka-topics.sh --zookeeper localhost:2181 --list #这句反而不报错，但是也没有任何返回的东西。
+
+
+sh kafka-topics.sh --zookeeper localhost:2181 --topic electricity-igen-021 --describe
+
+
+
+
+成功：1、先启动kafka:用上面的语句 2，再开个视窗新建主题：bin/kafka-topics.sh --zookeeper localhost:2181 --create --topic jeff --partitions 30  --replication-factor 1
+我们服务器上只有一个brokers所以只能建一个副本。
+bin/kafka-topics.sh --zookeeper localhost:2181 --list#这时候可以查询到新建的主题了。
+bin/kafka-topics.sh --zookeeper localhost:2181 --topic jeff#
+
+bin/kafka-console-producer.sh --broker-list localhost:9092 --topic jeff#向该主体发送消息，消息既被发送至broker,
+
+bin/kafka-console-consumer.sh --zookeeper localhost:2181 --topic jeff --from-beginning# 读取到刚才的消息，
+
+公司服务器118.89.182.194（10.10.6.6 hostname可以查看):装有kafka,hive,spark
+启动hive；Hive-on-MR is deprecated in Hive 2，请使用spark引擎，通过hive.execution.engine来设置计算引擎,
+#hive     启动
+hive>quit;     --退出hive
+hive> exit;    --exit会影响之前的使用，所以需要下一句kill掉hadoop的进程
+>hadoop job -kill jobid
+hive>use mqtt;使用该数据库
+hive> show tables;显示其中的表
+hive> desc mqtt;展示一张表的结构
+hive> select * from mqtt limit 5;
+hive> show partitions mqtt;显示该表的分区信息；hive> show partitions mqtt_data;
+表内会多个分区字段dt，而在hdfs上则是一个文件夹，查询时要带分区信息否则会报错因为是严格模式，可以set hive.mapred.mode=nostrict
+
+# hdfs dfs -ls /usr/hive/warehous#操作分布式文件，查看
+
+可以免密登入ssh 10.10.6.87另外一台服务器，也有 hive
+
+linux# free -h 察看硬盘内存情况。
+cd /usr/local/service/ 这里有hadoop hbase hive spark tez然后用ll察看文件修改日期等。
+
+
+
+
+
+

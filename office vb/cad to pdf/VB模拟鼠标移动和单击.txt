@@ -1,0 +1,39 @@
+VB模拟鼠标移动和单击 
+
+
+这里要用到SetCursorPos（指定鼠标坐标）和mouse_event(综合鼠标击键和鼠标动作)两个API函数。
+
+例：单击Command1时鼠标会到（500,500）这个点作鼠标左键单击动作。 
+Private Declare Function SetCursorPos Lib "user32" (ByVal x As Long, ByVal y As Long) As Long 
+Private Declare Sub mouse_event Lib "user32" (ByVal dwFlags As Long, ByVal dx As Long, ByVal dy As Long, ByVal cButtons As Long, ByVal dwExtraInfo As Long) 
+Private Const MOUSEEVENTF_LEFTDOWN = &H2 
+Private Const MOUSEEVENTF_LEFTUP = &H4 
+
+Private Sub Command1_Click() 
+SetCursorPos 500, 500 
+mouse_event MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0 
+mouse_event MOUSEEVENTF_LEFTUP, 0, 0, 0, 0 
+End Sub 
+
+关于Private Declare Sub mouse_event Lib "user32" (ByVal dwFlags As Long, ByVal dx As Long, ByVal dy As Long, ByVal cButtons As Long, ByVal dwExtraInfo As Long) 
+参数：
+
+dwFlags：标志位集，指定点击按钮和鼠标动作的多种情况。此参数里的各位可以是下列值的任何合理组合：
+
+MOUSEEVENTF_MOVE &H1，移动鼠标 
+MOUSEEVENTF_LEFTDOWN &H2，模拟鼠标左键按下 
+MOUSEEVENTF_LEFTUP &H4，模拟鼠标左键抬起 
+MOUSEEVENTF_RIGHTDOWN &H8，模拟鼠标右键按下 
+MOUSEEVENTF_RIGHTUP &H10，模拟鼠标右键抬起 
+MOUSEEVENTF_MIDDLEDOWN &H20，模拟鼠标中键按下 
+MOUSEEVENTF_MIDDLEUP &H40，模拟鼠标中键抬起 
+MOUSEEVENTF_ABSOLUTE &H8000，标示是否采用绝对坐标 ） 
+
+dx 
+Long，根据是否指定了MOUSEEVENTF_ABSOLUTE标志，指定水平方向的绝对位置或相对运动 
+
+dy 
+Long，根据是否指定了MOUSEEVENTF_ABSOLUTE标志，指定垂直方向的绝对位置或相对运动 
+
+cButtons和dwExtraInfo我不知道作何用，不常用。
+

@@ -1,0 +1,27 @@
+1、importerror：
+nmt.py程序没将所在文件夹看作是个package:1、要有__init__().可以为空。2、不能作为main()主入口
+所以在上级新建一个nmt_main.py，从这里启动程序。
+
+2、windows中路径要用\\
+
+3、utf8' codec can't decode byte 0xbb in position 0: invalid start byte：
+打开sublime，新建文件，选择File->save with encoding->UTF-8, 就可以了。
+
+4、步骤：
+先提数据集，要对应上，然后转成csv，用nodepat转码，否则会报错。处理分词，然后再将文本格式的换行符换一下。
+
+1、parser.add_argument('-u',nargs='?',default='d',const='s') 
+这个问号的作用，就是如果parser.parse_args('-u'.split())有这个参数但是没有内容则输出const值；
+Namespace( u='s') ；而如果没有这个参数则输出default；parser.parse_args(''.split())；Namespace( u='d') 。
+
+2、warmup_steps参数作用：
+热重启的SGD（SGD with restarts）；取代学习率衰减的 SGD 变体；因为优化过程不会再次从零开始，
+而是从模型在最后一步收敛的参数开始。而adam其自适应学习率应该比正常的SGD有优势
+
+3、注意力机制：luhong比bahdanau更新，luhong的local类型更适合长句翻译。
+
+5、新版的pip：
+要python -m pip install gensim
+import gensim 前：
+import warnings
+warnings.filterwarnings(action='ignore', category=UserWarning, module='gensim')

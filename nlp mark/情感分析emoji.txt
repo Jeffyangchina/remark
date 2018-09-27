@@ -1,0 +1,16 @@
+作情感分析的数据预处理（英文）：1、去标点，2、纠错单词拼写（多重的简化至两个字母），3、正则匹配（网址，注释@和#开头，多个...，多个空格主类），4、判断是否字母开头的单词
+
+def handle_emojis(tweet):#表情
+    # Smile -- :), : ), :-), (:, ( :, (-:, :')
+    tweet = re.sub(r'(:\s?\)|:-\)|\(\s?:|\(-:|:\'\))', ' EMO_POS ', tweet)
+    # Laugh -- :D, : D, :-D, xD, x-D, XD, X-D
+    tweet = re.sub(r'(:\s?D|:-D|x-?D|X-?D)', ' EMO_POS ', tweet)
+    # Love -- <3, :*
+    tweet = re.sub(r'(<3|:\*)', ' EMO_POS ', tweet)
+    # Wink -- ;-), ;), ;-D, ;D, (;,  (-;
+    tweet = re.sub(r'(;-?\)|;-?D|\(-?;)', ' EMO_POS ', tweet)
+    # Sad -- :-(, : (, :(, ):, )-:
+    tweet = re.sub(r'(:\s?\(|:-\(|\)\s?:|\)-:)', ' EMO_NEG ', tweet)
+    # Cry -- :,(, :'(, :"(
+    tweet = re.sub(r'(:,\(|:\'\(|:"\()', ' EMO_NEG ', tweet)
+    return tweet

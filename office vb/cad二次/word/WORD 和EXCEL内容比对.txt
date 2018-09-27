@@ -1,0 +1,175 @@
+Sub bplot()
+
+Dim cadpth As String
+Dim pdfpth As String
+Dim i As Integer
+
+
+Dim wdapp As Word.Application '定义word接口
+Dim wdbook As Word.Document
+Dim wdbook2 As Word.Document
+Dim xlsapp As New Excel.Application
+
+    Dim xlsbook1 As Excel.Workbook
+
+    Dim xlssheet1 As Excel.Worksheet
+
+ Dim xlssheet2 As Excel.Worksheet
+ 
+    Dim daima As String, v As String, o As String, p As String, w As String, daima2 As String, daima3 As String
+    
+    
+
+    Dim j As Integer, n As Integer, l As Integer, t As Integer, m As Integer, n2 As Integer, n3 As Integer, j2 As Integer, m2 As Integer
+
+
+       Set xlsbook1 = xlsapp.Workbooks.Open("E:\BITMAP\1\进口件国产化.xls")
+
+    Set xlssheet1 = xlsbook1.Worksheets("sheet1")
+     Set xlssheet3 = xlsbook1.Worksheets("sheet3")
+    
+   
+'Set wdapp = CreateObject("Word.Application") '定义Word
+
+
+
+
+MyPath = "E:\BITMAP\1\"
+MyFile = Dir(MyPath & "X6S-C800-BV进口件汇总卡片15815516-2539924007.doc")
+
+m = 1
+
+'Do While MyFile <> ""
+cadpth = MyPath & MyFile
+Set wdbook = Documents.Open(cadpth)
+'Set wdbook2 = Documents.Open("E:\BITMAP\1\1.doc")
+
+n = wdbook.Tables.Count
+  For i = 2 To 3 'n
+        
+      Set myrange = wdbook.Tables(i - 1).Range
+      Set myrange = myrange.Rows(3).Cells(4).Range '选中第3行的第4个单元格
+     daima = myrange.Text
+If daima <> "" Then
+         
+           n2 = InStrRev(daima, "")
+           daima2 = Left(daima, n2 - 2) '回车键总是占据两位 这点要注意
+    Set c = xlssheet1.Range("E2", "E376").Find(daima2)
+      
+     If c Is Nothing Then
+       myrange.Font.Color = wdColorRed  '设置字颜色
+       
+      ' myrange.Shading.Texture = wdTexture20Percent  '这是设置底纹
+      myrange.Shading.ForegroundPatternColorIndex = wdBlue '这是设置底纹
+
+        xlssheet3.Cells(m, "A") = daima2
+        m = m + 1
+      End If
+End If
+  Next i
+wdbook.Save
+wdbook.Close
+'wdbook2.Close
+xlsbook1.Save
+ xlsbook1.Close
+
+    xlsapp.Quit
+wdapp.Quit
+End Sub
+
+/////////////////////////////////////////////带拷贝出来
+Sub bplot()
+
+Dim cadpth As String
+Dim pdfpth As String
+Dim i As Integer
+
+
+Dim wdapp As Word.Application '定义word接口
+Dim wdbook As Word.Document
+Dim wdbook2 As Word.Document
+Dim xlsapp As New Excel.Application
+
+    Dim xlsbook1 As Excel.Workbook
+
+    Dim xlssheet1 As Excel.Worksheet
+
+ Dim xlssheet2 As Excel.Worksheet
+ 
+    Dim daima As String, v As String, o As String, p As String, w As String, daima2 As String, daima3 As String
+    
+    
+
+    Dim j As Integer, n As Integer, l As Integer, t As Integer, m As Integer, n2 As Integer, n3 As Integer, j2 As Integer, m2 As Integer
+
+
+       Set xlsbook1 = xlsapp.Workbooks.Open("E:\BITMAP\1\进口件国产化.xls")
+
+    Set xlssheet1 = xlsbook1.Worksheets("sheet1")
+     Set xlssheet3 = xlsbook1.Worksheets("sheet3")
+    
+   
+'Set wdapp = CreateObject("Word.Application") '定义Word
+
+
+
+
+MyPath = "E:\BITMAP\1\"
+MyFile = Dir(MyPath & "X6S-C800-BV进口件15815516-2539924007(保留).doc")
+
+m = 1
+
+'Do While MyFile <> ""
+cadpth = MyPath & MyFile
+Set wdbook = Documents.Open(cadpth)
+Set wdbook2 = Documents.Open("E:\BITMAP\1\yang.doc")
+
+n = wdbook.Tables.Count
+  For i = 2 To n
+        
+      Set myrange = wdbook.Tables(i - 1).Range
+      Set myrange = myrange.Rows(3).Cells(4).Range '选中第3行的第4个单元格
+     daima = myrange.Text
+
+If daima <> "" Then
+         
+           n2 = InStrRev(daima, "")
+           daima2 = Left(daima, n2 - 2) '回车键总是占据两位 这点要注意
+    Set c = xlssheet1.Range("E2", "E376").Find(daima2)
+      
+     If c Is Nothing Then
+        Set myrange = wdbook.Tables(i - 1).Range
+        myrange.Copy ' 如果是cut则有问题 原来的回车没有去掉
+      Set myrange = wdbook2.Content
+      
+       myrange.Collapse (wdCollapseEnd)
+      myrange.Paste
+        myrange.Paragraphs.Add '添加一个空白段落，就是加个回车
+        myrange.Paragraphs.Add
+      
+        
+           
+      
+     
+      ' myrange.Shading.Texture = wdTexture20Percent  '这是设置底纹
+      'myrange.Shading.ForegroundPatternColorIndex = wdBlue '这是设置底纹
+   On Error Resume Next
+      End If
+End If
+  Next i
+wdbook.Save
+wdbook2.Save
+wdbook.Close
+wdbook2.Close
+'xlsbook1.Save
+ xlsbook1.Close
+
+    xlsapp.Quit
+wdapp.Quit
+End Sub
+
+
+
+
+
+

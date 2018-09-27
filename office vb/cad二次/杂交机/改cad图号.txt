@@ -1,0 +1,83 @@
+Sub y()
+
+
+Dim sstext As AcadSelectionSet
+Dim filtert(0) As Integer
+Dim b As Integer
+Dim c As Integer
+Dim filterd(0) As Variant
+
+Dim objDoc As AutoCAD.AcadDocument
+ 
+Dim pdfpth As String
+Dim pos As Integer
+Dim h As String
+Dim nh As String
+Dim x As AcadHyperlinks
+Dim xh As AcadHyperlink
+Dim hs As String
+Dim a As Integer
+
+'Dim exl As Excel.Application
+'Dim wb As Excel.Workbook
+'Dim sht As Excel.Worksheet
+Dim i As Integer
+Dim pickobj As AcadEntity
+Dim array1 As Variant
+
+'Set exl = CreateObject("Excel.Application") '定义excel
+'Set wb = exl.Workbooks.Open("F:\VB\cad二次\focke\" & "yang.xlsx")
+'Set sht = wb.Worksheets("sheet1")
+
+
+MyPath = "E:\BITMAP\天津电气图纸最终\"
+MyFile = Dir(MyPath & "*.dwg")
+
+a = 1
+
+Do While MyFile <> ""
+Set objDoc = Documents.Open(MyPath & MyFile)
+ Set objlayout = ThisDrawing.ModelSpace.Layout
+ '会报错说简单应用 只要手动在2010里把第一张图纸另存为M6类型 程序就可以顺利运行了
+
+objlayout.PlotType = acExtents '打印当前选定空间范围内的所有对象。
+
+
+objlayout.StyleSheet = "烟机0.3-0.18.ctb"
+
+For Each pickobj In ThisDrawing.ModelSpace  '修改图框内的内容，有个数组，从0开始是第一个参数
+ If pickobj.ObjectName = "AcDbBlockReference" Then
+ If pickobj.HasAttributes Then
+  array1 = pickobj.GetAttributes
+If array1(1).TextString = "YB511盒外透明纸包装机" Then
+   array1(6).TextString = a
+   a = a + 2
+ End If
+  End If
+ End If
+On Error Resume Next
+  Next pickobj
+  
+
+  
+ 
+
+
+objDoc.Save
+
+objDoc.Close
+MyFile = Dir
+Loop
+
+'xlsbook1.Save
+  
+  ' xlsbook1.Close
+   ' xlsapp.Quit
+
+End Sub
+
+
+
+
+
+

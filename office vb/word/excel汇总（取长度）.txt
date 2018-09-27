@@ -1,0 +1,116 @@
+Sub match()
+
+    Dim xlsapp As New Excel.Application
+
+    Dim xlsbook1 As Excel.Workbook
+
+    Dim xlssheet1 As Excel.Worksheet
+
+ Dim xlssheet2 As Excel.Worksheet
+   
+
+    Set xlsbook1 = xlsapp.Workbooks.Open("E:\BITMAP\bit\1.xls")
+
+    Set xlssheet1 = xlsbook1.Worksheets("sheet3")
+    'Set xlssheet2 = xlsbook1.Worksheets("sheet4")
+    
+    Dim daima As String, miaoshu As String, daima2 As String, miaoshu2 As String, miaoshu3 As String
+    
+
+    Dim i As Integer, j As Integer, n As Integer, l As Integer
+    
+     For i = 1 To 2900 'hang£¬
+       daima = xlssheet1.Cells(i, "U")
+       'miaoshu = xlssheet1.Cells(i, "G")
+      ' xlssheet1.Cells(i, "G") = Left(miaoshu, 7)
+        n = InStrRev(daima, "£»")
+      If daima <> "" And n > 0 Then
+        l = Len(daima)
+        xlssheet1.Cells(i, "U") = Right(daima, l - n)
+        'For j = 1 To 3 '3610
+          'daima2 = xlssheet2.Cells(j, "A")
+         ' n = InStrRev(daima2, daima)
+         ' If n = 1 Then
+           
+             'xlssheet1.Cells(i, "K") = xlssheet2.Cells(j + 1, 1)
+           '
+      
+          ' Exit For
+           'End If
+           
+          ' Next j
+ 
+       End If
+           
+       Next i
+    xlsbook1.Save
+   
+          
+ 
+
+
+    xlsbook1.Close
+
+    xlsapp.Quit
+
+End Sub
+///////////////////
+Sub match()
+
+    Dim xlsapp As New Excel.Application
+
+    Dim xlsbook1 As Excel.Workbook
+
+    Dim xlssheet1 As Excel.Worksheet
+
+ Dim xlssheet2 As Excel.Worksheet
+   
+
+    Set xlsbook1 = xlsapp.Workbooks.Open("E:\BITMAP\bit\1.xls")
+
+    Set xlssheet1 = xlsbook1.Worksheets("sheet5")
+    Set xlssheet2 = xlsbook1.Worksheets("sheet3")
+    
+    Dim daima As String, miaoshu As String, daima2 As String, miaoshu2 As String, miaoshu3 As String
+    
+
+    Dim i As Integer, j As Integer, n As Integer, l As Integer
+    
+     For i = 316 To 490 'hang£¬
+       daima = xlssheet1.Cells(i, "I")
+       'miaoshu = xlssheet1.Cells(i, "G")
+      ' xlssheet1.Cells(i, "G") = Left(miaoshu, 7)
+       
+      If daima <> "" Then
+    
+     
+        For j = 1 To 2900
+          daima2 = xlssheet2.Cells(j, "U")
+    miaoshu = xlssheet2.Cells(j, "P")
+         If daima = daima2 Then
+           
+             xlssheet1.Cells(i, "L") = miaoshu
+         
+      
+    
+           End If
+           
+        Next j
+ 
+       End If
+           
+       Next i
+    xlsbook1.Save
+   
+          
+ 
+
+
+    xlsbook1.Close
+
+    xlsapp.Quit
+
+End Sub
+
+
+

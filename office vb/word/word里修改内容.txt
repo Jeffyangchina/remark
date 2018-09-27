@@ -1,0 +1,64 @@
+Sub bplot()
+
+
+Dim i As Integer
+
+Dim wdapp As Word.Application '定义word接口
+Dim wdbook As Word.Document
+
+Dim xlsapp As New Excel.Application
+
+   Dim xlsbook1 As Excel.Workbook
+
+Dim xlssheet1 As Excel.Worksheet
+
+ Dim xlssheet2 As Excel.Worksheet
+ 
+    Dim daima As String, v As String, o As String, p As String, w As String, pic As String, bj As String, daima2 As String, daima3 As String
+    
+
+    Dim j As Integer, n As Integer, l As Integer, num As Integer, num1 As Integer, num2 As Integer
+
+   Set xlsbook1 = xlsapp.Workbooks.Open("E:\BITMAP\1\1.xls")
+
+ Set xlssheet1 = xlsbook1.Worksheets("25、32")
+    
+   
+Set wdapp = CreateObject("Word.Application") '定义Word
+Set wdbook = Documents.Open("E:\BITMAP\1\X6S-C800-BV进口件汇总卡片.doc")
+
+   num = wdbook.Tables.Count
+    For i = 1 To num
+      Set myrange = wdbook.Tables(i).Range
+     Set hyrange = myrange.Rows(3).Cells(4).Range '选中第六行的第一个单元格
+      If hyrange.Text <> "" Then
+         bj = hyrange.Text
+           n = InStrRev(bj, "")
+           daima2 = Left(bj, n - 2)'回车键总是占据两位 这点要注意
+            Set c = xlssheet1.Range("C569", "C7878").Find(daima2)
+            If Not c Is Nothing Then
+           j = c.Row
+        
+            daima3 = xlssheet1.Cells(j, "I") & " "
+      
+           Set tyrange = myrange.Rows(4).Cells(2).Range
+           tyrange.Text = daima3
+          End If
+       End If
+     
+      
+    
+   
+On Error Resume Next
+  Next i
+wdbook.Save
+wdbook.Close
+
+
+ xlsbook1.Close
+
+xlsapp.Quit
+wdapp.Quit
+End Sub
+
+

@@ -1,0 +1,3 @@
+1、在site-packages/tensorflow/examples/tutorials/models/official/目录下有几个模型库wide_deep,resnet_network
+
+2、在site-packages/keras目录下有更多，模型在applications/下，还有数据预处理和层处理等。

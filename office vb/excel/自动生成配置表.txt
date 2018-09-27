@@ -1,0 +1,75 @@
+
+////////////////////////////自动生成x1配置文件，
+Sub match()
+
+    Dim xlsapp As New Excel.Application
+
+    Dim xlsbook1 As Excel.Workbook
+
+    Dim xlssheet1 As Excel.Worksheet
+
+    Dim xlsbook2 As Excel.Workbook
+     Dim xlsbook3 As Excel.Workbook
+      Dim xlsbook4 As Excel.Workbook
+
+    Dim xlssheet2 As Excel.Worksheet
+    Dim xlssheet3 As Excel.Worksheet
+    Dim xlssheet4 As Excel.Worksheet
+    
+   
+
+    Set xlsbook1 = xlsapp.Workbooks.Open("E:\match file\x1\main.xls")'x1主机文件位置
+
+    Set xlssheet1 = xlsbook1.Worksheets("BOM1")
+
+    Set xlsbook2 = xlsapp.Workbooks.Open("E:\match file\x1\YB55.xls")
+    Set xlsbook3 = xlsapp.Workbooks.Open("E:\match file\x1\YB65.xls")
+    Set xlsbook4 = xlsapp.Workbooks.Open("E:\match file\x1\YB95.xls")
+
+    Set xlssheet2 = xlsbook2.Worksheets("BOM1")
+    Set xlssheet3 = xlsbook3.Worksheets("BOM1")
+    Set xlssheet4 = xlsbook4.Worksheets("BOM1")
+
+    Dim i As Integer, j As Integer
+    
+     For i = 9 To 30  '9是I列，
+      If xlssheet1.Cells(1, i) <> "" Then
+          If xlssheet2.Cells(1, i) = "" Then
+          For j = 2 To 25
+           xlssheet2.Cells(j, i) = xlssheet2.Cells(j, 9)
+           Next j
+          End If
+          
+          If xlssheet3.Cells(1, i) = "" Then
+          For j = 2 To 25
+           xlssheet3.Cells(j, i) = xlssheet3.Cells(j, 9)
+           Next j
+          End If
+          If xlssheet4.Cells(1, i) = "" Then
+         For j = 2 To 25
+           xlssheet4.Cells(j, i) = xlssheet4.Cells(j, 9)
+           Next j
+          End If
+          
+          xlssheet2.Cells(1, i) = xlssheet1.Cells(1, i)
+          xlssheet3.Cells(1, i) = xlssheet1.Cells(1, i)
+          xlssheet4.Cells(1, i) = xlssheet1.Cells(1, i)
+      End If
+      Next i
+    xlsbook2.SaveAs ("E:\match file\x1\YB55-配置表")
+    xlsbook3.SaveAs ("E:\match file\x1\YB65-配置表")
+    xlsbook4.SaveAs ("E:\match file\x1\YB95-配置表")
+          
+          
+
+
+    xlsbook1.Close
+
+    xlsbook2.Close
+xlsbook3.Close
+xlsbook4.Close
+    xlsapp.Quit
+
+End Sub
+
+////////////////////////////////

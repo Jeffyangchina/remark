@@ -1,0 +1,63 @@
+SmartCom411SFJ.dll 中，有 int ReadCard(int ComPort, int CardNumLength,unsigned char *CardNum,unsigned char *CardNum1,unsigned char *Password,unsigned char *CardID,unsigned char *Name ,int  &Money)
+
+在VB 这样声明
+Public Declare Function ReadCard Lib "C:\WINDOWS\SYSTEM32\SmartCom411SFJ.dll" (ByVal ComPort As Long, ByVal CardNumLength As Long, ByRef CardNum As Byte, ByRef CardNum1 As Byte, ByRef Password As Byte, ByRef CardID As Byte, ByVal Name As String, ByRef Money As Integer) As Long
+
+
+能够正确返回CardNum，CardNum1值，其他的要么显示为空白，要么返回值不对，请高手指点一下，谢谢！
+ 
+SmartCom411SFJ.dll 中，有 int ReadCard(int ComPort, int CardNumLength,unsigned char *CardNum,unsigned char *CardNum1,unsigned char *Password,unsigned char *CardID,unsigned char *Name ,int &Money)
+
+在VB 这样声明
+Public Declare Function ReadCard Lib "C:\WINDOWS\SYSTEM32\SmartCom411SFJ.dll" (ByVal ComPort As Long, ByVal CardNumLength As Long, Byval CardNum As  string, Byval CardNum1 As string, Byval Password As string, Byval CardID As string, ByVal Name As String, ByRef Money As Integer) As Long
+
+我的方法运行结果如下
+===============================================================================
+Public Declare Function SMT_ReadCard Lib "C:\WINDOWS\SYSTEM32\SmartCom411SFJ.dll" (ByVal ComPort As Long, ByVal CardNumLength As Long, ByRef CardNum As Byte, ByRef 
+
+CardNum1 As Byte, ByRef Password As Byte, ByRef CardID As Byte, ByVal Name As String, ByRef Money As Integer) As Long
+
+
+       Dim CardNumLength As Long
+       '  出口参数:
+       Dim CardNum(15)  As Byte    '显示卡号(ASCII码)，显示卡号长度等于CardNumLength
+       Dim CardNum1(7)  As Byte    '7字节交易卡号，不足7位前补'0 '（ASCII码）
+        Dim Password(10)  As Byte   '字节个人密码（密文, ASCII码）
+        Dim CardID(4)  As Byte      '4字节卡序列号(HEX)
+       Dim Name  As String * 8       '8字节姓名(ASCII码)
+       Dim Money As Integer       '卡余额，以分为单位
+        Dim RTV As Long
+        
+        CardNumLength = 15
+        RTV = ReadCard(ComPort, CardNumLength, CardNum(0), CardNum1(0), Password(0), CardID(0), Name, Money)
+   Select Case RTV
+            Case 0
+            Text2.Text = Name                           返回空白  ？
+              Text3.Text = StrConv(CardNum, vbUnicode)    返回值    正确
+              Text4.Text = StrConv(CardID, vbUnicode)     返回空白  ？
+              Text5.Text = StrConv(CardNum1, vbUnicode)   返回值    正确
+              Text6.Text = Money / 100          返回值 123.45  实际是23.49  不正确      
+  =====================================================================================
+ 按楼主方法，运行结果与上面我的结果基本相同，不知问题出在什么地方？
+=====================================================================================
+Public Declare Function SMT_ReadCard Lib "C:\WINDOWS\SYSTEM32\SmartCom411SFJ.dll" (ByVal ComPort As Long, ByVal CardNumLength As Long, ByVal CardNum As String, ByVal 
+
+CardNum1 As String, ByVal Password As String, ByVal CardID As String, ByVal Name As String, ByRef Money As Integer) As Long
+
+       Dim CardNum As String * 15    '显示卡号(ASCII码)，显示卡号长度等于CardNumLength
+       Dim CardNum1  As String * 7  '7字节交易卡号，不足7位前补'0 '（ASCII码）
+        Dim Password  As String * 6  '6字节个人密码（密文, ASCII码）
+        Dim CardID  As String * 4    '4字节卡序列号(HEX)                                  
+        Dim Name  As String * 8      '8字节姓名(ASCII码)                                    
+        Dim Money As Integer         '卡余额，以分为单位                                   
+        CardNumLength = 15
+        
+       
+         RTV = SMT_ReadCard(ComPort, CardNumLength, CardNum, CardNum1, Password, CardID, Name, Money)   
+
+               Text2.Text = Name                  返回一个数字，应该是汉字 ？
+                  Text3.Text = CardNum               返回值 正确
+                  Text4.Text =  CardID               返回空白                 ？
+                  Text5.Text =  CardNum1             返回值 正确
+                  Text6.Text = Money / 100           返回值 123.45  实际是23.49  不正确  
+

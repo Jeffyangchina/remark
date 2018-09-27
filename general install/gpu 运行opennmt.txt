@@ -1,0 +1,22 @@
+1、python3 preprocess.py -train_src data/src-train.txt -train_tgt data/tgt-train.txt -valid_src data/src-val.txt -valid_tgt data/tgt-val.txt -save_data data/demo
+预处理数据，数据放入data目录下，命名规则要符合，六个文件一共，生成词典,都在demo文件中
+
+2、trian:要设置gpu个数，以及训练步数
+python3 train.py -data data/demo -save_model demo-model -gpuid 0 -epochs 100
+-train_from  ：from a checkpoint
+-batch_size：default 64
+'-optim', default='sgd', choices=['sgd', 'adagrad', 'adadelta', 'adam','sparseadam']
+-start_epoch:The epoch from which to start
+
+3、安装pytorch:Fatal error in launcher: Unable to create process using
+python3 -m pip install --upgrade pip #我的机器是用python因为我改过默认名称
+如果最新版则强制：python3  -m pip install --upgrade --force-reinstall pip
+pytorch只能装在linux上。或者anaconda吧
+
+
+4、Translate：
+python3 translate.py -model demo-model_XYZ.pt -src data/src-test.txt -output pred.txt -replace_unk -verbose
+金融
+
+python3 train.py -data data/demo -save_model demo-model -gpuid 0 -epochs 50 -optim 'adam'
+python3 train.py -data data/demo -save_model demo-model -gpuid 0 -epochs 10 -optim 'adam' -train_from demo-model_acc_53.97_ppl_11.25_e18.pt

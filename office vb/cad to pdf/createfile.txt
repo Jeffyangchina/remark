@@ -1,0 +1,12 @@
+Private Declare Function CreateFile Lib "kernel32" Alias "CreateFileA" (ByVal lpFileName As String, ByVal dwDesiredAccess As Long, ByVal dwShareMode As Long, ByVal lpSecurityAttributes As Long, ByVal dwCreationDisposition As Long, ByVal dwFlagsAndAttributes As Long, ByVal hTemplateFile As Long) As Long 
+
+Private Const GENERIC_WRITE = &H40000000 
+Private Const OPEN_EXISTING = 3 
+Private Const FILE_SHARE_READ = &H1 
+Private Const FILE_SHARE_WRITE = &H2 
+
+dim lngHandle As Long 
+
+lngHandle = CreateFile("C:\email126.txt", GENERIC_WRITE, FILE_SHARE_READ Or FILE_SHARE_WRITE, ByVal 0&, OPEN_EXISTING, 0, 0) '创建文件 搜索
+
+经运行测试 lngHandle的值为-1，但查找文件时却找不到，文件没有创建！

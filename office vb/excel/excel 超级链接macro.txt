@@ -1,0 +1,235 @@
+Sub Macro3()
+'
+' Macro3 Macro
+' 宏由 杨晓君 录制，时间: 2011-10-26
+'
+Const x As String = "C" 'line
+Dim h As String
+Dim i As Integer
+Dim t As Integer
+
+For i = 2 To 500
+t = InStr("图号", Range(x & i)) 'instr比较括号内的两个字符串
+  If Range(x & i) > 0 And t = 0 Then
+  h = Range(x & i)
+  Range(x & i).Select
+  ActiveSheet.Hyperlinks.Add anchor:=Selection, Address:="E:\BITMAP\" & h & ".dwg", TextToDisplay:=h 'h是字符串所以不需再加""
+   End If
+   Next
+       
+   
+ End Sub
+
+///////////////////////////
+Sub Macro3()
+'
+' Macro3 Macro
+' 宏由 杨晓君 录制，时间: 2011-10-26
+'
+Const x As String = "C" 'line
+Dim h As String
+Dim i As Integer
+Dim t As Integer
+
+w = ".\CAD\"
+
+For i = 2 To 500
+  t = InStr("图号", Range(x & i)) 'instr比较括号内的两个字符串,如果没有图号则返回0
+  If Range(x & i) > 0 And t = 0 Then
+  h = Range(x & i)
+  dh = w & h & ".dwg"
+  Range(x & i).Select
+  ActiveSheet.Hyperlinks.Add anchor:=Selection, Address:=dh, TextToDisplay:=h 'h是字符串所以不需再加""
+   End If
+ Next
+       
+   
+ End Sub
+
+
+
+//////////////////
+Sub yang()
+'
+' Macro3 Macro
+' 宏由 杨晓君 录制，时间: 2011-10-26
+'
+Const x As String = "B" 'line
+Dim h As String
+Dim i As Integer
+Dim t As Integer
+Dim w As String '地址
+Dim x1 As String
+
+w = InputBox("请输入超级链接指向的文件夹地址：")
+///////////////////////////////////////////////
+Sub Macro3()
+'
+' Macro3 Macro
+' 宏由 杨晓君 录制，时间: 2011-10-26
+'
+Const x As String = "D" 'line
+Dim h As String
+Dim h1 As String
+Dim i As Integer
+Dim t As Integer
+
+w = ".\CAD\"
+
+For i = 4 To 5000
+  t = InStr("图号", Range(x & i)) 'instr比较括号内的两个字符串,如果没有图号则返回0
+  If Range(x & i) > 0 And t = 0 Then
+  h1 = Range(x & i)
+  h = Mid(Range(x & i), 1, 7) '取前7个字符
+  dh = w & h & ".dwg"
+  Range(x & i).Select
+  ActiveSheet.Hyperlinks.Add anchor:=Selection, Address:=dh, TextToDisplay:=h1 'h是字符串所以不需再加""
+   End If
+ Next
+       
+   
+ End Sub
+
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\删除超级链接用
+for i=2 to 500
+Range(x & i).Select
+Selection.Hyperlinks.delete
+next
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\BCG表做超级链接 
+Sub yang()
+'
+' Macro3 Macro
+' 宏由 杨晓君 录制，时间: 2011-10-26
+'
+Const x As String = "D" '列名
+Dim h As String
+Dim h1 As String
+Dim dh As String
+Dim i As Integer
+Dim t1 As Integer
+Dim t2 As Integer
+Dim t3 As Integer
+Dim t4 As Integer
+Dim t5 As Integer
+Dim t6 As Integer
+Dim t7 As Integer
+Dim t8 As Integer
+Dim t9 As Integer
+Dim t10 As Integer
+Dim t11 As Integer
+Dim t12 As Integer
+Dim t13 As Integer
+Dim y As Integer
+Dim w As String '地址
+Dim x1 As String
+
+w = ".\CAD\"
+
+For i = 4 To 5000
+t1 = InStr(Range(x & i), "1CBF") 'instr找到第二个字符串在前一个字符串中首次出现的位置
+t2 = InStr(Range(x & i), "4CBF")
+t3 = InStr(Range(x & i), "6CBF")
+t4 = InStr(Range(x & i), "13CBF")
+t5 = InStr(Range(x & i), "3CBF")
+t6 = InStr(Range(x & i), "1BCG")
+t7 = InStr(Range(x & i), "11BCG")
+t8 = InStr(Range(x & i), "4BCG")
+t9 = InStr(Range(x & i), "1CCF")
+t10 = InStr(Range(x & i), "4CCF")
+t11 = InStr(Range(x & i), "11CBF")
+t12 = InStr(Range(x & i), "11CCF")
+t13 = InStr(Range(x & i), "21BCG")
+
+  If t1 = 1 Or t2 = 1 Or t3 = 1 Or t4 = 1 Or t5 = 1 Or t6 = 1 Or t7 = 1 Or t8 = 1 Or t9 = 1 Or t10 = 1 Or t11 = 1 Or t12 = 1 Or t13 = 1 Then
+  h = Range(x & i)
+  y = InStr(h, "  ")
+  If y = 0 Then
+  h1 = h
+  Else
+  h1 = Left(h, y - 1)
+  End If
+  dh = w & h1 & ".dwg"
+  Range(x & i).Select '超级链接
+  ActiveSheet.Hyperlinks.Add anchor:=Selection, Address:=dh, TextToDisplay:=h1 'h是字符串所以不需再加""
+   End If
+   Next
+       
+   
+ End Sub
+
+
+///////////////////////////////////26BCG  excel表的超级链接
+Sub yang()
+'
+' Macro3 Macro
+' 宏由 杨晓君 录制，时间: 2011-10-26
+'
+Const x As String = "B" '列名
+Dim h As String
+Dim h1 As String
+Dim dh As String
+Dim i As Integer
+Dim t1 As Integer
+Dim t2 As Integer
+Dim t3 As Integer
+Dim t4 As Integer
+Dim t5 As Integer
+Dim t6 As Integer
+Dim t7 As Integer
+Dim t8 As Integer
+Dim t9 As Integer
+Dim t10 As Integer
+Dim t11 As Integer
+Dim t12 As Integer
+Dim t13 As Integer
+Dim y As Integer
+Dim w As String '地址
+Dim x1 As String
+
+'w = ".\CAD\"
+
+For i = 2 To 5000
+t1 = InStr(Range(x & i), "26CBF") 'instr找到第二个字符串在前一个字符串中首次出现的位置
+'t2 = InStr(Range(x & i), "4CBF")
+'t3 = InStr(Range(x & i), "6CBF")
+'t4 = InStr(Range(x & i), "13CBF")
+'t5 = InStr(Range(x & i), "3CBF")
+t6 = InStr(Range(x & i), "26BCG")
+'t7 = InStr(Range(x & i), "11BCG")
+'t8 = InStr(Range(x & i), "4BCG")
+t9 = InStr(Range(x & i), "26CCF")
+'t10 = InStr(Range(x & i), "4CCF")
+'t11 = InStr(Range(x & i), "11CBF")
+'t12 = InStr(Range(x & i), "11CCF")
+'t13 = InStr(Range(x & i), "21BCG")
+
+  If t1 = 1 Or t2 = 1 Or t3 = 1 Or t4 = 1 Or t5 = 1 Or t6 = 1 Or t7 = 1 Or t8 = 1 Or t9 = 1 Or t10 = 1 Or t11 = 1 Or t12 = 1 Or t13 = 1 Then
+  If t1 = 1 Then
+  w = ".\cbf\"
+  End If
+  
+  If t6 = 1 Then
+  w = ".\bcg\"
+  End If
+  
+  If t9 = 1 Then
+  w = ".\ccf\"
+  End If
+  
+  h = Range(x & i)
+  y = InStr(h, "  ")
+  If y = 0 Then
+  h1 = h
+  Else
+  h1 = Left(h, y - 1)
+  End If
+  dh = w & h1 & "XA.xls"
+  Range(x & i).Select '超级链接
+  ActiveSheet.Hyperlinks.Add anchor:=Selection, Address:=dh, TextToDisplay:=h1 'h是字符串所以不需再加""
+  End If
+   Next
+       
+   
+ End Sub
+////////////////////////////////////////////

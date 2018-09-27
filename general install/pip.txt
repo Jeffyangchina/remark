@@ -1,0 +1,13 @@
+cd到/python36/Script 然后pip install 库
+python27下没找到相应tensorflow 
+python36下安装好了。
+
+pip install torch https://pypi.tuna.tsinghua.edu.cn/simple/#用这个源才能安装
+pip install torchvision https://pypi.tuna.tsinghua.edu.cn/simple/#用这个源才能安装
+[global]
+index-url = https://pypi.tuna.tsinghua.edu.cn/simple
+[install]
+trusted-host =pypi.tuna.tsinghua.edu.cn
+
+pip freeze > requirements.txt
+pip install -r requirement.txt

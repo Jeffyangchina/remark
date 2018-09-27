@@ -1,0 +1,70 @@
+
+Sub bplot()
+
+Dim sstext As AcadSelectionSet
+Dim filtert(0) As Integer
+Dim b As Integer
+Dim c As Integer
+Dim filterd(0) As Variant
+
+Dim objDoc As AutoCAD.AcadDocument
+ 
+Dim pdfpth As String
+Dim pos As Integer
+Dim h As String
+Dim nh As String
+
+Dim hs As String
+
+
+Dim exl As New Excel.Application '校对功能
+Dim wb As Excel.Workbook
+Dim sht As Excel.Worksheet
+Dim i As Integer, j As Integer
+Dim pickobj As AcadEntity
+
+
+
+Set wb = exl.Workbooks.Open("E:\BITMAP\1.xls")
+Set sht = wb.Worksheets("sheet1")
+
+MyPath = "E:\BITMAP\531C原理图\"
+MyFile = Dir(MyPath & "*.dwg")
+i = 1
+
+Do While MyFile <> ""
+j = 2
+Set objDoc = Documents.Open(MyPath & MyFile)
+
+sht.Cells(i, 1) = MyFile
+i = i + 1
+
+
+For Each pickobj In ThisDrawing.ModelSpace
+ If pickobj.ObjectName = "AcDbBlockReference" Then
+ If pickobj.HasAttributes Then
+  array1 = pickobj.GetAttributes
+    If array1(1).TextString = "YF117商标纸堆垛输送装置" Then
+      array1(1).TextString = "YF711商标纸堆垛输送装置"
+      sht.Cells(i - 1, j) = MyFile
+        j = j + 1
+    End If
+    End If
+ End If
+On Error Resume Next
+
+Next pickobj
+
+
+objDoc.Save
+
+objDoc.Close
+
+
+   
+ MyFile = Dir
+Loop
+exl.Quit
+End Sub
+
+

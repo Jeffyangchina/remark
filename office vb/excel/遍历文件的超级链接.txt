@@ -1,0 +1,138 @@
+'函数GetExtName
+'功能:得到文件后缀名(扩展名)
+'输入:文件名
+'输出:文件后缀名(扩展名)
+
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+Public Function GetExtName(strFileName As String) As String
+　Dim strTmp As String
+　Dim strByte As String
+　Dim i As Long
+　For i = Len(strFileName) To 1 Step -1   'step-1表示循环进入下一步，因为比1大，就是i--
+　　strByte = Mid(strFileName, i, 1)
+　　If strByte <> "." Then
+　　　strTmp = strByte + strTmp
+　　Else
+　　　Exit For
+　　End If
+　Next i
+　GetExtName = strTmp
+End Function
+
+Public Function search(ByVal strPath As String, Optional strSearch As String = "") As Boolean  'byval按值传递
+　Dim strFileDir() As String
+　Dim strFile As String
+　Dim i As Long
+
+　Dim lDirCount As Long
+　On Error GoTo MyErr
+　If Right(strPath, 1) <> "\" Then strPath = strPath + "\"
+　strFile = Dir(strPath, vbDirectory Or vbHidden Or vbNormal Or vbReadOnly)  '取目录及所有的文件
+
+　While strFile <> "" '搜索当前目录
+　DoEvents '控制权转移' Const vbDirectory = 16  代表目录
+　　If (GetAttr(strPath + strFile) And vbDirectory) = vbDirectory Then '如果找到的是目录，GetAttr 返回一个文件或目录的属性. 返回是一个 整形数据
+
+　　　If strFile <> "." And strFile <> ".." Then '排除掉父目录(..)和当前目录(.)
+　　　　lDirCount = lDirCount + 1 '将目录数增1
+　　　　ReDim Preserve strFileDir(lDirCount) As String 'redim为动态数组重新分配空间
+　　　　strFileDir(lDirCount - 1) = strFile '用动态数组保存当前目录名 
+　　　End If
+　　 Else
+　　　If strSearch = "" Then
+　　　　'Form1.List1.AddItem strPath + strFile
+　　　'ElseIf LCase(GetExtName(strPath + strFile)) = LCase(GetExtName(strSearch)) Then 'lcase表示把字符串全部以大写字母输出
+　　　　'满足搜索条件，则处理该文件
+　　　　'Form1.List1.AddItem strPath + strFile '将文件全名保存至列表框List1中
+　　　End If
+　　End If
+　　strFile = Dir
+　Wend
+　For i = 0 To lDirCount - 1
+　　'Form1.Label3.Caption = strPath + strFileDir(i)
+　　Call search(strPath + strFileDir(i), strSearch) '递归搜索子目录
+　Next
+　ReDim strFileDir(0) '将动态数组清空
+　search = True '搜索成功
+　Exit Function
+MyErr:
+　search = False '搜索失败
+End Function
+ ////////////////////////////////////////搜索文件名作超级链接,注意起始文件如果改变需要改变wx中的数字
+ 
+ Public Function search(ByVal strPath As String, vl As String, line As Integer) As Boolean 'byval按值传递
+  Dim strFileDir() As String
+  Dim strFile As String
+  Dim i As Long
+  Dim lDirCount As Long
+  Dim dg As Integer
+Dim wx As String
+Dim nm As String
+Dim mp As String
+On Error Resume Next
+mp = strPath
+  If Right(mp, 1) <> "\" Then
+  mp = mp + "\"
+  End If
+    strFile = Dir(mp, vbDirectory Or vbHidden Or vbNormal Or vbReadOnly)  '取目录及所有的文件
+    
+   While strFile <> "" '搜索当前目录
+  
+   DoEvents '控制权转移' Const vbDirectory = 16  代表目录，vbdirectory=16所以要and它,15 and 16=0,16 and 16=1;
+    If (GetAttr(mp + strFile) And vbDirectory) = vbDirectory Then '如果找到的是目录，GetAttr 返回一个文件或目录的属性. 返回是一个 整形数据
+
+      If strFile <> "." And strFile <> ".." Then '排除掉父目录(..)和当前目录(.)
+        lDirCount = lDirCount + 1 '将目录数增1
+        ReDim Preserve strFileDir(lDirCount) As String 'redim为动态数组重新分配空间
+        strFileDir(lDirCount - 1) = strFile '用动态数组保存当前目录名
+      End If
+     Else
+       If strFile = vl & ".dwg" Then
+       'h1 = InStr(mypath, "e:\ZB45\")
+       wx = Mid(mp, 8, Len(mp))
+       dh = ".\CAD" & wx & strFile
+       nm = Range("D" & line)
+       Range("D" & line).Select
+       ActiveSheet.Hyperlinks.Add anchor:=Selection, Address:=dh, TextToDisplay:=nm
+       GoTo line1
+       End If
+      
+    End If
+   
+    strFile = Dir
+  Wend
+  For i = 0 To lDirCount - 1
+    'Form1.Label3.Caption = strPath + strFileDir(i)
+    mp = mp + strFileDir(i)
+    
+    Call search(mp, vl, line) '递归搜索子目录
+    dg = InStr(mp, strFileDir(i)) '这两条语句很有必要，就是在文件夹搜索完毕后，能退回上一级目录，就可以继续下一个文件夹了，否则mp的值将不正确
+    mp = Mid(mp, 1, dg - 1)
+  Next
+  'ReDim strFileDir(0) '将动态数组清空
+line1:
+  'search = True '搜索成功
+  Exit Function
+
+End Function
+
+Sub yang()
+Const x As String = "D" 'line
+Dim h As String
+
+Dim i As Integer
+Dim t As Integer
+Dim w As String
+Dim mypath As String
+
+ For i = 4 To 500
+   If Range(x & i) <> "" Then
+    h = Mid(Range(x & i), 1, 12) '取前12个字符
+    w = ".\CAD\"
+    mypath = "E:\ZB45\"
+    Call search(mypath, h, i)
+   End If
+  Next i
+End Sub
+

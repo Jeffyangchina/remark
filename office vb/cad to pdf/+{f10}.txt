@@ -1,0 +1,35 @@
+shift+F10用sendkeys就是"+{F10}"
+
+正确：Shell("explorer /select, " & cadpth, 1)
+
+本示例使用 Shell 函数来运行 Microsoft Windows 所附的计算器程序；然后使用 SendKeys 语句来按下计算器的某些数字键，最后退出计算器。（若要观察示例运行过程，可将示例粘贴到过程中，再运行过程即可。因为 AppActivate 会将焦点转移到计算器应用程序，故本示例不能以单步方式来运行。）。在 Macintosh上，使用Macintosh 应用程序接受键盘输入而不是用Windows 计算器。
+
+Dim ReturnValue, I
+ReturnValue = Shell("CALC.EXE", 1)    ' 运行计算器。
+AppActivate ReturnValue     ' 激活计算器。
+For I = 1 To 100    ' 设置计数循环。
+    SendKeys I & "{+}", True    ' 按下按键给计算器
+Next I    ' 将所有 I 值相加。
+SendKeys "=", True    ' 取得总合。
+SendKeys "%{F4}", True    ' 按 ALT+F4 关闭计算器。
+
+激活一应用程序窗口。
+
+语法
+
+AppActivate title[, wait]
+
+AppActivate 语句的语法具有以下几个命名参数：
+
+部分 描述 
+title 必需的。字符串表达式，所要激活的应用程序窗口的标题。可以使用 Shell 函数返回的任务识别码来替换 title，以激活应用程序。 
+wait 可选的。Boolean 值，说明在激活另一个应用程序之前调用的应用程序是否有焦点。如果为 False（缺省），那么，即使调用的应用程序没有焦点，也直接激活指定的应用程序。如果为 True，则调用的应用程序会等到有焦点后，才激活指定的应用程序。 
+
+
+
+说明
+
+AppActivate 语句将焦点移动到命名的应用程序或窗口，但并不影响焦点是否最大化或最小化。当用户采取行动改变焦点或将窗口关闭时，就会将焦点从活动的应用程序窗口移动出去。可用 Shell 函数启动一个应用程序并设置窗口样式。
+
+在决定激活哪个应用程序时，请将 title 与每一个运行中的应用程序的标题字符串进行比较。如果没有完全匹配，就激活任何这样的应用程序，其标题字符串以 title 开头。如果以 title 命名的应用程序有很多实例，则激活任何一个实例。
+

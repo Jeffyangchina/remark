@@ -1,0 +1,59 @@
+  
+  Sub match()
+   Dim daima As String, tuhao As String, minchen As String, waidai As String
+
+    Dim i As Integer, a As Integer, n As Integer, b As Integer, t As Integer, x As Integer
+     n = 1
+     t = 1
+     a = 2
+     b = 2
+   
+     x = 1
+    Dim xlsapp As New Excel.Application
+
+    Dim xlsbook1 As Excel.Workbook
+
+    Dim xlssheet1 As Excel.Worksheet
+
+     
+    
+    Set xlsbook1 = xlsapp.Workbooks.Open("E:\BITMAP\bit\ÓñÏªC800_BV_LIST.xls")
+
+    Set xlssheet1 = xlsbook1.Worksheets("C800_BV LIST")
+    Set xlssheet2 = xlsbook1.Worksheets("C800_BVË÷Òý±í (2)")
+       
+     For i = 2 To 6955
+        If xlssheet1.Cells(i, "B") <> "" Then
+           
+            Set c = xlssheet2.Range("B2", "H814").Find(xlssheet1.Cells(i, "B"), , , 1)
+           
+            If Not c Is Nothing Then
+            i = i + 1
+            l = c.Column
+            j = c.Row
+             daima = xlssheet1.Cells(i, "C")
+            While daima = ""
+            i = i + 1
+              daima = xlssheet1.Cells(i, "C")
+              Wend
+              If daima <> "" Then
+              xlssheet2.Cells(j, l + 2) = xlssheet1.Cells(i + 1, "C")
+             ' xlssheet1.Cells(i + 1, "C") = xlssheet2.Cells(j, "F")
+              End If
+           End If
+           
+           On Error Resume Next
+       End If
+                           
+      
+      Next i
+      
+     xlsbook1.Save
+ 
+    xlsbook1.Close
+  
+    xlsapp.Quit
+
+End Sub
+
+

@@ -1,0 +1,22 @@
+
+1、ubuntu 安装pytorch的安装包
+2、pip install -U spacy
+3、sudo python -m spacy.en.download all
+cd /usr/bin/
+sudo rm python
+sudo ln -s python3.6 python
+
+要重新编译的话 ，到包路径下删除。再重装
+import sys
+sys.path
+
+~/anaconda3/lib/python3.6/site-packages#这是pip的路径还可能是conda的路径
+用conda info查看
+
+~/anaconda3/pkgs
+
+conda config --add channels 'https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/'
+conda config --set show_channel_urls yes
+conda install spacy
+
+

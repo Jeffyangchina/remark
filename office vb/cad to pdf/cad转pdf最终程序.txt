@@ -1,0 +1,111 @@
+Private Declare Function FindWindow Lib "user32" Alias "FindWindowA" (ByVal lpClassName As String, ByVal lpWindowName As String) As Long
+Public Declare Function PostMessage Lib "user32" Alias "PostMessageA" (ByVal hwnd As Long, ByVal wMsg As Long, ByVal wParam As Long, lParam As Any) As Long
+ 
+Sub bplot()
+Dim RetVal As Long
+Dim h As Integer
+Dim pos1 As Integer
+Dim pos2 As Integer
+Dim pos As Double
+Dim cadpth As String
+Dim pth As String
+Dim n As Variant
+Dim n1 As Variant
+Dim yang As String
+Dim yang1 As String
+Dim hwnd  As Long
+Dim hwnd2 As Long
+Dim hwnd3 As Long
+Dim winHwnd As Long
+Dim winHwnd2 As Long
+'Set PDFApp = New Acrobat.AcroPDDoc
+'filename = "F:\VB\dll\1\ya.pdf"
+
+'使用该程序只能在cad2002打开的情况下
+
+
+'MyPath = "F:\VB\cad to pdf\1\"
+  
+MyPath = "F:\Program Files\yang\" '文件名换掉的话记得下面的关闭文件名也要换掉
+MyFile = Dir(MyPath & "*.dwg")
+
+
+
+Do While MyFile <> "" 'line1是为了碰到转换错误时直接进入下一个文件
+
+h = InStrRev(MyFile, ".dwg")
+
+yang = Left(MyFile, h - 1)
+yang1 = "Adobe Acrobat Professional - " & "[" & yang & ".pdf]"
+
+cadpth = MyPath & MyFile
+
+
+ 
+
+
+pos1 = Shell("explorer /n,/select, " & cadpth, 1) '执行选定文件
+
+Application.Wait Now + TimeValue("0:00:01") '一定要加 不然程序还没回来
+
+
+SendKeys ("+{f10}B"), True
+Application.Wait Now + TimeValue("0:00:01")
+hwnd = FindWindow(vbNullString, "另存 Adobe PDF 文件为")
+
+
+
+n = Time
+Do While hwnd = 0
+n1 = Time
+hwnd = FindWindow(vbNullString, "另存 Adobe PDF 文件为")
+ If (DateDiff("s", n, n1)) > 5 Then '如果跑偏则在5秒内跳出
+  Exit Do
+  End If
+Loop
+
+  If hwnd <> 0 Then
+      SendKeys ("~"), True
+    Application.Wait Now + TimeValue("0:00:05")
+   hwnd2 = FindWindow(vbNullString, "" & yang1) '碰到用变量的要用取地址
+    n = Time
+     Do While hwnd2 = 0
+
+     n1 = Time
+       hwnd2 = FindWindow(vbNullString, "" & yang1) '当完成转换后,要把打开的窗口关闭
+        If (DateDiff("s", n, n1)) > 50 Then '如果跑偏则在30秒内跳出
+          Exit Do
+         End If
+       Loop
+       If hwnd2 <> 0 Then
+            
+            winHwnd2 = FindWindow(vbNullString, "yang") '关闭文件夹
+            winHwnd = FindWindow(vbNullString, "" & yang1) '关闭文件
+          If winHwnd2 <> 0 Then
+             RetVal = PostMessage(winHwnd2, &H10, 0&, 0&)'关闭文件夹
+             'Application.Wait Now + TimeValue("0:00:01")
+          End If
+          If winHwnd <> 0 Then
+             RetVal = PostMessage(winHwnd, &H10, 0&, 0&)
+             'Application.Wait Now + TimeValue("0:00:01")
+          End If
+        End If
+    On Error Resume Next
+    End If
+
+
+
+
+On Error Resume Next
+'End If
+MyFile = Dir
+Loop
+
+
+
+End Sub
+
+
+
+
+

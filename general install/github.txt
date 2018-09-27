@@ -1,0 +1,3 @@
+1、github.com jeffyangchina yang1230  pycharm 里setting
+pycharm ->setting->version control、gti里配置帐号和git程序
+pycharm->VCS->import into version control->share project on github

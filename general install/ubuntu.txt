@@ -1,0 +1,14 @@
+1、sudo passwd root
+su root登入root
+ Ctrl+D 退出
+2、如果你只想安装必要的桌面管理软件而不想安装一些诸如 Evolution 和 OpenOffice 的不需要的应用软件，可使用下面的命令：
+apt-get install --no-install-recommends ubuntu-desktop
+
+安装轻量级桌面 xfce 使用下面的命令：
+apt-get install xubuntu-desktop
+
+3、shockware插件无响应游览器卡死，游览器内输入about:plugins,停用多余的adobe player flash
+vwmare player也重启后好了
+
+4、wget -c http://service.tigergraph.com/download/release/tigergraph-2.0.4-offline.tar.gz
+那个-c就是续载

@@ -1,0 +1,98 @@
+
+Sub bplot()
+
+Dim sstext As AcadSelectionSet
+
+
+
+
+Dim filtert(0) As Integer
+Dim b As Integer
+Dim c As Integer
+Dim c1 As Integer
+Dim c2 As Integer
+Dim filterd(0) As Variant
+Dim value As String
+Dim pro As String
+Dim array1 As Variant 'AcadBlockReference
+
+Dim objDoc As AutoCAD.AcadDocument
+ 
+Dim pdfpth As String
+Dim pos As Integer
+Dim h As String
+Dim nh As String
+
+Dim bob As AcadBlock
+
+
+Dim hs As String
+Dim a As Integer
+
+Dim i As Integer
+Dim cnt As Integer
+
+
+Dim blockRefObj As AcadBlockReference
+
+MyPath = "E:\BITMAP\新建文件夹\"
+MyFile = Dir(MyPath & "*.dwg")
+
+          
+Do While MyFile <> ""
+
+Set objDoc = Documents.Open(MyPath & MyFile)
+
+
+Set sstext = objDoc.SelectionSets.Add("ss")   '修改设计名字
+filtert(0) = 0
+filterd(0) = "*TEXT"
+sstext.Select acSelectionSetAll, , , filtert, filterd
+
+For Each pickobj In sstext
+ If pickobj.ObjectName <> "AcDbMText" Then
+  hs = pickobj.TextString
+  c = InStr(1, hs, "YB517")
+  c1 = InStr(1, hs, "YB617")
+  c2 = InStr(1, hs, "YB917")
+  If c > 0 Then
+  h = Replace(hs, "YB517", "YB513")
+  
+  pickobj.TextString = h
+  
+  End If
+  If c1 > 0 Then
+  h = Replace(hs, "YB617", "YB613")
+  
+  pickobj.TextString = h
+  
+  End If
+  If c2 > 0 Then
+  h = Replace(hs, "YB917", "YB913")
+  
+  pickobj.TextString = h
+  
+  End If
+End If
+
+ On Error Resume Next
+  Next pickobj
+
+
+
+  
+
+
+On Error Resume Next
+
+
+On Error Resume Next
+ 
+objDoc.Close
+MyFile = Dir
+Loop
+
+wb.Close
+End Sub
+
+

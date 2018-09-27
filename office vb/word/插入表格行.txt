@@ -1,0 +1,49 @@
+Sub bplot()
+
+
+Dim i As Integer
+
+Dim wdapp As Word.Application '定义word接口
+Dim wdbook As Word.Document
+
+
+   
+Set wdapp = CreateObject("Word.Application") '定义Word
+Set wdbook = Documents.Open("E:\BITMAP\1\yang.doc")
+
+
+If daima <> "" Then
+
+    Set myrange = wdbook.Tables(i - 1).Range
+      myrange.Copy
+      Set myrange = wdbook.Content
+
+      myrange.Paragraphs.Add '添加一个空白段落，就是加个回车
+      myrange.Paragraphs.Add
+      myrange.Collapse (wdCollapseEnd)
+
+      myrange.Paste
+
+   For i = 1 To n - 1
+      Set myrange = wdbook.Tables(1).Range
+    myrange.Rows(3).Range.Copy
+    Set hyrange = myrange.Rows(4).Range
+     hyrange.Paste
+   myrange.Rows(5).Range.Copy
+     hyrange.Paste
+On Error Resume Next
+  Next i
+  
+End If
+wdbook.Save
+wdbook.Close
+
+
+
+
+
+wdapp.Quit
+End Sub
+
+
+

@@ -1,0 +1,58 @@
+Sub bplot()
+
+Dim cadpth As String
+Dim pdfpth As String
+Dim i As Integer
+Dim u As String
+Dim v As String
+Dim wdapp As Word.Application '定义word接口
+Dim wdbook As Word.Document
+
+Set wdapp = CreateObject("Word.Application") '定义Word
+
+
+
+
+MyPath = "E:\BITMAP\1\"
+MyFile = Dir(MyPath & "*.doc")
+
+
+Do While MyFile <> ""
+cadpth = MyPath & MyFile
+Set wdbook = Documents.Open(cadpth)
+Set myrange = wdbook.Tables(1).Range
+  With myrange.Find
+        
+    .ClearFormatting
+    .MatchWholeWord = True
+    .MatchCase = False
+    .Text = "U"
+   
+    .ClearFormatting
+    .Replacement.Text = "hi"
+     .Execute findtext
+    
+    '.Execute Replace
+
+
+  End With
+On Error Resume Next
+wdbook.Save
+wdbook.Close
+
+MyFile = Dir
+Loop
+wdapp.Quit '退出
+
+End Sub
+'///////////////
+'Set myrange=ActiveDocument Tables(1).Range '范围选中为文档的第一个表格
+  'With myrange
+  '  .Copy '范围复制
+ '   strText = .Words(1).Text '可以使用Text属性来返回或设置一个range对象中的内容，这里返回了表格内第一个单词
+  '  ...
+ ' End With
+
+
+
+

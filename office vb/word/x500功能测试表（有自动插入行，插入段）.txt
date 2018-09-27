@@ -1,0 +1,113 @@
+Sub bplot()
+
+
+Dim wdapp As Word.Application '定义word接口
+Dim wdbook As Word.Document
+
+ Dim j As Integer, n As Integer, l As Integer, num As Integer, m As Integer, num2 As Integer, xh As Integer
+Dim daima As String, daima2 As String, o As String, p As String, w As String, pic As String, bj As String
+
+
+Dim xlsapp As New Excel.Application
+
+    Dim xlsbook1 As Excel.Workbook
+
+
+   
+Set wdapp = CreateObject("Word.Application") '定义Word
+Set wdbook = Documents.Open("E:\BITMAP\1\yang.doc")
+ Set xlsbook1 = xlsapp.Workbooks.Open("E:\BITMAP\1\yang.xls")
+
+    Set xlssheet1 = xlsbook1.Worksheets("yang")
+   n = 1
+   m = 3
+  
+   xh = 1
+For i = 2 To 190
+ l = i
+ daima = xlssheet1.Cells(i, "D")
+ daima2 = xlssheet1.Cells(i + 1, "D")
+  Set myrange = wdbook.Tables(n).Range
+  If daima = daima2 And daima2 <> "" Then
+  
+      myrange.Rows(3).Range.Copy
+    Set hyrange = myrange.Rows(4).Range
+      hyrange.Paste
+      myrange.Rows(5).Range.Copy
+     hyrange.Paste
+    
+    
+    m = m + 2
+    End If
+    
+   If daima2 <> daima Then
+    Set trange = myrange.Rows(1).Cells(4).Range
+          trange.Text = xlssheet1.Cells(i, "G")
+       Set brange = trange.Paragraphs(1).Range
+           brange.InsertParagraphAfter
+            Set brange2 = trange.Paragraphs(2).Range
+            brange2.Text = "'" & xlssheet1.Cells(i, "F")
+            
+            
+      Set wrange = myrange.Rows(2).Cells(2).Range
+       wrange.Text = xlssheet1.Cells(i, "E")
+       Set grange = wrange.Paragraphs(1).Range
+           grange.InsertParagraphAfter
+            Set grange2 = wrange.Paragraphs(2).Range
+            grange2.Text = xlssheet1.Cells(i, "D")
+       
+      
+       Set wjrange = myrange.Rows(2).Cells(4).Range
+       wjrange.Text = xlssheet1.Cells(i, "B")
+       num = m
+       xh = i - 1
+       While num >= 3
+    Set yrange = myrange.Rows(num).Cells(3).Range
+    yrange.Text = xlssheet1.Cells(l, "H")
+    
+    
+    Set xhrange = myrange.Rows(num).Cells(1).Range
+       xhrange.Text = xh
+       xh = xh - 1
+    
+    
+    Set drange = myrange.Rows(num).Cells(5).Range
+    drange.Text = xlssheet1.Cells(l, "I")
+    
+     Set xrange = myrange.Rows(num + 1).Cells(2).Range
+      
+      xrange.Text = xlssheet1.Cells(l, "M")
+       Set xxrange = xrange.Paragraphs(1).Range
+           xxrange.InsertParagraphAfter
+           Set xxrange2 = xrange.Paragraphs(2).Range
+             xxrange2.Text = xlssheet1.Cells(l, "L")
+      
+      l = l - 1
+    num = num - 2
+     Wend
+      n = n + 1
+      m = 3
+      num = m
+      End If
+   
+   
+On Error Resume Next
+  Next i
+  
+
+wdbook.Save
+wdbook.Close
+
+
+
+ xlsbook1.Close
+
+    xlsapp.Quit
+
+
+
+wdapp.Quit
+End Sub
+
+
+

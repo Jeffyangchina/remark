@@ -1,0 +1,50 @@
+Sub match()
+
+    Dim xlsapp As New Excel.Application
+
+    Dim xlsbook1 As Excel.Workbook
+
+    Dim xlssheet1 As Excel.Worksheet
+
+ 
+   
+
+    Set xlsbook1 = xlsapp.Workbooks.Open("E:\BITMAP\3-MEL-DOCU-1_1 X6S-C800-BV电气功能检查清单和电气功能测试\CHECK LIST C800-BV.xls")
+
+    Set xlssheet1 = xlsbook1.Worksheets("C800")
+    Set xlssheet2 = xlsbook1.Worksheets("yang")
+    'Set xlssheet3 = xlsbook1.Worksheets("BCH BOM")
+    
+    Dim daima As String, miaoshu As String, daima2 As String
+
+    Dim i As Integer, j As Integer, n As Integer
+    
+     For i = 4 To 640
+      If xlssheet1.Cells(i, "F") <> "" Then
+        daima = xlssheet1.Cells(i, "F")
+       
+    
+         Set c = xlssheet2.Range("B1", "B2531").Find(daima, , , 1)
+        If Not c Is Nothing Then
+        j = c.Row
+        
+        xlssheet1.Cells(i, "F") = xlssheet2.Cells(j, "A")
+       End If
+       
+        On Error Resume Next
+       End If
+           
+      Next i
+    xlsbook1.Save
+   
+          
+ 
+
+
+    xlsbook1.Close
+
+    xlsapp.Quit
+
+End Sub
+
+

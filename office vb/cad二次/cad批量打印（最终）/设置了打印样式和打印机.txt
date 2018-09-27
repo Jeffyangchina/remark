@@ -1,0 +1,125 @@
+Sub bplot()
+
+Dim MyFile, MyPath, MyName
+ Dim objDoc As AutoCAD.AcadDocument
+ Dim blnRet As Boolean
+Dim resl As Boolean
+ Dim point1 As Variant, point2 As Variant
+ 
+MyPath = "E:\BITMAP\1\"
+MyFile = Dir(MyPath & "*.dwg")
+
+
+Do While MyFile <> ""
+Set objDoc = Documents.Open(MyPath & MyFile)
+
+Set objlayout = ThisDrawing.ModelSpace.Layout
+
+
+objlayout.PlotType = acExtents '打印当前选定空间范围内的所有对象。
+
+
+objlayout.StyleSheet = "烟机0.3-0.18.ctb"
+objDoc.SetVariable "BACKGROUNDPLOT", 0 '这条很重要 是后台打印
+
+Set objPlot = objDoc.Plot
+
+
+blnRet = objPlot.PlotToDevice("\\Pcj4615\HP LJ 5200")
+
+objDoc.Save
+objDoc.Close
+
+MyFile = Dir
+On Error Resume Next
+Loop
+End Sub
+
+
+
+
+////////////////////////'加入了图框大小的计算,但有时候好像用范围打印比较准 用图框打印会图框少掉点,偏移的问题还有待解决
+Sub bplot()
+Dim insertPoint As Variant
+Dim MyFile, MyPath, MyName
+ Dim objDoc As AutoCAD.AcadDocument
+ Dim blnRet As Boolean
+Dim resl As Boolean
+ Dim point1 As Variant, point2 As Variant
+ Dim pickobj As AcadEntity
+ 
+  Dim UpperRight(0 To 1) As Double, LowerLeft(0 To 1) As Double
+
+ 
+MyPath = "E:\BITMAP\yang\"
+MyFile = Dir(MyPath & "*.dwg")
+'pos = InStr(MyFile, ".dwg")
+
+Do While MyFile <> ""
+
+Set objDoc = Documents.Open(MyPath & MyFile)
+For Each pickobj In ThisDrawing.ModelSpace
+ If pickobj.ObjectName = "AcDbBlockReference" Then
+ 
+
+  insertPoint = pickobj.InsertionPoint
+  
+  Dim xScale, yScale As Integer
+
+   xScale = pickobj.XScaleFactor
+
+   yScale = pickobj.YScaleFactor
+   
+   Dim width, height As Double
+
+width = 420
+
+height = 297
+
+LowerLeft(0) = insertPoint(0)
+
+LowerLeft(1) = insertPoint(1)
+
+UpperRight(0) = insertPoint(0) + width * xScale
+
+UpperRight(1) = insertPoint(1) + height * yScale
+
+
+Exit For
+  On Error Resume Next
+End If
+
+ Next pickobj
+ 
+ objDoc.SetVariable "BACKGROUNDPLOT", 0 '这条很重要 是后台打印
+Set objlayout = ThisDrawing.ModelSpace.Layout
+objlayout.PlotType = acWindow '打印当前选定空间范围内的所有对象。
+objlayout.SetWindowToPlot LowerLeft, UpperRight
+
+objlayout.ConfigName = "\\Pcj4615\HP LJ 5200"
+ThisDrawing.ModelSpace.Layout.CanonicalMediaName = "A4"
+objlayout.StyleSheet = "烟机0.3-0.18.ctb"
+objlayout.PaperUnits = acMillimeters '这个也要设否则英寸的话 也会有偏移
+objlayout.CenterPlot = True '居中打印 否则有偏移
+'objlayout.StandardScale = acScaleToFit '打印比例
+'objlayout.PlotRotation = ac0degrees 纵向 ac90degrees 横向
+'ThisDrawing.Application.ZoomExtents '缩放到合适大小
+'ThisDrawing.Plot.NumberOfCopies = 1 打印份数
+Set objPlot = objDoc.Plot
+
+blnRet = objPlot.PlotToDevice("\\Pcj4615\HP LJ 5200")
+   
+
+
+
+objDoc.Save
+
+objDoc.Close
+
+MyFile = Dir
+On Error Resume Next
+Loop
+End Sub
+
+
+

@@ -1,0 +1,146 @@
+
+Sub bplot()
+
+Dim sstext As AcadSelectionSet
+Dim filtert(0) As Integer
+Dim b As Integer
+Dim c As Integer
+Dim filterd(0) As Variant
+
+Dim objDoc As AutoCAD.AcadDocument
+ 
+Dim pdfpth As String
+Dim pos As Integer
+Dim h As String
+Dim nh As String
+Dim x As AcadHyperlinks
+Dim xh As AcadHyperlink
+Dim hs As String
+Dim a As Integer
+
+Dim exl As New Excel.Application'使用excel记录
+Dim wb As Excel.Workbook
+Dim sht As Excel.Worksheet
+Dim i As Integer, j As Integer, n As Integer
+Dim pickobj As AcadEntity
+
+Dim currentpoint As Variant  '获取当前的坐标
+Dim newpoint(0 to 2) As Double '坐标是三坐标
+'currentpoint= pickobj.TextAlignmentPoint
+'newpoint(0)=currentpoint(0)+30'向右移动30
+'newpoint(1)=currentpoint(1)+20'向上移动20
+'newpoint(2)=currentpoint(2)
+'pickobj.TextAlignmentPoint=newpoint '设置新坐标即可 TextAlignmentPoint是文本插入点坐标
+
+Set wb = exl.Workbooks.Open("E:\BITMAP\1.xls")
+Set sht = wb.Worksheets("sheet1")
+
+
+MyPath = "E:\BITMAP\1\"
+MyFile = Dir(MyPath & "*.dwg")
+
+i = 1
+
+Do While MyFile <> ""
+j = 2
+Set objDoc = Documents.Open(MyPath & MyFile)
+sht.Cells(i, 1) = MyFile
+i = i + 1
+Set sstext = objDoc.SelectionSets.Add("ss")
+filtert(0) = 0
+filterd(0) = "MTEXT"
+sstext.Select acSelectionSetAll, , , filtert, filterd
+
+For Each pickobj In sstext
+ If pickobj.ObjectName = "AcDbMText" Then
+  hs = pickobj.TextString
+  If hs = "{\f仿宋_GB2312|b0|i0|c134|p49; }" Then'这个名字如果找不到 则需要f8单步调试看下hs的值
+  pickobj.TextString = "{\f仿宋_GB2312|b0|i0|c134|p49;}"
+  sht.Cells(i - 1, j) = hs
+ j = j + 1
+  End If
+ End If
+ 
+  Next pickobj
+
+On Error Resume Next
+objDoc.Save
+
+
+objDoc.Close
+
+MyFile = Dir
+Loop
+wb.Save
+wb.Close
+exl.Quit
+End Sub
+/////////////////////////////////2010中取坐标并修改图块内容的程序
+
+
+Sub bplot()
+
+Dim sstext As AcadSelectionSet
+
+Dim b As Integer
+Dim c As Integer
+
+Dim currentpoint As Variant '坐标获取
+Dim newpoint(0 To 2) As Double
+
+Dim objDoc As AutoCAD.AcadDocument
+ 
+Dim pdfpth As String
+Dim pos As Integer
+Dim h As String
+Dim nh As String
+Dim x As AcadHyperlinks
+Dim xh As AcadHyperlink
+Dim hs As String
+Dim a As Integer
+
+'Dim exl As Excel.Application
+'Dim wb As Excel.Workbook
+'Dim sht As Excel.Worksheet
+Dim i As Integer
+Dim pickobj As AcadEntity
+Dim array1 As Variant
+
+'Set exl = CreateObject("Excel.Application") '定义excel
+'Set wb = exl.Workbooks.Open("E:\BITMAP\" & "bit.xls")
+'Set sht = wb.Worksheets("sheet1")
+
+MyPath = "E:\BITMAP\1\"
+MyFile = Dir(MyPath & "*.dwg")
+
+
+Do While MyFile <> ""
+
+Set objDoc = Documents.Open(MyPath & MyFile)
+
+
+For Each pickobj In ThisDrawing.ModelSpace
+nh = pickobj.ObjectName
+ If pickobj.ObjectName = "AcDbAttributeDefinition" Then
+  If pickobj.TagString = "52CBS6020001" Then
+  
+   currentpoint = pickobj.TextAlignmentPoint
+   newpoint(0) = currentpoint(0) + 100 '向右移动100
+   newpoint(1) = currentpoint(1)
+   newpoint(2) = currentpoint(2)
+   pickobj.TextAlignmentPoint = newpoint
+  pickobj.TagString = "52CBS6020003"
+  End If
+ End If
+On Error Resume Next
+  Next pickobj
+
+
+objDoc.Save
+
+objDoc.Close
+MyFile = Dir
+Loop
+
+End Sub
+

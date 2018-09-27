@@ -1,0 +1,35 @@
+Private Sub Command1_Click()'读取excel文件里面符合条件的记录到txt
+Dim S As String, FileName As String, SaveFileName As String
+Dim i As Integer, j As Integer, Fn As Integer
+Dim xlApp
+Dim xlBook
+Dim xlSheet
+    FileName = "F:\抗压强度\2008年.xls"    '源文件，请根据实际修改
+    i = InStrRev(FileName, "\")
+    SaveFileName = Left(FileName, i) & "1.txt"    '输出的文本文件，请根据实际修改
+    Set xlApp = CreateObject("Excel.Application")
+    xlApp.DisplayAlerts = False
+    Set xlBook = xlApp.Workbooks.open(FileName)
+    xlApp.Visible = False   '设置EXCEL对象可见（或不可见）
+    Set xlSheet = xlBook.Worksheets("1") '请根据实际修改
+    Fn = FreeFile
+    Open SaveFileName For Output As Fn//Open pathname For [Input |Output |Append] As [#]filenumber [Len = buffersize]
+//Input表示从打开的文件中读取数据。以这种方式打开文件时，文件必须存在，
+//否则会产生错误。Output表示向打开的文件中写入数据。Append表示向打开的文件中添加数据。以这种方式打开时，
+//文件中原有的数据将被保留，新的数据将从文件为开始添加.As[#]filenumber 子句用于为打开的文件指定文件号.
+    For i = 1 To xlSheet.UsedRange.Rows.Count
+        S = xlSheet.Cells(i, 3)
+        If InStr(S, "狮子山") > 0 Then
+            S = ""
+            For j = 1 To xlSheet.UsedRange.Columns.Count
+                S = S & xlSheet.Cells(i, j) & vbTab    '用Vbtab分隔，请根据实际修改
+            Next
+            Print #Fn, S
+        End If
+    Next
+    Close #Fn
+    xlBook.Close (True)
+    xlApp.quit
+    Set xlApp = Nothing
+    MsgBox "数据提取成功！", vbInformation, "恭喜"
+End Sub 

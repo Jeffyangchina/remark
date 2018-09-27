@@ -1,0 +1,39 @@
+///////excel里加按钮窗 可以在控件里添加，
+Sub xlsx()
+
+ Dim xlsapp As New Excel.Application
+
+    Dim xlsbook1 As Excel.Workbook
+
+    Dim xlssheet1 As Excel.Worksheet
+Dim diama As String
+Dim a As String
+ 
+   diama = ThisWorkbook.Path & "\yang.xlsx"  '取路径
+    
+    Set xlsbook1 = xlsapp.Workbooks.Open(diama)
+
+    Set xlssheet1 = xlsbook1.Worksheets("sheet1")
+    'Set xlssheet2 = xlsbook1.Worksheets("sheet2")
+    
+    
+    xlssheet1.Cells(1, "A") = "yang"
+    
+    a = MsgBox("恭喜你完成了", vbOKOnly, "提示")  '输出
+    
+    
+    
+    xlsbook1.Save
+   
+          
+ 
+
+
+    xlsbook1.Close
+
+    xlsapp.Quit
+
+
+
+
+End Sub

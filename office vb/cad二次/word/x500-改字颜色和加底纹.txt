@@ -1,0 +1,74 @@
+Sub bplot()
+
+Dim i As Integer
+
+Dim wdapp As Word.Application '定义word接口
+Dim wdbook As Word.Document
+
+Dim xlsapp As New Excel.Application
+
+    Dim xlsbook1 As Excel.Workbook
+
+    Dim xlssheet1 As Excel.Worksheet
+
+ Dim xlssheet2 As Excel.Worksheet
+ 
+    Dim daima As String, daima2 As String, daima3 As String, daima4 As String, w As String, pic As String, bj As String
+    
+
+Dim pos As Integer
+Dim cadpth As String
+
+    Dim j As Integer, n As Integer, l As Integer, num As Integer, num1 As Integer, num2 As Integer
+
+    Set xlsbook1 = xlsapp.Workbooks.Open("E:\BITMAP\1\1.xls")
+
+    Set xlssheet1 = xlsbook1.Worksheets("sheet1")
+    
+   
+Set wdapp = CreateObject("Word.Application") '定义Word
+Set wdbook = Documents.Open("E:\BITMAP\1\测试方案52BCR8016000 yang.doc")
+  n = wdbook.Tables.Count
+  For i = 1 To n
+    
+ 
+
+
+
+      Set myrange = wdbook.Tables(i).Range
+      Set tyrange = myrange.Rows(3).Cells(5).Range
+      Set gyrange = myrange.Rows(2).Cells(4).Range
+      Set hyrange = myrange.Rows(3).Cells(3).Range
+       daima = hyrange.Text
+       num1 = InStrRev(daima, "")
+       daima4 = Left(daima, num1 - 3)'因为有个空格，又回车占两位所以要减3
+          Set c = xlssheet1.Range("A2", "A509").Find(daima4)
+        If Not c Is Nothing Then
+        j = c.Row
+          daima1 = xlssheet1.Cells(j, "A")
+          daima2 = xlssheet1.Cells(j, "D")
+           num = InStrRev(daima2, ".GDL")'从字符串左边数起，所以下面要减1
+           daima3 = Left(daima2, num - 1)
+          If daima4 = daima1 Then
+           hyrange.Font.Color = wdColorRed  '设置字颜色
+         ' myrange.Rows(3).Cells(3).Shading.Texture = wdTexture20Percent  这是设置底纹
+          tyrange.Text = xlssheet1.Cells(j, "B") & " " & xlssheet1.Cells(j, "C")
+          gyrange.Text = daima3
+         End If
+       End If
+  
+On Error Resume Next
+  Next i
+wdbook.Save
+wdbook.Close
+
+
+ xlsbook1.Close
+
+    xlsapp.Quit
+wdapp.Quit
+End Sub
+
+
+
+

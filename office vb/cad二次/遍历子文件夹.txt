@@ -1,0 +1,31 @@
+Sub SosuoFile(MyPath As String)
+Dim Myname As String
+Dim a As String
+Dim B() As String
+Dim dir_i() As String
+Dim i, idir As Long
+
+MyPath = "E:\778转化图纸\"
+'If Right(MyPath, 1) <> "\" Then MyPath = MyPath + "\"
+Myname = Dir(MyPath, vbDirectory Or vbHidden Or vbNormal Or vbReadOnly)
+Do While Myname <> ""
+If Myname <> "." And Myname <> ".." Then
+If (GetAttr(MyPath & Myname) And vbDirectory) = vbDirectory Then '如果找到的是目录
+idir = idir + 1
+ReDim Preserve dir_i(idir) As String
+dir_i(idir - 1) = Myname
+Else
+
+List1.AddItem MyPath & Myname   '把找到的文件显示到列表框中
+
+End If
+End If
+Myname = Dir '搜索下一项
+Loop
+For i = 0 To idir - 1
+Call SosuoFile(MyPath + dir_i(i))
+Next i
+ReDim dir_i(0) As String
+End Sub
+
+

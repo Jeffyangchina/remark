@@ -1,0 +1,48 @@
+Sub match()
+
+    Dim xlsapp As New Excel.Application
+
+    Dim xlsbook1 As Excel.Workbook
+
+    Dim xlssheet1 As Excel.Worksheet
+
+ 
+   
+
+    Set xlsbook1 = xlsapp.Workbooks.Open("E:\BITMAP\bit\1.xls")
+
+    Set xlssheet1 = xlsbook1.Worksheets("sheet1")
+    Set xlssheet2 = xlsbook1.Worksheets("sheet2")
+    
+    Dim daima As String, miaoshu As String, daima2 As String
+
+    Dim i As Integer, j As Integer, n As Integer
+    
+     For i = 2 To 510 'hang£¬
+      If xlssheet1.Cells(i, 7) <> "" Then
+        daima = xlssheet1.Cells(i, 7)
+        For j = 4 To 1360
+          If xlssheet2.Cells(j, "V") <> "" Then
+          daima2 = xlssheet2.Cells(j, "V")
+          If daima2 = daima Then
+           xlssheet1.Cells(i, "I") = xlssheet2.Cells(j, "O")
+           Exit For
+           End If
+           End If
+           Next j
+ 
+       End If
+           
+       Next i
+    xlsbook1.Save
+   
+          
+ 
+
+
+    xlsbook1.Close
+
+    xlsapp.Quit
+
+End Sub
+

@@ -1,0 +1,64 @@
+Sub bplot()
+
+
+Dim i As Integer
+
+Dim wdapp As Word.Application '定义word接口
+Dim wdbook As Word.Document
+
+Dim xlsapp As New Excel.Application
+
+   Dim xlsbook1 As Excel.Workbook
+
+Dim xlssheet1 As Excel.Worksheet
+
+ Dim xlssheet2 As Excel.Worksheet
+ 
+    Dim daima As String, v As String, o As String, p As String, w As String, pic As String, bj As String, daima2 As String, daima3 As String
+    
+
+    Dim j As Integer, n As Integer, l As Integer, num As Integer, num1 As Integer, num2 As Integer
+
+   Set xlsbook1 = xlsapp.Workbooks.Open("E:\BITMAP\1\1.xls")
+
+ Set xlssheet1 = xlsbook1.Worksheets("X6S")
+   
+Set wdapp = CreateObject("Word.Application") '定义Word
+Set wdbook = Documents.Open("E:\BITMAP\1\检测点卡片-lwj.doc")
+
+   num = wdbook.Tables.Count
+    For i = 51 To 488
+    
+      If xlssheet1.Cells(i, "D") <> "" Then
+      daima = xlssheet1.Cells(i, "K") '所属部件
+      
+     daima2 = xlssheet1.Cells(i, "L") '描述
+       daima3 = xlssheet1.Cells(i, "C") '描述
+      Set myrange = wdbook.Tables(i - 16).Range
+       Set hyrange = myrange.Rows(3).Cells(2).Range '选中第六行的第一个单元格
+    
+           hyrange.Text = daima
+   
+     Set tyrange = myrange.Rows(4).Cells(2).Range
+        tyrange.Text = daima2
+        
+        
+     Set xyrange = myrange.Rows(2).Cells(4).Range
+        xyrange.Text = daima3
+      End If
+    
+   
+On Error Resume Next
+  Next i
+wdbook.Save
+wdbook.Close
+
+
+ xlsbook1.Close
+
+xlsapp.Quit
+wdapp.Quit
+End Sub
+
+
+

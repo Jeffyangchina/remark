@@ -1,0 +1,102 @@
+Sub bplot()
+
+Dim pos1 As Integer
+Dim pos2 As Integer
+Dim pos As Integer
+Dim cadpth As String
+Dim pth As String
+Dim newname As String
+
+
+MyPath = "E:\BITMAP\pcj\"
+MyFile = Dir(MyPath & "*.dwg")
+
+
+Do While MyFile <> ""
+
+
+cadpth = MyPath & MyFile
+pos2 = InStr(MyFile, "g")
+pos1 = InStr(MyFile, "(")
+pos = pos2 - pos1 + 2
+pth = "第" & Right(MyFile, pos - 1)
+If pos <> 0 Then
+newname = MyPath & pth
+'Name cadpth As newname'这个函数可以把名字修改 不用打开文件 len()求全长
+End If
+
+
+On Error Resume Next
+
+MyFile = Dir
+Name cadpth As newname'这个函数可以把名字修改 不用打开文件 len()求全长
+Loop
+
+
+
+End Sub
+
+////////////////////////excel
+Sub match()
+
+    Dim xlsapp As New Excel.Application
+
+    Dim xlsbook1 As Excel.Workbook
+
+    Dim xlssheet1 As Excel.Worksheet
+
+ Dim pos1 As Integer
+Dim n As Integer
+Dim pos As Integer
+Dim cadpth As String
+Dim pth As String
+Dim newname As String
+   
+
+    Set xlsbook1 = xlsapp.Workbooks.Open("E:\yang.xlsx")
+
+    Set xlssheet1 = xlsbook1.Worksheets("sheet1")
+    'Set xlssheet2 = xlsbook1.Worksheets("sheet2")
+    MyPath = "E:\BITMAP\邓丽君\"
+    MyFile = Dir(MyPath & "*.mp3")
+    n = 1
+    Do While MyFile <> ""
+
+
+cadpth = MyPath & MyFile
+newname = "D:\邓丽君\" & MyFile
+pos1 = InStr(MyFile, ".")
+
+pth = Left(MyFile, pos1 - 1)
+
+xlssheet1.Cells(n, "A") = n
+ xlssheet1.Cells(n, "B") = pth
+FileCopy cadpth, newname
+
+n = n + 1
+
+On Error Resume Next
+
+MyFile = Dir
+Loop
+   
+   
+    
+    xlsbook1.Save
+   
+          
+ 
+
+
+    xlsbook1.Close
+
+    xlsapp.Quit
+
+End Sub
+
+
+
+
+
+
+

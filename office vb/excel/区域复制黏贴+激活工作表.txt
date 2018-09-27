@@ -1,0 +1,49 @@
+Sub match()
+
+    Dim xlsapp As New Excel.Application
+
+    Dim xlsbook1 As Excel.Workbook
+Dim xlsbook2 As Excel.Workbook
+    Dim xlssheet2 As Excel.Worksheet
+
+ Dim xlssheet1 As Excel.Worksheet
+   
+    Set xlsbook1 = xlsapp.Workbooks.Open("E:\上海大熊猫项目\XC_CAMS\yang\bit.xls")
+    
+  Set xlssheet1 = xlsbook1.Worksheets("Sheet1")
+   
+  
+ 
+Set xlsbook2 = xlsapp.Workbooks.Open("E:\上海大熊猫项目\XC_CAMS\yang\154unwinding.xls")
+ Set xlssheet3 = xlsbook2.Worksheets("Run")
+xlsbook1.Activate
+xlssheet1.Range("B1", "E360").Copy
+
+
+ 
+ xlsbook2.Activate
+
+xlssheet3.Range("H7", "K366").PasteSpecial'区域的黏贴 不能用paste 
+ 
+ xlsbook2.Save
+ xlsbook2.Close
+
+
+
+ xlsbook1.Activate
+ xlsbook1.Save
+ xlsbook1.Close
+
+
+    xlsapp.Quit
+
+End Sub
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,28 @@
+1、将778、750、741原版BOM合并为一个表格，另存为“Format_A”、“Format_C”文件
+
+2、打开“发图清单”，移动表格至“Format_A”或“Format_C”文件中
+
+3、确认“发图清单”表格中的“发图批次”后一列（M列）为空白、单元格格式为“常规”，在M2单元格中输入=value(E2)，复制M2填充M列，复制M列选择性粘贴“数值”
+   （将E列“外来代码”转换成数值型数据）
+
+4、原版BOM的“material number”后一列（E列）插入一列，在E2单元格中输入=value(D2)，复制E2填充E列，复制E列点击D2
+选择性粘贴“数值”，选中D列，“单元格匹配”替换“0”为“”（空白），清空E列
+    （将D列“material number”转换成数值型数据）
+
+5、Alt+F11  ——〉 Ctrl+M （载入宏程序）“Focke编码替换”，修改相应值
+
+6、选中原版BOM，Alt+F8 运行“Focke编码替换”宏程序
+
+7、检查“发图清单”中N列是否有空白（表示该“外来代码”在原版BOM中未找到）
+
+8、视数据情况，筛选原版BOM“material number”列中“不包含”“CBS”，删除
+
+9、视数据情况，全选原版BOM,排序“material number”、“BOM level”、“material number next top assembly”
+  “material number”后一列（E列）插入一列，
+   在E2单元格中输入=if(D2=D1,W2+E1,W2)，复制E2填充E列，复制E列选择性粘贴“数值”,
+   在F2单元格中输入=and(D2=D3)，复制F2填充F列，复制F列选择性粘贴“数值”,
+   筛选原版BOM中F列为“TRUE”，删除
+
+10、Alt+F11  ——〉 Ctrl+M （载入宏程序）“Focke数量覆盖”，修改相应值
+
+11、选中原版BOM，Alt+F8 运行“Focke数量覆盖”宏程序

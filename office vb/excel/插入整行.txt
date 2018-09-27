@@ -1,0 +1,71 @@
+Sub match()
+
+    Dim daima As String, tuhao As String, minchen As String, waidai As String
+
+    Dim i As Integer, a As Integer, n As Integer, t As Integer, x As Integer
+   
+    Dim xlsapp As New Excel.Application
+
+    Dim xlsbook1 As Excel.Workbook
+
+    Dim xlssheet1 As Excel.Worksheet
+
+ 
+    
+
+   
+    Set xlsbook1 = xlsapp.Workbooks.Open("E:\BITMAP\x6s\·­Òë\Ö÷»ú·­Òëyang.xls")
+    
+    Set xlssheet1 = xlsbook1.Worksheets("1")
+   Set xlssheet2 = xlsbook1.Worksheets("2")
+    'Set xlssheet3 = xlsbook1.Worksheets("BCH BOM")
+   n = 1
+     For i = 1 To 4
+     
+     daima = xlssheet2.Cells(i, "B")
+    'tuhao = xlssheet1.Cells(i, "C")
+     If daima <> "" Then
+         Set c = xlssheet1.Range("B1", "B2111").Find(daima, , , 1)
+         
+          If Not c Is Nothing Then
+             j = c.Row
+             
+             xlssheet1.Cells(j, "A") = "1&2"
+             On Error Resume Next
+         End If
+         
+          If c Is Nothing Then
+  
+            xlssheet2.Rows(i).Copy
+              n = i - 1
+              tuhao = xlssheet2.Cells(n, "B")
+                   Set b = xlssheet1.Range("B1", "B2111").Find(tuhao, , , 1)
+                    If Not b Is Nothing Then
+                      h = b.Row
+                      xlssheet1.Rows(h + 1).Insert
+                      Application.CutCopyMode = False
+                       On Error Resume Next
+                      End If
+                 
+             End If
+      
+           
+        On Error Resume Next
+        End If
+     
+
+       
+           
+      
+      Next i
+      
+     xlsbook1.Save
+ 
+    xlsbook1.Close
+
+    xlsapp.Quit
+
+End Sub
+
+
+

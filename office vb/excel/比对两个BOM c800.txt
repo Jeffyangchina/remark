@@ -1,0 +1,226 @@
+////////////////////////////简略版 原来的是死循环 因为最后没有 “26”这个开头 所以while出不来 用ctrl+pause break组合键针对死循环
+  Sub match()
+   Dim daima As String, tuhao As String, minchen As String, waidai As String, daima1 As String, daima2 As String, daima3 As String, xx As String
+
+
+    Dim i As Integer, a As Integer, n As Integer, b As Integer, t As Integer, x As Integer, m As Integer, h As Integer
+    
+    
+   
+ 
+    Dim xlsapp As New Excel.Application
+    
+    Dim xlsbook1 As Excel.Workbook
+
+    Dim xlssheet1 As Excel.Worksheet
+    h = 2
+     
+    Set xlsbook1 = xlsapp.Workbooks.Open("E:\BITMAP\1\26BCH汇总正排20120507.xls")
+    Set xlsbook2 = xlsapp.Workbooks.Open("E:\BITMAP\1\26BCH汇总正排 20120521.xls")
+    Set xlssheet1 = xlsbook1.Worksheets("BOM")
+    Set xlssheet2 = xlsbook2.Worksheets("BCH BOM")
+     
+       For i = h To 1400
+        
+        daima = xlssheet1.Cells(i, "E")
+          If daima <> "" Then
+           
+           If Left(daima, 2) = "26" Then
+               Set c = xlssheet2.Range("E1", "E1600").Find(daima)
+                If Not c Is Nothing Then
+                a = c.Row
+                               
+                n = i + 1
+               daima2 = xlssheet1.Cells(n, "E")
+            While Left(daima2, 2) <> "26" And n < 1400
+               
+               n = n + 1
+               daima2 = xlssheet1.Cells(n, "E")
+               
+             Wend
+             If n >= 1400 Then
+               b = 1600
+              
+               End If
+             If Left(daima2, 2) = "26" Then
+                
+                minchen = xlssheet1.Cells(n, "E")
+                Set c = xlssheet2.Range("E1", "E1600").Find(minchen)
+                If Not c Is Nothing Then
+                b = c.Row
+                End If
+               
+              End If
+              
+              For t = i To n
+                tuhao = xlssheet1.Cells(t, "E")
+                
+                 Set c = xlssheet2.Range("E" & a, "E" & b).Find(tuhao)
+                If c Is Nothing Then
+                xlssheet1.Cells(t, "E").Interior.ColorIndex = 9
+                On Error Resume Next
+                End If
+                Next t
+               For x = a To b
+                  daima1 = xlssheet2.Cells(x, "E")
+                 Set c = xlssheet1.Range("E" & i, "E" & n).Find(daima1)
+                If c Is Nothing Then
+                   xlssheet2.Cells(x, "E").Interior.ColorIndex = 9
+                On Error Resume Next
+                End If
+                Next x
+                End If
+                
+                   If t = n Then
+                   h = n
+                   End If
+              
+                
+              End If
+                
+                
+           On Error Resume Next
+       
+              End If
+          
+        Next i
+
+     xlsbook1.Save
+ xlsbook2.Save
+    xlsbook1.Close
+   xlsbook2.Close
+    xlsapp.Quit
+
+End Sub
+
+
+
+
+
+
+//////////////////////////////////////////////
+   Sub match()
+   Dim daima As String, tuhao As String, minchen As String, waidai As String, daima1 As String, daima2 As String, daima3 As String, xx As String
+
+
+    Dim i As Integer, a As Integer, n As Integer, b As Integer, t As Integer, x As Integer, m As Integer, h As Integer
+    
+    
+   
+ 
+    Dim xlsapp As New Excel.Application
+    
+    Dim xlsbook1 As Excel.Workbook
+
+    Dim xlssheet1 As Excel.Worksheet
+
+     h = 2
+    Set xlsbook1 = xlsapp.Workbooks.Open("E:\BITMAP\1\26BCH汇总正排20120507.xls")
+    Set xlsbook2 = xlsapp.Workbooks.Open("E:\BITMAP\1\26BCH汇总正排 20120521.xls")
+    Set xlssheet1 = xlsbook1.Worksheets("BOM")
+    Set xlssheet2 = xlsbook2.Worksheets("BCH BOM")
+     
+       For i = h To 1400
+        
+        daima = xlssheet1.Cells(i, "E")
+          If daima <> "" Then
+           
+           If Left(daima, 2) = "26" Then
+               Set c = xlssheet2.Range("E1", "E1600").Find(daima)
+                If Not c Is Nothing Then
+                a = c.Row
+                               
+                n = i + 1
+               daima2 = xlssheet1.Cells(n, "E")
+           While Left(daima2, 2) <> "26" And n < 1400
+               
+               n = n + 1
+               daima2 = xlssheet1.Cells(n, "E")
+               
+             Wend
+             If n >= 1400 Then
+               b = 1600
+              
+               End If
+               
+             If Left(daima2, 2) = "26" Then
+                
+                minchen = xlssheet1.Cells(n, "E")
+                Set c = xlssheet2.Range("E1", "E1600").Find(minchen)
+                If Not c Is Nothing Then
+                b = c.Row
+                End If
+                
+                If c Is Nothing Then
+                m = a + 1
+                daima3 = xlssheet2.Cells(m, "E")
+                While Left(daima3, 2) <> "26" And m < 1600
+               
+                 m = m + 1
+                 daima3 = xlssheet1.Cells(m, "E")
+                 Wend
+                 If m >= 1600 Then
+                    b = 1600
+                    End If
+                    If m < 1600 Then
+                    
+                      b = m
+                   End If
+                End If
+              End If
+              
+              For t = i To n
+                tuhao = xlssheet1.Cells(t, "E")
+                
+                 Set c = xlssheet2.Range("E" & a, "E" & b).Find(tuhao)
+                If c Is Nothing Then
+                xlssheet1.Cells(t, "E").Interior.ColorIndex = 9
+                On Error Resume Next
+                End If
+                Next t
+               For x = a To b
+                  daima1 = xlssheet2.Cells(x, "E")
+                 Set c = xlssheet1.Range("E" & i, "E" & n).Find(daima1)
+                If c Is Nothing Then
+                   xlssheet2.Cells(x, "E").Interior.ColorIndex = 9
+                On Error Resume Next
+                End If
+                Next x
+                End If
+                  If c Is Nothing Then
+                   xlssheet1.Cells(i, "E").Interior.ColorIndex = 9
+                  
+                   n = i + 1
+                   daima2 = xlssheet1.Cells(n, "E")
+                   While Left(daima2, 2) <> "26" And n < 1400
+                      xlssheet1.Cells(n, "E").Interior.ColorIndex = 9
+                      n = n + 1
+                     daima2 = xlssheet1.Cells(n, "E")
+                   Wend
+                 
+                   
+                   If Left(daima2, 2) = "26" Then
+                   h = n
+                   End If
+                End If
+                
+               End If
+                
+                
+           On Error Resume Next
+       
+              End If
+          
+        Next i
+
+     xlsbook1.Save
+ xlsbook2.Save
+    xlsbook1.Close
+   xlsbook2.Close
+    xlsapp.Quit
+
+End Sub
+
+
+
+

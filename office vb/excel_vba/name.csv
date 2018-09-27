@@ -1,0 +1,3582 @@
+ch_pid_group,'MOTOR SETTING ADJUSTMENT',,电机调节组件
+ch_main_group_declare_function,'FUNCTION DECLARE: MAIN GROUP',,功能声明：主组件
+ch_main_machine,'CELLOPHANER',,透明纸包装机
+ch_main_group,'MAIN GROUP',,主组件
+ch_main_synoptic_declare_function,'FUNCTION DECLARE: CH SYNOPTIC',,功能声明：ＣＨ概况图
+ch_main_synoptic_syn,'CELLOPHANER SYNOPTIC',,透明纸包装机概况图
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+ch_entry_channel_xx_belt_function,'FUNCTION: PACKET BELT START',,功能：包装机皮带启动
+ch_entry_channel_xx_belt_stop_ipr,'BELT-STOP DELAY',,输送带停顿延时
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+ch_entry_chan_xx_2nd_belt_function,'FUNCTION: 2ND PACKER BELT MOTOR',,包装机皮带第二电机功能
+,,,
+,,,
+ch_entry_chan_xx_3rd_belt_function,'FUNCTION: 3RD PACKER BELT MOTOR',,功能3.0 －　包装机皮带电机
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+ch_umi_xx_speed_threshold_delay_ipr,'PACKER SPEED FILTER - CHANNEL EMPTYING',,包装机速度过滤器 - 通道排空
+,,,
+,,,
+ch_umi_xx_machine_interface_function,'FUNCTION: UPSTREAM MACHINE SPEED CHECK',,功能：上游机的速度检测
+ch_umi_spd_chan_empt_xx_noprod_disab_dpr,'DIS. CHAN. EMPTYING-X NOT IN PRODUCTION',,免用槽的排空：Ｘ不在生产
+ch_umi_xx_speed_threshold_ch_empt_ipr,'PACKER SPEED FOR CHANNEL EMPTYING',,通道排空时包装机的速度
+,,,
+,,,
+,,,
+,,,
+,,,
+ch_umi_xx_machine_emergency_function,'FUNCT: PACKER EMERGENCY STOP FOR CH',,功能：为ＣＨ的小包机紧急停机
+ch_umi_xx_emergency_pushbutton_rsm___EU,'PACKER EMERGENCY PUSHBUTTON PRESSED',,小包机紧急按钮被按下|
+ch_umi_immediate_xx_belt_stop_function,"'EXIT BELT STOP - ""X""'",,Ｘ出口输送带停顿
+ch_umi_xx_extra_gdlan_interface_function,'FUNCTION: EXTRA GDLAN INTERFACE',,GDLAN附加接口功能
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+bv_umi_xx_bf_emergency_button_rsm___EO,'EMERGENCY STOP FROM PACKER',,来自包装机的紧急停机
+,,,
+bv_umi_xx_emergency_pushbutton_rsm___EO,'PACKER EMERGENCY PUSHBUTTON PRESSED',,小包机紧急按钮被按下|
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+bv_motor_speed_cond_xx_rpm_sdm,'SPEED CONDIT.- GLUER CLEANING UNDER WAY',,速度调节：正在清洁涂胶器
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+cr_gp_xx_remote_link_diagn_disable_ysm,'C0 LINK DIAGNOSIS BYPASSED',,ＣＯ连接诊断被免除
+cr_gp_xx_remote_link_interface_function,'FUNCTION DECLARE: C0 LINK',,功能声明：ＣＯ连接
+cr_gp_xx_remote_link_diagn_disable_dpr,'C0 LINK DIAGNOSIS BYPASS',,免除ＣＯ连接诊断
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+ch_main_syn_xx_mmt,'STATE: PACKER',,状态：包装机
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+xx_cb_board_n08_probe_2_motor_sel_ipr,MONITOR CHANNEL 2: MOTOR SELECT,,第二监视频道：电机选择'
+xx_cb_board_n08_probe_3_scale_sel_ipr,MONITOR CHANNEL 3: SCALE SELECT,,第三监视频道：比例选择'
+xx_cb_board_n08_probe_1_scale_sel_ipr,MONITOR CHANNEL 1: SCALE SELECT,,第一监视频道：比例选择'
+xx_cb_board_n08_probe_3_motor_sel_ipr,MONITOR CHANNEL 3: MOTOR SELECT,,第三监视频道：电机选择'
+xx_cb_board_n08_probe_1_motor_sel_ipr,MONITOR CHANNEL 1: MOTOR SELECT,,第一监视频道：电机选择'
+xx_cb_board_n08_probe_2_scale_sel_ipr,MONITOR CHANNEL 2: SCALE SELECT,,第二监视频道：比例选择'
+,,,
+,,,
+xx_cb_board_n09_probe_3_motor_sel_ipr,MONITOR CHANNEL 3: MOTOR SELECT,,第三监视频道：电机选择'
+xx_cb_board_n09_probe_1_motor_sel_ipr,MONITOR CHANNEL 1: MOTOR SELECT,,第一监视频道：电机选择'
+xx_cb_board_n09_probe_2_scale_sel_ipr,MONITOR CHANNEL 2: SCALE SELECT,,第二监视频道：比例选择'
+xx_cb_board_n09_probe_3_scale_sel_ipr,MONITOR CHANNEL 3: SCALE SELECT,,第三监视频道：比例选择'
+xx_cb_board_n09_probe_2_motor_sel_ipr,MONITOR CHANNEL 2: MOTOR SELECT,,第二监视频道：电机选择'
+xx_cb_board_n09_probe_1_scale_sel_ipr,MONITOR CHANNEL 1: SCALE SELECT,,第一监视频道：比例选择'
+,,,
+xx_cb_board_n10_probe_2_motor_sel_ipr,MONITOR CHANNEL 2: MOTOR SELECT,,第二监视频道：电机选择'
+xx_cb_board_n10_probe_3_scale_sel_ipr,MONITOR CHANNEL 3: SCALE SELECT,,第三监视频道：比例选择'
+xx_cb_board_n10_probe_1_scale_sel_ipr,MONITOR CHANNEL 1: SCALE SELECT,,第一监视频道：比例选择'
+xx_cb_board_n10_probe_3_motor_sel_ipr,MONITOR CHANNEL 3: MOTOR SELECT,,第三监视频道：电机选择'
+xx_cb_board_n10_probe_1_motor_sel_ipr,MONITOR CHANNEL 1: MOTOR SELECT,,第一监视频道：电机选择'
+xx_cb_board_n10_probe_2_scale_sel_ipr,MONITOR CHANNEL 2: SCALE SELECT,,第二监视频道：比例选择'
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+cb_diagn_xx_machine_2N40_function,BOARD 2N40 X MACHINE DIAGN,,主机电路板2N40故障'
+cb_diagn_xx_machine_N03_function,BOARD N03 X MACHINE DIAGN,,主机电路板N03故障'
+,,,
+cb_diagn_xx_coherence_function,X MACHINE COHERENCE DIAGN,,主机逻辑故障'
+,,,
+cb_diagn_xx_driver_function,X MACHINE DRIVER DIAGN,,主机驱动器部件'
+cb_diagn_xx_machine_N08_function,BOARD N08 X MACHINE DIAGN,,主机电路板N08故障'
+cb_diagn_xx_machine_2N20_function,BOARD 2N20 X MACHINE DIAGN,,主机电路板2N20故障'
+cb_diagn_xx_machine_N09_function,BOARD N09 X MACHINE DIAGN,,主机电路板N09故障'
+,,,
+cb_diagn_xx_machine_group,X MACHINE DIAGN GROUP,,主机诊断部件'
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+cs_main_syn_xx_mmt,STATE: PACKER,,状态：小包机'
+,,,
+,,,
+ll_main_syn_xx_mmt,STATE: PACKER,,状态：小包机'
+xx_main_syn_cs_mmt,STATE: FOIL REEL LOADER,,铝箔纸卷装载机状态'
+xx_main_syn_xx_mmt,STATE: PACKER,,状态：小包机'
+xx_main_syn_cb_mmt,STATE: CABINET,,状态：控制柜'
+,,,
+,,,
+,,,
+la_main_syn_xx_mmt,STATE: PACKER,,状态：小包机'
+,,,
+cb_main_syn_xx_mmt,STATE: PACKER,,状态：小包机'
+xx_main_synoptic_ch_speed_cond_sdm,GOVERNING FROM DOWNSTREAM MACHINE,,下游机管理'
+xx_main_synoptic_chg_speed_cond_sdm,GOVERNING FROM CHANGES,,更换管理'
+xx_main_cig_pockets_jam_speed_cond_sdm,GOVERNING FROM CIG. POCKET JAM,,烟支模盒堵塞管理'
+xx_main_synoptic_umi_speed_cond_sdm,GOVERNING FROM CIG. BUFFER,,烟支缓冲器管理'
+xx_main_synoptic_foil_speed_cond_sdm,GOVERNING FOR FOIL RELEASE,,铝箔纸脱离管理'
+xx_main_xc_synoptic_declare_function,FUNCTION DECLARE: SYNOPTIC,,功能定义：概要图'
+xx_label_length_ipr,LABEL LENGTH,,商标纸长度'
+xx_main_format_packet_height_ipr,SIZEGROUP PARM: PACKET HEIGHT,,专用部件参数：烟包高度'
+xx_main_format_foil_length_ipr,SIZEGROUP PARM: FOIL LENGTH,,专用部件参数：铝箔纸长度'
+xx_main_format_packet_width_ipr,SIZEGROUP PARM: PACKET DEPTH,,专用部件参数：烟包厚度'
+xx_main_format_cigarette_diameter_ipr,SIZEGROUP PARAMETER: CIGARETTE DIAMETER,,专用部件参数：烟支直径'
+xx_stamp_length_ipr,STAMP LENGTH,,封签长度'
+xx_gp_heater_dis_sel_activation_rem,HEATERS OFF-LINE,,加热器脱机'
+xx_gp_heaters_disable_function,FUNCTION: HEATER BYPASS,,功能：加热器旁通'
+xx_gp_heater_disabled_mode_ysm,HEATERS BY-PASSED,,加热器旁通'
+xx_hopp_pusher_dis_sel_mode_disabled_msm,PUSHER RELEASE FROM SELECTOR DISABLED,,推烟排禁止由开关选择脱开'
+xx_hopp_pusher_disengage_selector_ysm,PUSHER RELEASE FROM SELECTOR,,推烟排由开关选择脱开'
+,,,
+,,,
+xx_foil_autom_splice_stop_disable_dpr,FOIL: AUTMOATIC CHANGE STOP BYPASSED,,铝箔纸：关闭自动换卷停机'
+,,,
+,,,
+xx_foil_xc_group_stop_disable_function,FUNCTION: FOIL GROUP STOP BYPASS,,功能：关闭铝箔纸部件的停止'
+xx_stamp_group_declare_function,FUNCTION: STAMPER GROUP,,功能：封签部件'
+xx_stamp_group,STAMP GROUP,,封签部件'
+xx_stamp_ended_reels_cnt___M,NUMBER OF STAMP REELS USED,,已消耗封签纸卷数'
+,,,
+,,,
+xx_stamp_drum_locking_no_exit_rem,STAMP DRUM LOCK DOES NOT UNLOCK,,封签鼓轮锁为打开'
+xx_stamp_no_mark_or_precut_read_rem,NO STAMP MARK OR SLIT,,封签无居中标志或切口'
+xx_stamp_mid_cycle_no_position_rem,NO MID-CYCLE FOR STAMP CAM AXIS,,封签凸轮轴无循环中点'
+xx_stamp_no_drum_rotation_rem,STAMP DRUM DOES NOT ROTATE,,封签鼓轮未转动'
+xx_stamp_axis_cam_no_end_cycle_rem,NO END-OF-CYCLE FOR STAMP CAM AXIS,,封签凸轮轴无循环终点'
+xx_stamp_automatic_splice_function,FUNCTION: AUTOMATIC STAMP CHANGE,,功能：封签纸卷自动更换'
+xx_stamp_no_drum_position_rsm,STAMP DRUM OUT OF POSITION,,封签鼓轮错位'
+xx_stamp_drum_torque_regulator_rsm,STAMP DRUM TORQUE REGULATOR,,封签鼓轮转矩调节器'
+xx_stamp_splice_guard_make_csm,CLOSE STAMP SPLICE GUARD,,关闭封签拼接防护罩'
+xx_stamp_reel_missing_rsm___EO,NO STAMP REEL,,无封签纸卷'
+xx_stamp_actuate_adesive_tape_csm,LOAD ADHESIVE TAPE FOR STAMPS,,安装用于封签纸卷拼接的粘带'
+xx_stamp_arm_cocked_csm,COCK STAMP REEL ARM,,扳动封签纸卷摆臂'
+xx_stamp_missing_adesive_tape_rsm___EO,STAMP TAPE NOT LOADED,,封签胶带未装载'
+xx_stamp_arm_out_of_position_rsm___EO,STAMP REEL ARM NOT COCKED,,封签纸卷摆臂未竖起'
+xx_stamp_axis_cam_no_position_rsm,STAMP CAM AXIS OUT OF POSITION,,封签凸轮轴错位'
+xx_stamp_drum_locking_no_position_rsm,STAMP DRUM LOCK OUT OF POSITION,,封签鼓轮锁定错位'
+xx_stamp_reel_mount_csm,LOAD STAMP REEL,,装载封签纸卷'
+xx_stamp_splice_guard_open_rsm___EO,STAMP SPLICE GUARD OPEN,,封签拼接防护罩打开'
+xx_stamp_preunw_unwind_percent_ipr,MOTOR SPEED ADJUSTMENT,,电机速度调节'
+xx_stamp_centering_mark_not_found_rem,NO CENTERING MARK FOR STAMP,,封签无居中标志'
+xx_stamp_unwinding_function,FUNCTION: STAMP UNWINDING,,功能：封签展开'
+xx_stamp_cent_error_for_stop_ipr,MINIMUM CENTERING ERROR FOR STOP,,产生停机的最小居中误差'
+xx_stamp_cent_error_for_reject_ipr,MINIMUM CENTERING ERROR FOR REJECTION,,产生剔除的最小居中误差'
+xx_stamp_glueing_start_phase_ipr,GLUING START PHASE,,涂胶开始相位'
+xx_stamp_glueing_end_phase_ipr,GLUING END PHASE,,涂胶结束相位'
+xx_stamp_drum_presence_check_disable_dpr,BYPASS - CONTROL,,关闭检测'
+xx_stamp_glue_dry_disable_dpr,BYPASS - CONTROL,,关闭检测'
+xx_stamp_glue_dry_function,FUNCTION: DRIED STAMP GLUE,,功能：封签胶水干涸'
+xx_stamp_glue_dry_check_phase_ipr,CHECK PHASE FOR DRIED GLUE,,胶水干涸的检测相位'
+,,,
+,,,
+xx_stamp_reel_diam_drum_rot_start_ipr,LINEAR LEVEL FOR ROTATION START,,转动开始的线性位置'
+xx_stamp_reel_max_brake_ref_val_ipr,BRAKE WITH ARM ARMED,,依靠摆臂的摆动制动'
+xx_stamp_reel_diameter_arm_cocked_up_ipr,LINEAR LEVEL FOR ARMED ARM,,摆臂摆动的线性位置'
+cb_xx_stamp_reel_diameter_ai_f_rsm,ANALOG INPUT DIAGN: N19 15 2A377,,模拟量输入点故障: N19 15 2A377'
+xx_stamp_reel_brake_driver_fault_rsm,STAMP REEL BRAKE MODULE FAIL 2A880,,封签纸卷制动模块2A880故障'
+cb_xx_stamp_reel_brake_referen_ao_f_rsm,ANALOG OUTPUT DIAGN: N19 16 2A880,,模拟量输入点故障: N19 16 2A880'
+xx_stamp_blow_for_flap_function,MATERIAL ADVANCE JET FUNCTION,,材料气动输送功能'
+xx_stamp_splice_double_rej_zone_ipr,DOUBLE REJECT ZONE START PHASE,,双包剔除区开始相位'
+xx_stamp_splice_head_zone_ipr,DOUBLE REJECT ZONE END PHASE,,双包剔除区结束相位'
+xx_stamp_splice_step_ipr,SPLICE CONTROL STEP,,接头检测工位'
+xx_stamp_chg_preunw_unwind_percent_ipr,MOTOR SPEED ADJUSTMENT,,电机速度调节'
+xx_stamp_optical_reel_end_dpr,OPTICAL-TYPE END-OF-REEL DETECTION,,光电式卷盘耗尽探测'
+xx_stamp_reel_end_function,FUNCTION: END OF REEL CHECK,,功能：卷盘耗尽检测'
+xx_stamp_splice_efficiency_count_ipr,WAIT STEPS FOR CHANGE SPLICE FOR EFFIC.,,换卷接头能效检测等待工位数'
+xx_stamp_number_of_stamps_to_end_ipr,NO. OF STAMPS UNTIL END-OF-REEL,,直到纸卷用完的封签数量'
+xx_stamp_number_of_stamps_to_end_ipe,NO. OF STAMPS UNTIL END-OF-REEL,,直到纸卷用完的封签数量'
+xx_stamp_type_function,FUNCTION: TYPE OF STAMP,,功能：封签类型'
+xx_wl_longstop_not_interruptable_ysm,LONGSTOP: NO INTERRUPTION ALLOWED,,全程排空：不能中断'
+xx_wl_longstop_selector_ysm,LONGSTOP UNDER WAY,,全程排空进行中'
+xx_wl_longstop_selector_rsm___EO,LONGSTOP CYCLE COMPLETED,,全程排空结束'
+xx_wl_3w_entry_jam_function,FUNCTION: ENTRY JAM ON 3RD WHEEL,,功能：3号轮入口处堵塞'
+xx_wl_3w_label_absence_rem,LABEL ABSENCE ON 3RD WHEEL,,3号轮商标纸不存在'
+xx_wl_3w_b_h_regulator_ki_ipr,INTEGRAL GAIN,,下部干燥通道电机积分增益'
+xx_wl_3w_b_h_regulator_kp_ipr,PROPORTIONAL GAIN,,下部干燥通道电机比例增益'
+xx_wl_3w_label_fold_check_disable_dpr,BYPASS - CONTROL,,关闭检测'
+xx_gp_reject_packet_3w_cnt___t,PACKETS REJECTED AT 3RD WHEEL,,3号轮剔除的烟包'
+xx_wl_3w_packet_reject_function,FUNCTION: PACKET REJECTION ON 3RD WHEEL,,3号轮烟包剔除功能'
+xx_wl_4w_entry_jam_or_open_function,FUNCTION: JAM AT 4TH WHEEL ENTRY,,功能：4号轮入口堵塞'
+xx_wl_belts_entry_stamp_chk_disable_dpr,BYPASS - CONTROL,,关闭检测'
+xx_wl_belts_entry_stamp_absence_rem,MISSING STAMP AT EXIT BELT ENTRANCE,,出口皮带入口处封签丢失'
+xx_wl_belts_entry_stamp_check_function,FUNCTION: STAMP ENTRY CHECK - EXIT BELT,,功能：出口皮带入口处封签检测'
+xx_wl_belts_entry_stamp_check_phase_ipr,CHECK PHASE: STAMP AT EXIT BELT ENTRANCE,,检测相位：出口皮带入口处封签存在'
+xx_wl_exit_belts_packets_number_ipr,NUMBER OF PACKETS ON EXIT BELT,,出口皮带上的烟包数'
+xx_wl_exit_belt_thermostat_faulty_rem,FAULT: EXIT BELT THERMOSTAT,,故障：出口皮带温控器'
+xx_wl_exit_belt_thermostat_fail_rem,EXIT BELT THERMOSTAT DIAGNOSIS,,出口皮带温控器诊断故障'
+xx_wl_exit_belt_heater_function,FUNCTION: EXIT BELT HEATERS,,功能：出口皮带加热器'
+xx_wl_exit_belt_heater_setpoint_ipr,SETPOINT: EXIT BELT HEATER,,设定值：出口皮带加热器'
+xx_wl_exit_belt_heater_setpoint_ipe,SETPOINT: EXIT BELT HEATER,,设定值：出口皮带加热器'
+xx_wl_exit_belt_heater_not_ready_rsm,EXIT BELT HEATER NOT READY,,出口皮带加热器未就绪'
+xx_wl_belts_burnt_packets_disable_dpr,BYPASS - CONTROL,,关闭检测'
+xx_wl_low_bot_belt_thermostat_fail_rem,LOWER BOTTOM-FOLD THERMOSTAT DIAGNOSIS,,下底部折叠器温控器诊断故障'
+xx_wl_low_bot_belt_thermostat_faulty_rem,FAULT: LOWER BOTTOM-FOLD THERMOSTAT,,故障：下底部折叠器温控器'
+xx_wl_lower_bottom_belt_heater_function,FUNCTION: LOWER BOTTOM-FOLD HEATERS,,功能：下底部折叠器温控器'
+xx_wl_low_bot_belt_heater_stand_tmr_ipr,DELAY: TEMP. DECREASE FOR BOTTOM HEATING,,底部加热器降温延时'
+xx_wl_low_bot_belt_stand_setp_decr_ipr,LOWER BOTTOM HEATER TEMP. DECREASING,,下底部加热器温度下降'
+xx_wl_lower_bottom_belt_heater_setp_ipr,SETPOINT: LOWER BOTTOM-FOLD HEATER,,设定温度：下底部折叠器加热器'
+xx_wl_lower_bottom_belt_heater_setp_ipe,SETPOINT: LOWER BOTTOM-FOLD HEATER,,设定温度：下底部折叠器加热器'
+xx_wl_lower_bottom_belt_stand_by_rsm,LOWER BOTTOM-SEAL THERMOSTAT ON STAND-BY,,下底部加热器待机状态'
+xx_wl_low_bot_belt_heater_not_ready_rsm,LOWER BOTTOM-FOLD HEATER NOT READY,,下底部折叠器温控器未就绪'
+xx_wl_high_bot_belt_thermostat_fail_rem,UPPER BOTTOM-FOLD THERMOSTAT DIAGNOSIS,,上底部折叠器温控器诊断故障'
+xx_wl_h_bot_belt_thermostat_faulty_rem,UPPER BOTTOM-FOLD THERMOSTAT BREAKDOWN,,故障：上底部折叠器温控器'
+xx_wl_high_bottom_belt_heater_function,FUNCTION: UPPER BOTTOM-FOLD HEATERS,,功能：上底部折叠器温控器'
+xx_wl_high_bot_belt_stand_setp_decr_ipr,UPPER BOTTOM HEATER TEMP. DECREASING,,上底部加热器温度减少值'
+xx_wl_high_bot_belt_heater_stand_tmr_ipr,DELAY: TEMP. DECREASE FOR BOTTOM HEATING,,底部加热器降温延时'
+xx_wl_high_bottom_belt_heater_setp_ipr,HEATER SETPOINT: UPPER BOTTOM-FOLD,,设定温度：上底部折叠器加热器'
+xx_wl_high_bottom_belt_heater_setp_ipe,HEATER SETPOINT: UPPER BOTTOM-FOLD,,设定温度：上底部折叠器加热器'
+xx_wl_high_bot_belt_heater_not_ready_rsm,UPPER BOTTOM-FOLD HEATER NOT READY,,上底部折叠器温控器未就绪'
+xx_wl_high_bottom_belt_stand_by_rsm,UPPER BOTTOM-SEAL THERMOSTAT ON STAND-BY,,上底部加热器待机状态'
+xx_exit_reject_function,FUNCTION: EXITING PACKET REJECTION,,功能：出口烟包剔除'
+xx_exit_packet_presence_chk_disable_dpr,BYPASS - CONTROL,,关闭检测'
+xx_exit_channel_jam_function,FUNCTION: JAM ON X EXIT CHANNEL,,功能：主机出口通道堵塞'
+xx_exit_channel_jam_filter_ipr,JAM ON X EXIT CHANNEL,,主机输出通道堵塞'
+xx_exit_channel_jam_rsm___ED,JAM ON X EXIT CHANNEL,,主机输出通道堵塞'
+xx_umi_infeed_empty_function,FUNCT: WRAPPER EMPTYING FROM CIG. BUFFER,,功能：烟支缓冲器引起包装线排空'
+xx_umi_infeed_empty_ysm,WRAP WHEELS EMPTYING FROM CIG. BUFFER,,烟支缓冲器引起包装轮排空'
+xx_umi_infeed_emptying_disabled_msm,BYPASS: WRAP WHL.EMPTYING FROM CIG.BUFF.,,关闭缓冲器引起包装轮排空'
+xx_dmi_wl_emptying_request_ysm,WRAP WHEEL EMPTYING FROM PACKET BUFFER,,烟包缓冲器引起包装轮排空'
+xx_label_group_declare_function,FUNCTION: LABEL GROUP,,功能：商标纸部件'
+xx_label_group,LABEL GROUP,,商标纸部件'
+xx_label_ended_reels_cnt___M,NUMBER OF LABEL REELS USED,,已消耗商标纸卷数'
+,,,
+,,,
+xx_label_axis_cam_no_end_cycle_rem,NO END-OF-CYCLE FOR LABEL CAM AXIS,,商标纸凸轮轴无循环终点'
+xx_label_drum_locking_no_exit_rem,LABEL DRUM LOCK DOES NOT UNLOCK,,商标纸鼓轮锁定未释放'
+xx_label_mid_cycle_no_position_rem,LABEL CAM AXIS: NO MID-CYCLE DETECT,,商标纸凸轮轴：无循环中点'
+xx_label_no_drum_rotation_rem,LABEL DRUM NOT TURNING,,未转动商标纸鼓轮'
+xx_label_no_mark_read_rem,NO LABEL MARKS,,无商标纸检测标志'
+xx_label_automatic_splice_function,FUNCTION: AUTOMATIC LABEL REEL CHANGE,,功能：商标纸卷自动更换'
+xx_label_change_speed_cond_ipr,CHANGE SPEED,,换卷速度'
+xx_label_actuate_adesive_tape_csm,FIT ADHESIVE TAPE FOR LABEL REEL SPLICE,,安装用于商标纸卷拼接的粘带'
+xx_label_arm_cocked_csm,COCK LABEL REEL ARM,,扳动商标纸卷摆臂'
+xx_label_arm_out_of_position_rsm___E,LABEL REEL ARM NOT IN POSITION,,铝箔纸卷摆臂错位'
+xx_label_axis_cam_no_position_rsm,LABEL CAM AXIS OUT OF POSITION,,商标纸凸轮轴错位'
+xx_label_drum_locking_no_position_rsm,LABEL DRUM LOCK OUT OF POSITION,,商标纸凸轮轴错位'
+xx_label_drum_torque_regulator_rsm,LABEL DRUM TORQUE REGULATOR,,商标纸鼓轮转矩调节器'
+xx_label_missing_adesive_tape_rsm___E,LABEL TAPE NOT LOADED,,商标纸缺粘带'
+xx_label_no_drum_position_rsm,LABEL DRUM OUT OF POSITION,,商标纸鼓轮错位'
+xx_label_reel_missing_rsm___E,NO LABEL REEL,,无商标纸卷'
+xx_label_reel_mount_csm,LOAD LABEL REEL,,装载商标纸卷'
+xx_label_splice_guard_make_csm,CLOSE LABEL SPLICE GUARD,,关闭商标纸拼接防护罩'
+xx_label_splice_guard_open_rsm___E,LABEL SPLICE GUARD OPEN,,商标纸拼接防护罩开启'
+,,,
+,,,
+xx_label_preunwinder_unwind_percent_ipr,MOTOR SPEED ADJUSTMENT,,电机速度调节'
+xx_label_reel_diam_drum_rot_start_ipr,LINEAR LEVEL FOR ROTATION START,,转动开始的线性位置'
+xx_label_reel_diameter_arm_cocked_up_ipr,LINEAR LEVEL FOR ARMED ARM,,摆臂摆动的线性位置'
+xx_label_reel_max_brake_ref_val_ipr,BRAKE WITH ARM ARMED,,依靠摆臂的摆动制动'
+cb_xx_label_preunw_motor_ref_ao_f_rsm,ANALOG OUTPUT DIAGN: N19 14 A498,,模拟量输入点故障: N19 14 A498'
+cb_xx_label_reel_brk_ref_ao_f_rsm,ANALOG OUTPUT DIAGN: N19 12 2A850,,模拟量输入点故障: N19 12 2A850'
+cb_xx_label_reel_diameter_ai_f_rsm,ANALOG INPUT DIAGN: N19 11 2A343,,模拟量输入点故障: N19 11 2A343'
+cb_xx_label_reservoir_level_ai_f_rsm,ANALOG INPUT DIAGN: N19 13 2A353,,模拟量输入点故障: N19 13 2A353'
+xx_label_preunwind_motor_drv_fault_rsm,FAULT: LABEL PRE/UNW. MOTOR DRIVE A498,,故障：商标纸预展电机驱动器A498'
+xx_label_preunwind_platf_open_rsm,LABEL PRE-UNWINDING PLATFORM OPEN,,商标纸预展平台打开'
+xx_label_reel_brk_drv_fault_rsm,LABEL REEL BRAKE MODULE FAIL 2A850,,铝箔纸卷制动模块2A850故障'
+xx_label_reserv_alarm_posit_alert_rsm,LABEL RESERVE AT ALARM LEVEL,,商标纸展开到达警告位置'
+xx_label_unwinding_motor_ki_ipr,INTEGRAL GAIN,,下部干燥通道电机积分增益'
+xx_label_splice_rejects_cnt___R,REJECTS DUE TO LABEL SPLICE,,商标纸接头产生的剔除'
+xx_label_splice_too_long_rem,TOO LONG LABEL SPLICE,,商标纸拼接太长'
+xx_label_splice_double_rej_zone_ipr,DOUBLE REJECT ZONE START PHASE,,双包剔除区开始相位'
+xx_label_splice_head_zone_ipr,DOUBLE REJECT ZONE END PHASE,,双包剔除区结束相位'
+xx_label_splice_step_ipr,SPLICE CONTROL STEP,,接头检测工位'
+xx_label_unwind_platform_function,FUNCTION: LABEL UNWINDING PLATFORM,,功能：商标纸展开平台'
+xx_label_unwind_platform_rsm,LABEL UNWINDER OPEN,,商标纸展开平台打开'
+xx_label_2nd_preunw_unwind_percent_ipr,MOTOR SPEED ADJUSTMENT,,电机速度调节'
+xx_label_glue_pot_absent_rsm,LABEL GLUE POT DISENGAGED,,商标纸胶缸脱离'
+xx_label_glue_pot_unlock_rsm,LABEL GLUE POT DISCONNECTED,,商标纸胶缸分离'
+xx_label_glue_flow_disable_rem,LABEL GLUE FLOW DISABLED,,商标纸注胶关闭'
+xx_label_glue_level_reading_fault_rem,MALFUNCTION: GLUE LEVEL READING,,工作异常：胶水液位读取'
+xx_label_glue_level_ai_monitor_ifm,SIGNAL FROM GLUE LEVEL SENSOR (MV),,来自胶水液位传感器的信号(ＭＶ)'
+xx_label_glue_flow_block_tmr_ipr,EXTENDED TIME - LABEL GLUE FLOW,,持续时间：商标纸注胶'
+xx_label_delay_glue_level_check_ipr,CHECK DELAY - LABEL GLUE FLOW,,商标纸注胶检测延时'
+xx_label_incoherency_in_level_par_rsm,INCOHERENCY IN GLUE LEVEL VALUES,,胶水液位值不协调'
+xx_label_glue_pot_filling_rsm,LABEL GLUE POT FILLING,,商标纸胶缸正在注胶'
+xx_label_glue_flow_failure_rsm,LABEL GLUE-FLOW BLOCKED,,商标纸注胶堵塞'
+xx_label_glueing_function,FUNCTION: LABEL GLUER MOTOR,,功能：商标纸涂胶器电机'
+xx_label_gluer_motor_end_glueing_ipr,GLUING END PHASE,,涂胶结束相位'
+xx_label_gluer_motor_start_glueing_ipr,GLUING START PHASE,,涂胶开始相位'
+xx_label_glue_dry_disable_dpr,BYPASS - CONTROL,,关闭检测'
+xx_label_glue_dry_function,FUNCTION: DRIED LABEL GLUE,,功能：商标纸胶水干涸'
+xx_label_glue_dry_check_phase_ipr,CHECK PHASE FOR DRIED GLUE,,胶水干涸的检测相位'
+xx_label_folding_hopper_function,FUNCTION: LABEL FOLDING HOPPER,,功能：商标纸折叠库'
+xx_label_fold_hop_open_disable_phase_ipr,LABEL HOPPER LOCK PHASE,,商标纸折叠纸库锁定相位'
+xx_label_fold_hop_open_enable_phase_ipr,LABEL HOPPER UNLOCK PHASE,,商标纸折叠纸库释放相位'
+xx_label_folding_hopper_open_rsm,LABEL FOLDING SECTION OPEN,,商标纸折叠部件打开'
+xx_label_optical_reel_end_dpr,OPTICAL-TYPE END-OF-REEL DETECTION,,光电式卷盘耗尽探测'
+xx_label_reel_end_function,FUNCTION: END OF REEL CHECK,,功能：卷盘耗尽检测'
+xx_label_splice_efficiency_count_ipr,WAIT STEPS FOR CHANGE SPLICE FOR EFFIC.,,换卷接头能效检测等待工位数'
+xx_label_folding_hop_clamp_rsm,LABEL FOLDING SECTION CLAMP OPEN,,商标纸折叠装置夹钳打开'
+xx_label_liftup_lever_function,FUNCTION: LABEL SUPPORT LEVER,,功能：商标纸支撑杆'
+xx_label_type_function,FUNCTION: TYPE OF LABEL,,功能：商标纸类型'
+xx_label_centering_mark_not_found_rem,NO CENTERING MARK ON LABEL,,商标纸无居中标志'
+xx_label_max_mark_center_error_rem,LABEL CENTER MARK-ERROR GREATER THAN MAX,,商标纸居中标志误差大于最大值'
+xx_label_mark_centering_function,FUNCTION: LABEL CENTERING,,功能：商标纸居中'
+xx_label_mark_real_position_ifm,LABEL CENTERING MARK POSITION,,商标纸居中标志位置'
+xx_label_cent_error_for_reject_ipr,MINIMUM CENTERING ERROR FOR REJECTION,,产生剔除的最小居中误差'
+xx_label_cent_error_for_stop_ipr,MINIMUM CENTERING ERROR FOR STOP,,产生停机的最小居中误差'
+xx_label_chg_cabinet_interface_function,FUNCTION: CABINET INTERFACE,,功能：控制柜接口'
+xx_label_KL_cabinet_interface_rsm,STOP FROM CABINET,,控制柜引起停机'
+xx_main_group_declare_function,FUNCTION DECLARE: MAIN GROUP,,功能定义：主部件'
+xx_main_group,MAIN GROUP,,主部件'
+xx_main_machine,PACKER,,小包机'
+xx_main_xe_synoptic_declare_function,XE DISPLAY DECLARE FUNCTION,,右机身概要图定义功能'
+xx_main_synoptic_syn,PACKER SYNOPTIC,,小包机概要图'
+cb_diagn_xx_machine_N28_function,BOARD N28 X MACHINE DIAGN,,主机电路板N28故障'
+cb_diagn_xx_machine_N22_function,BOARD N22 X MACHINE DIAGN,,主机电路板N22故障'
+cb_diagn_xx_machine_N29_function,BOARD N29 X MACHINE DIAGN,,主机电路板N29故障'
+,,,
+cb_diagn_xx_machine_N19_function,BOARD N19 X MACHINE DIAGN,,主机电路板N19故障'
+cb_diagn_xx_machine_N27_function,BOARD N27 X MACHINE DIAGN,,主机电路板N27故障'
+xx_main_support_function,SUPPORT FUNCTION,,辅助功能'
+cb_diagn_xx_machine_N21_function,BOARD N21 X MACHINE DIAGN,,主机电路板N21故障'
+xx_main_format_depend_declare_function,FUNCTION DECLARE: SIZE VALUES,,功能定义：专用部件数据'
+xx_wl_bundle_jam_2step_ipr,2ND STEP: BUNDLE JAM,,模盒内烟支堵塞第二工位'
+xx_foil_external_splice_step_ipr,SPLICE CONTROL STEP,,接头检测工位'
+xx_foil_internal_splice_step_ipr,SPLICE CONTROL STEP,,接头检测工位'
+xx_foil_1w_vertical_alignement_step_ipr,CHECK STEP:  1ST WHEEL FOIL,,1号轮铝箔纸检测工位'
+xx_foil_group_disengage_step_ipr,STEP: FOIL RELEASE DUE TO LONG-STOP,,全排空引起铝箔组件脱离工位'
+xx_wl_bundle_jam_1step_ipr,1ST STEP: BUNDLE JAM,,模盒内烟支堵塞第一工位'
+xx_foil_reject_step_ipr,STEP: FOIL REJECTION,,工位：铝箔纸剔除'
+xx_wl_flexible_wall_2step_ipr,2ND STEP: LATERAL BUNDLE JAMS,,模盒内侧面烟支堵塞第二工位'
+xx_hopp_cigarette_task_1_step_ipr,CIGARETTE HOPPER POCKET 1 STEP,,烟支料库１号模盒工位'
+xx_wl_flexible_wall_1step_ipr,1ST STEP: LATERAL BUNDLE JAMS,,模盒内侧面烟支堵塞第一工位'
+xx_wl_2w_foil_pres_align_step_ipr,STEP FOR 2ND WHEEL FOIL CHECK,,2号轮铝箔纸检测工位'
+xx_wl_cig_missing_check_step_ipr,STEP FOR MISSING CIGARETTE CHECK,,缺支检测工位'
+xx_wl_empty_pockets_check_step_ipr,STEP FOR EMPTY CIGARETTE POCKETS,,空模盒检测工位'
+xx_hopp_cigarette_task_2_step_ipr,CIGARETTE HOPPER POCKET 2 STEP,,烟支料库２号模盒工位'
+xx_wl_loose_ends_check_step_ipr,STEP FOR LOOSE-END CIGARETTE CHECK,,空头检测工位'
+xx_hopp_pusher_disengage_step_ipr,PUSHER RELEASE STEP,,推烟排脱离工位'
+xx_motor_absolute_max_speed_ipr,X MAXIMUM SPEED,,Ｘ最高速度'
+xx_motor_nominal_speed_ipr___N,X NOMINAL SPEED,,Ｘ额定速度'
+xx_main_format_cigarette_per_packet_ipr,NUMBER OF CIGARETTES PER PACKET,,烟包内烟支数量'
+xx_wl_pocket_cig_reject_step_ipr,STEP: CIGARETTE BUNDLE REJECTION,,模盒烟支剔除工位'
+xx_hopp_cigarette_task_3_step_ipr,CIGARETTE HOPPER POCKET 3 STEP,,烟支料库３号模盒工位'
+xx_gp_group_declare_function,FUNCTION DECLARE: GENERAL GROUP,,功能定义：综合部件'
+xx_general_purpose_group,GENERAL GROUP,,综合部件'
+xx_gp_system_power_up_rem,SYSTEM START-UP,,系统启动'
+xx_gp_cabinet_interface_function,FUNCTION: CABINET INTERFACE,,功能：控制柜接口'
+xx_gp_cabinet_interface_rsm,STOP FROM CABINET,,控制柜引起停机'
+xx_gp_main_emergency_stop_function,FUNCTION: MAIN PANEL EMERGENCY STOP,,功能：主按钮控制板紧急停机'
+xx_gp_main_emergency_stop_activation_rsm,MAIN PANEL EMERGENCY STOP,,主按钮控制板紧急停机'
+xx_gp_air_pressure_function,FUNCTION: AIR PRESSURE CHECK,,功能：气压检测'
+xx_gp_air_pressure_rsm,INSUFFICIENT AIR PRESSURE,,气压不足'
+xx_gp_air_vacuum_function,FUNCTION: VACUUM CHECK,,功能：负压检测'
+xx_gp_air_vacuum_rsm,VACUUM INSUFFICIENT,,真空气压不足'
+xx_gp_video_scroll_function,FUNCTION: MONITOR PUSHBUTTONS,,功能：显示器按钮'
+xx_gp_infeed_emptying_dfm,IN-FEED EMPTY,,排空供料'
+xx_gp_infeed_emptying_sdp,IN-FEED EMPTY,,排空供料'
+xx_gp_infeed_emptying_dpe,IN-FEED EMPTY,,排空供料'
+xx_feed_emptying_sel_activation_rem___EO,FEED EMPTYING SELECTION,,选择：供料装置排空'
+xx_gp_infeed_emptying_function,FUNCTION: FEED EMPTYING SELECTED,,功能：供料装置排空已选择'
+xx_feed_emptying_mode_not_enabled_msm,CIG. BUFFER EMPTYING DISABLED,,缓冲器排空关闭'
+xx_feed_emptying_mode_ysm,CIGARETTE RESERVE NOW BEING EMPTIED,,烟支缓冲器正在排空'
+xx_gp_compressed_air_supply_function,FUNCTION: COMPRESSED AIR SUPPLY,,功能：压缩空气供应'
+xx_gp_oil_filter_obstruction_function,FUNCTION: OIL FILTER OBSTRUCTION CHECK,,功能：润滑油滤清器堵塞检测'
+xx_gp_oil_filter_obstruction_rsm,OIL FILTER OBSTRUCTED,,润滑油滤清器堵塞'
+xx_gp_handwheel_engage_function,FUNCTION: MANUAL ADV. HANDWHEEL ENGAGE,,盘车手轮啮合功能'
+xx_gp_handwheel_engage_rsm,MANUAL ADVANCE HANDWHEEL ENGAGEMENT,,盘车手轮啮合'
+xx_gp_oil_temperature_rem,OIL TEMPERATURE EXCESSIVE,,油温过高'
+xx_gp_oil_temperature_function,FUNCTION: OIL TEMPERATURE,,功能：油温'
+xx_gp_oil_temperature_ifm,OIL TEMPERATURE,,油温'
+xx_gp_oil_temperature_ipr,MAX. OIL TEMPERATURE,,最高油温'
+xx_gp_oil_temperature_ipe,MAX. OIL TEMPERATURE,,最高油温'
+xx_gp_automation_interface_function,FUNCTION: AUTOMATION INTERFACE,,功能：自动接口'
+xx_gp_ch_in_test_phase_dpr,MACHINES UNDER TESTING SEPARATELY,,单机测试'
+xx_gp_ch_in_test_phase_rem,MACHINES UNDER TESTING SEPARATELY,,单机测试'
+xx_gp_machine_test_function,FUNCTION: MACHINE PREP RESERVED,,功能：机器测试'
+xx_gp_ch_in_test_phase_ysm,MACHINES UNDER TESTING SEPARATELY,,单机测试'
+xx_gp_bless_motors_enable_function,FUNCTION: BRUSHLESS MOTOR ENABLE,,功能：开启无刷电机'
+xx_gp_strobe_sync_pulse_function,FUNCT: OUTPUT TRIGGER PULSES-STROBOSCOPE,,功能：频闪观测器触发脉冲输出'
+xx_gp_strobe_sync_pulse_fall_ipr,PHASE FOR DECLINING FRONT OF PULSE,,相位：脉冲下降沿'
+xx_gp_strobe_sync_pulse_rise_ipr,PHASE FOR RISING FRONT OF PULSE,,相位：脉冲上升沿'
+cb_xx_gp_strobe_sync_pulse_do_f_rsm,OUTPUT DIAGN: N28 13,,输出点故障: N28 13'
+xx_gp_oil_pump_motor_function,FUNCTION: OIL PUMP MOTOR,,功能：油泵电机'
+xx_gp_oil_pump_motor_disable_ipr,ENABLE: OIL PUMP FORCING,,开启：油泵强制'
+cb_xx_gp_oil_pump_motor_do_f_rsm,OUTPUT DIAGN: N28 21 2K733,,输出点故障: N28 21 2K733'
+xx_gp_oil_pump_motor_off_notaus_rsm,OIL PUMP STOPPED WITH MACHINE RUNNING,,机器运行状态油泵停转'
+xx_gp_oil_pump_motor_disable_rsm,SELECT: OIL PUMP FORCING,,选择：油泵强制'
+xx_gp_low_oil_pressure_rem,OIL PRESSURE INSUFFICIENT,,油压不足'
+xx_gp_high_oil_pressure_rem,EXCESSIVE OIL PRESSURE,,油压过高'
+xx_gp_oil_pressure_function,FUNCTION: OIL PRESSURE CHECK,,功能：油压检测'
+xx_gp_oil_pressure_ifm,OIL PRESSURE,,油压'
+xx_gp_high_oil_pressure_ipr,MAXIMUM OIL PRESSURE,,最高油压'
+xx_gp_low_oil_pressure_ipr,MINIMUM OIL PRESSURE,,最低油压'
+cb_xx_gp_oil_pressure_ai_f_rsm,ANALOG INPUT DIAGN: N19 30 2S228,,模拟量输入点故障: N19 30 2S228'
+xx_gp_vacuum_box_disable_sdp,INDEPENDENT VACUUM MOTOR BYPASSED,,独立吸风电机关闭'
+xx_gp_local_vacuum_function,FUNCTION: INDEPENDENT VACUUM,,功能：独立吸风'
+xx_gp_vacuum_box_disable_ysm,INDEPENDENT VACUUM MOTOR BYPASSED,,独立吸风电机关闭'
+xx_gp_vacuum_box_enable_do_f_rsm,OUTPUT DIAGN: N27 19 2K1030,,输出点故障: N27 19 2K1030'
+xx_gp_vacuum_box_overtemp_rsm,OVERTEMPERATURE - INDEPENDENT SUCTION,,独立吸风装置温度过高'
+xx_gp_prod_data_disabled_cnt,MACHINE CYCLES WITH PROD. DATA DISABLED,,关闭生产数据的机器周期'
+xx_gp_real_packer_prod_cnt___P,REAL PACKET PRODUCTION,,烟包实际产量'
+xx_gp_emptied_good_prod_cnt,MANUALLY EMPTIED VALID POCKETS,,手动排空合格烟包'
+xx_gp_rejected_packer_prod_cnt___S,REJECTED PRODUCTION,,剔除产量'
+xx_gp_no_production_cnt,MACHINE CYCLES RUNNING EMPTY,,空运行的机器周期'
+xx_gp_prod_data_reject_reasons_ccl___O,REJECTION MOTIVES,,剔除原因'
+xx_gp_general_events_ccl,GENERAL EVENTS,,综合事件'
+xx_gp_production_data_ccl___o,GENERAL PRODUCTION DATA,,生产综合数据'
+xx_gp_utilized_materials_ccl,GENERAL MATERIALS CONSUMPTION DATA,,材料消耗综合数据'
+xx_gp_emptied_good_prod_ccl___o,MANUALLY EMPTIED VALID POCKETS,,手动排空合格烟包'
+xx_gp_rejected_prod_ccl___o,REJECTED PRODUCTION,,剔除产量'
+xx_gp_production_data_disable_dpr,DISABLE COUNT PRODUCTION DATA,,关闭生产数据统计'
+xx_gp_production_data_function,FUNCTION: PRODUCTION DATA MANAGEMENT,,功能：生产数据管理'
+xx_gp_machine_run_rounds_threshold_ipr,ROUNDS THRESHOLD FOR MACHINE RUNNING,,机器运行的临界转数'
+xx_gp_machine_run_time_threshold_ipr,TIME TO THRESHOLD FOR MACHINE RUNNING,,机器运行的临界时间'
+xx_gp_machine_running_wsm___F,MACCHINA NELLO STATO DI MARCIA,,机器运行状态'
+xx_gp_machine_running_wsm___W,MACCHINA IN ATTESA PRODOTTO,,机器运行状态'
+xx_gp_production_data_disabled_ysm,PRODUCTION DATA COLLECTION DISABLED,,生产数据采集被关闭'
+xx_gp_foil_manual_disengage_rej_cnt___R,MANUAL REJECTIONS - DISALIGNED FOIL,,手动剔除未对齐的铝箔纸数'
+xx_gp_powerup_rejects_dpr,REJECTED PACKETS AT MACHINE STARTUP,,机器启动时剔除的烟包'
+xx_gp_chains_shift_forward_ipr,FASE: SHIFT-REGISTER,,相位：寄存器移位'
+xx_motor_group_declare_function,FUNCTION DECLARE: MOTORIZATION GROUP,,功能定义：电机部件'
+xx_motor_group,MOTORIZATION GROUP,,电机部件'
+xx_motor_test_enable_dpr,MACHINE MOTOR TEST,,机器电机测试'
+xx_motor_manual_mode_rem___EO,MACHINE SET ON MANUAL,,机器设定手控方式'
+xx_motor_stop_condition_check_rem,MACHINE DOES NOT STOP,,机器不停机'
+xx_motor_machine_uncorrectly_started_rem,MACHINE ADVANCED START,,机器提前启动'
+xx_motor_machine_does_not_start_rem,MACHINE DOES NOT START,,机器不起动'
+xx_motor_management_function,FUNCTION: MOTORIZATION MANAGEMENT,,功能：电机管理'
+cb_xx_motor_run_contactor_di_f_rsm,INPUT DIAGN: N21 03 2K011,,输入点故障: N21 03 2K011'
+xx_motor_zero_speed_relay_f_rsm,FAIL: X 0-SPEED CHECK RELAY 2K3,,故障：Ｘ零速检测继电器２Ｋ３'
+xx_motor_stop_from_mP_relay_f_rsm,FAIL: X STOP RELAY 2K7,,故障：Ｘ停机继电器２Ｋ７'
+xx_motor_run_relay_f_rsm,BREAKDOWN: X RUN RELAY 2K14,,故障：Ｘ运行继电器２Ｋ１４'
+xx_motor_manual_mode_ysm,MACHINE SET ON MANUAL,,机器设定手控方式'
+xx_motor_start_wait_request_gsm,INITIALIZATION CYCLE,,初始化循环'
+xx_motor_test_enable_ysm,MACHINE MOTOR TEST UNDER WAY,,机器电机处于测试状态'
+xx_motor_reset_button_lamp_pwmo_f_rsm,OUTPUT DIAGN: N16 CH1 M4 16 2H124,,输出点故障: N16 CH1 M4 16 2H124'
+cb_xx_motor_stop_from_mP_relay_di_f_rsm,INPUT DIAGN: N21 01 2K007,,输入点故障: N21 01 2K007'
+xx_motor_test_enable_rsm___E,MACHINE MOTOR TEST UNDER WAY,,机器电机处于测试状态'
+xx_motor_start_button_lamp_pwmo_f_rsm,OUTPUT DIAGN: N16 CH1 M4 15 2H125,,输出点故障: N16 CH1 M4 15 2H125'
+cb_xx_motor_quick_brake_activ_do_f_rsm,OUTPUT DIAGN: N28 08 2K002,,输出点故障: N28 08 2K002'
+xx_motor_run_contactor_f_rsm,FAIL: X RUN CONTACTOR 2K11,,故障：Ｘ运行接触器２Ｋ１１'
+cb_xx_motor_stop_from_mP_relay_do_f_rsm,OUTPUT DIAGN: N28 06 2K007,,输出点故障: N28 06 2K007'
+xx_motor_running_status_f_rsm,INCONGRUENT X DRIVE STATE,,Ｘ主机驱动状态不协调'
+cb_xx_motor_zero_speed_relay_di_f_rsm,INPUT DIAGN: N21 07 2K003,,输入点故障: N21 07 2K003'
+cb_xx_motor_run_relay_di_f_rsm,INPUT DIAGN: N21 02 2K014,,输入点故障: N21 02 2K014'
+xx_motor_main_encoder_aem,PACKER ENCODER,,小包机编码器'
+xx_motor_backward_rotation_rem,MACHINE TURNING REVERSE,,机器反转'
+xx_motor_dangerous_speed_rem,SPEED ABOVE MAXIMUM,,机器速度高于最大值'
+xx_motor_speed_machine_min_value_rem,MACHINE SPEED LOWER THAN MINIMUM,,机器速度低于最小值'
+xx_motor_main_encoder_declare_function,FUNCTION: PACKER ENCODER,,功能：小包机编码器'
+xx_motor_main_encoder_cfg_update_rsm,PHASE CONFIGURATION UPDATE,,相位配置更新'
+cb_xx_motor_main_encoder_aen_f_rsm,ENCODER DIAGN: N03 01 2A596,,编码器故障: N03 01 2A596'
+xx_motor_service_stop_rem,SERVICE STOP BUTTON PRESSED,,服务停机按钮按下'
+xx_motor_service_stop_function,FUNCTION: SERVICE STOP,,功能：伺服停机'
+cb_xx_motor_service_stop_di_f_rsm,INPUT DIAGN: N21 13 2K029,,输入点故障: N21 13 2K029'
+xx_motor_main_inverter_diagn_function,FUNCTION: MAIN MOTOR INVERTER DIAGNOSIS,,功能：主电机变频器诊断'
+cb_xx_motor_main_inverter_diagn_di_f_rsm,INPUT DIAGN: N21 12 2A011,,输入点故障: N21 12 2A011'
+xx_motor_main_inverter_diagn_rsm,BREAKDOWN: X MOTOR DRIVER,,主电机驱动器故障'
+xx_motor_brake_resist_overtemp_function,FUNCTION: BRAKING RESISTOR OVERHEAT,,功能：制动热敏电阻过热'
+xx_motor_braking_resistor_overtemp_rsm,BRAKING RESISTOR OVERHEAT - X,,Ｘ制动热敏电阻过热'
+cb_xx_motor_brk_resist_overtemp_di_f_rsm,INPUT DIAGN: N21 25 2Q007,,输入点故障: N21 25 2Q007'
+xx_hopp_group_declare_function,FUNCTION DECLARE: CIG. HOPPER GROUP,,功能定义：烟库部件'
+xx_hopper_group,CIGARETTE HOPPER GROUP,,烟库部件'
+xx_hopp_agitators_function,FUNCTION: CIGARETTE HOPPER AGITATORS,,功能：烟库抖动器'
+xx_hopp_agitators_ref_Kn_gain_ipr,REF: HOPPER AGITATORS AT NOMINAL SPEED,,额定速度状态烟库搅拌器转速参考值'
+cb_xx_hopp_agitators_motor_driver_ko_rsm,BREAKDOWN: A.C. MOTOR - 2M610 2A610,,交流电机２Ｍ６１０和２Ａ６１０故障'
+cb_xx_hopp_agit_mot_enable_do_f_rsm,OUTPUT DIAGN: N28 11 2A610,,输出点故障: N28 11 2A610'
+cb_xx_hopp_agit_motor_driver_ok_di_f_rsm,INPUT DIAGN: N21 27 2A610,,输入点故障: N21 27 2A610'
+cb_xx_hopp_agit_mot_ref_ao_f_rsm,ANALOG OUTPUT DIAGN: N19 04 2A610,,模拟量输出点故障: N19 04 2A610'
+xx_hopp_pusher_disengage_cnt___R,REJECTIONS DUE TO PUSHER RELEASE,,推烟排脱离而剔除'
+xx_hopp_pusher_disengage_function,FUNCTION: CIGARETTE HOPPER PUSHERS,,功能：烟库推烟排'
+xx_hopp_pusher_disengage_phase_ipr,HOPPER PUSHER RELEASE PHASE,,烟库推烟排脱离相位'
+xx_hopp_pusher_engage_do_f_rsm,OUTPUT DIAGN: N16 CH1 M1 05 2Y640,,输出点故障: N16 CH1 M1 05 2Y640'
+xx_hopp_pusher_disengaged_ysm,CIGARETTE HOPPER PUSHERS RELEASED,,烟库推烟器脱离'
+xx_hopp_pusher_disengage_do_f_rsm,OUTPUT DIAGN: N16 CH1 M1 07 2Y640,,输出点故障: N16 CH1 M1 07 2Y640'
+xx_hopp_guard_lock_function,FUNCTION: PUSHER GUARD LOCK,,推烟排防护罩锁定功能'
+xx_hopp_guard_doesnt_lock_rsm,HOPPER PNEUMATIC CLOSURE DOES NOT LOCK,,烟库的气动锁未锁定'
+xx_hopp_guard_closure_locked_rsm,HOPPER PNEUMATIC CLOSURE LOCKED,,烟库的气动锁被锁定'
+xx_hopp_guard_doesnt_unlock_rsm,HOPPER PNEUMATIC CLOSURE DOES NOT UNLOCK,,烟库的气动锁未松开'
+xx_hopp_guard_lock_do_f_rsm,OUTPUT DIAGN: N16 CH1 M2 15 2Y646,,输出点故障: N16 CH1 M2 15 2Y646'
+xx_hopp_guard_closure_unlocked_rsm,HOPPER PNEUMATIC CLOSURE UNLOCKED,,烟库的气动锁被松开'
+xx_hopp_guard_lock_di_f_rsm,IN.TRANSD.DIAGN: N16 CH1 M2 13 2S4253,,传感器故障: N16 CH1 M2 13 2S4253'
+xx_hopp_cig_detect_check_disable_dpr,CHECK BYPASS: CIGARETTES IN HOPPER,,检测关闭：烟库内烟支'
+xx_hopp_cigarette_detectors_function,FUNCTION: CIGARETTE HOPPER DETECTORS,,功能：烟库探测器'
+xx_hopper_max_num_cons_miss_cig_ipr,MAXIMUM NUMBER CONSECUTIVE MISSING CIGS.,,连续缺少烟支的最多次数'
+xx_hopp_cigarette_detectors_phase_ipr,PHASE: CIGARETTE PRESENCE IN HOPPER,,相位：烟库内烟支存在检测'
+xx_hopp_cig_detect_check_disabled_msm,HOPPER CIGARETTE CHECK DISABLED,,料库内烟支检测被关闭'
+xx_hopp_cig_det_vein_1_disable_dpr,CHECK BYPASS: CIGARETTE VEIN NO 01,,关闭０１号槽烟支检测'
+xx_hopp_1_vein_cigarette_detectors_rem,NO CIGARETTE IN VEIN 01,,０１号槽烟支缺失'
+xx_hopp_cig_det_vein_1_function,FUNCTION: CIGARETTE VEIN NO. 01,,功能：０１号烟支槽纹'
+xx_hopp_cig_det_vein_1_disable_msm,HOPPER VEIN 1 CHECK DISABLED,,烟库０１号槽检测关闭'
+xx_hopp_cig_det_vein_2_disable_dpr,CHECK BYPASS: CIGARETTE VEIN NO 02,,关闭０２号槽烟支检测'
+xx_hopp_2_vein_cigarette_detectors_rem,NO CIGARETTE IN VEIN 02,,０２号槽烟支缺失'
+xx_hopp_cig_det_vein_2_function,FUNCTION: CIGARETTE VEIN NO. 02,,功能：０２号烟支槽纹'
+xx_hopp_cig_det_vein_2_disable_msm,HOPPER VEIN 2 CHECK DISABLED,,烟库０２号槽检测关闭'
+xx_hopp_cig_det_vein_3_disable_dpr,CHECK BYPASS: CIGARETTE VEIN NO 03,,关闭０３号槽烟支检测'
+xx_hopp_3_vein_cigarette_detectors_rem,NO CIGARETTE IN VEIN 03,,０３号槽烟支缺失'
+xx_hopp_cig_det_vein_3_function,FUNCTION: CIGARETTE VEIN NO. 03,,功能：０３号烟支槽纹'
+xx_hopp_cig_det_vein_3_disable_msm,HOPPER VEIN 3 CHECK DISABLED,,烟库０３号槽检测关闭'
+xx_hopp_cig_det_vein_4_disable_dpr,CHECK BYPASS: CIGARETTE VEIN NO 04,,关闭０４号槽烟支检测'
+xx_hopp_4_vein_cigarette_detectors_rem,NO CIGARETTE IN VEIN 04,,０４号槽烟支缺失'
+xx_hopp_cig_det_vein_4_function,FUNCTION: CIGARETTE VEIN NO. 04,,功能：０４号烟支槽纹'
+xx_hopp_cig_det_vein_4_disable_msm,HOPPER VEIN 4 CHECK DISABLED,,烟库０４号槽检测关闭'
+xx_hopp_cig_det_vein_5_disable_dpr,CHECK BYPASS: CIGARETTE VEIN NO 05,,关闭０５号槽烟支检测'
+xx_hopp_5_vein_cigarette_detectors_rem,NO CIGARETTE IN VEIN 05,,０５号槽烟支缺失'
+xx_hopp_cig_det_vein_5_function,FUNCTION: CIGARETTE VEIN NO. 05,,功能：０５号烟支槽纹'
+xx_hopp_cig_det_vein_5_disable_msm,HOPPER VEIN 5 CHECK DISABLED,,烟库０５号槽检测关闭'
+xx_hopp_cig_det_vein_6_disable_dpr,CHECK BYPASS: CIGARETTE VEIN NO 06,,关闭０６号槽烟支检测'
+xx_hopp_6_vein_cigarette_detectors_rem,NO CIGARETTE IN VEIN 06,,０６号槽烟支缺失'
+xx_hopp_cig_det_vein_6_function,FUNCTION: CIGARETTE VEIN NO. 06,,功能：０６号烟支槽纹'
+xx_hopp_cig_det_vein_6_disable_msm,HOPPER VEIN 6 CHECK DISABLED,,烟库０６号槽检测关闭'
+xx_hopp_cig_det_vein_7_disable_dpr,CHECK BYPASS: CIGARETTE VEIN NO 07,,关闭０７号槽烟支检测'
+xx_hopp_7_vein_cigarette_detectors_rem,NO CIGARETTE IN VEIN 07,,０７号槽烟支缺失'
+xx_hopp_cig_det_vein_7_function,FUNCTION: CIGARETTE VEIN NO. 07,,功能：０７号烟支槽纹'
+xx_hopp_cig_det_vein_7_disable_msm,HOPPER VEIN 7 CHECK DISABLED,,烟库０７号槽检测关闭'
+xx_hopp_cig_det_vein_8_disable_dpr,CHECK BYPASS: CIGARETTE VEIN NO 08,,关闭０８号槽烟支检测'
+xx_hopp_8_vein_cigarette_detectors_rem,NO CIGARETTE IN VEIN 08,,０８号槽烟支缺失'
+xx_hopp_cig_det_vein_8_function,FUNCTION: CIGARETTE VEIN NO. 08,,功能：０８号烟支槽纹'
+xx_hopp_cig_det_vein_8_disable_msm,HOPPER VEIN 8 CHECK DISABLED,,烟库０８号槽检测关闭'
+xx_hopp_cig_det_vein_9_disable_dpr,CHECK BYPASS: CIGARETTE VEIN NO 09,,关闭０９号槽烟支检测'
+xx_hopp_9_vein_cigarette_detectors_rem,NO CIGARETTE IN VEIN 09,,０９号槽烟支缺失'
+xx_hopp_cig_det_vein_9_function,FUNCTION: CIGARETTE VEIN NO. 09,,功能：０９号烟支槽纹'
+xx_hopp_cig_det_vein_9_disable_msm,HOPPER VEIN 9 CHECK DISABLED,,烟库０９号槽检测关闭'
+xx_hopp_cig_det_vein_10_disable_dpr,CHECK BYPASS: CIGARETTE VEIN NO 10,,关闭１０号槽烟支检测'
+xx_hopp_10_vein_cigarette_detectors_rem,NO CIGARETTE IN VEIN 10,,１０号槽烟支缺失'
+xx_hopp_cig_det_vein_10_function,FUNCTION: CIGARETTE VEIN NO. 10,,功能：１０号烟支槽纹'
+xx_hopp_cig_det_vein_10_disable_msm,HOPPER VEIN 10 CHECK DISABLED,,烟库１０号槽检测关闭'
+xx_hopp_cig_det_vein_11_disable_dpr,CHECK BYPASS: CIGARETTE VEIN NO 11,,关闭１１号槽烟支检测'
+xx_hopp_11_vein_cigarette_detectors_rem,NO CIGARETTE IN VEIN 11,,１１号槽烟支缺失'
+xx_hopp_cig_det_vein_11_function,FUNCTION: CIGARETTE VEIN NO. 11,,功能：１１号烟支槽纹'
+xx_hopp_cig_det_vein_11_disable_msm,HOPPER VEIN 11 CHECK DISABLED,,烟库１１号槽检测关闭'
+xx_hopp_cig_det_vein_12_disable_dpr,CHECK BYPASS: CIGARETTE VEIN NO 12,,关闭１２号槽烟支检测'
+xx_hopp_12_vein_cigarette_detectors_rem,NO CIGARETTE IN VEIN 12,,１２号槽烟支缺失'
+xx_hopp_cig_det_vein_12_function,FUNCTION: CIGARETTE VEIN NO. 12,,功能：１２号烟支槽纹'
+xx_hopp_cig_det_vein_12_disable_msm,HOPPER VEIN 12 CHECK DISABLED,,烟库１２号槽检测关闭'
+xx_hopp_cig_det_vein_13_disable_dpr,CHECK BYPASS: CIGARETTE VEIN NO 13,,关闭１３号槽烟支检测'
+xx_hopp_13_vein_cigarette_detectors_rem,NO CIGARETTE IN VEIN 13,,１３号槽烟支缺失'
+xx_hopp_cig_det_vein_13_function,FUNCTION: CIGARETTE VEIN NO. 13,,功能：１３号烟支槽纹'
+xx_hopp_cig_det_vein_13_disable_msm,HOPPER VEIN 13 CHECK DISABLED,,烟库１３号槽检测关闭'
+xx_hopp_cig_det_vein_14_disable_dpr,CHECK BYPASS: CIGARETTE VEIN NO 14,,关闭１４号槽烟支检测'
+xx_hopp_14_vein_cigarette_detectors_rem,NO CIGARETTE IN VEIN 14,,１４号槽烟支缺失'
+xx_hopp_cig_det_vein_14_function,FUNCTION: CIGARETTE VEIN NO. 14,,功能：１４号烟支槽纹'
+xx_hopp_cig_det_vein_14_disable_msm,HOPPER VEIN 14 CHECK DISABLED,,烟库１４号槽检测关闭'
+xx_hopp_cig_det_vein_15_disable_dpr,CHECK BYPASS: CIGARETTE VEIN NO 15,,关闭１５号槽烟支检测'
+xx_hopp_15_vein_cigarette_detectors_rem,NO CIGARETTE IN VEIN 15,,１５号槽烟支缺失'
+xx_hopp_cig_det_vein_15_function,FUNCTION: CIGARETTE VEIN NO. 15,,功能：１５号烟支槽纹'
+xx_hopp_cig_det_vein_15_disable_msm,HOPPER VEIN 15 CHECK DISABLED,,烟库１５号槽检测关闭'
+xx_hopp_cig_det_vein_16_disable_dpr,CHECK BYPASS: CIGARETTE VEIN NO 16,,关闭１６号槽烟支检测'
+xx_hopp_16_vein_cigarette_detectors_rem,NO CIGARETTE IN VEIN 16,,１６号槽烟支缺失'
+xx_hopp_cig_det_vein_16_function,FUNCTION: CIGARETTE VEIN NO. 16,,功能：１６号烟支槽纹'
+xx_hopp_cig_det_vein_16_disable_msm,HOPPER VEIN 16 CHECK DISABLED,,烟库１６号槽检测关闭'
+xx_hopp_cig_det_vein_17_disable_dpr,CHECK BYPASS: CIGARETTE VEIN NO 17,,关闭１７号槽烟支检测'
+xx_hopp_17_vein_cigarette_detectors_rem,NO CIGARETTE IN VEIN 17,,１７号槽烟支缺失'
+xx_hopp_cig_det_vein_17_function,FUNCTION: CIGARETTE VEIN NO. 17,,功能：１７号烟支槽纹'
+xx_hopp_cig_det_vein_17_disable_msm,HOPPER VEIN 17 CHECK DISABLED,,烟库１７号槽检测关闭'
+xx_hopp_cig_det_vein_18_disable_dpr,CHECK BYPASS: CIGARETTE VEIN NO 18,,关闭１８号槽烟支检测'
+xx_hopp_18_vein_cigarette_detectors_rem,NO CIGARETTE IN VEIN 18,,１８号槽烟支缺失'
+xx_hopp_cig_det_vein_18_function,FUNCTION: CIGARETTE VEIN NO. 18,,功能：１８号烟支槽纹'
+xx_hopp_cig_det_vein_18_disable_msm,HOPPER VEIN 18 CHECK DISABLED,,烟库１８号槽检测关闭'
+xx_hopp_cig_det_vein_19_disable_dpr,CHECK BYPASS: CIGARETTE VEIN NO 19,,关闭１９号槽烟支检测'
+xx_hopp_19_vein_cigarette_detectors_rem,NO CIGARETTE IN VEIN 19,,１９号槽烟支缺失'
+xx_hopp_cig_det_vein_19_function,FUNCTION: CIGARETTE VEIN NO. 19,,功能：１９号烟支槽纹'
+xx_hopp_cig_det_vein_19_disable_msm,HOPPER VEIN 19 CHECK DISABLED,,烟库１９号槽检测关闭'
+xx_hopp_cig_det_vein_20_disable_dpr,CHECK BYPASS: CIGARETTE VEIN NO 20,,关闭２０号槽烟支检测'
+xx_hopp_20_vein_cigarette_detectors_rem,NO CIGARETTE IN VEIN 20,,２０号槽烟支缺失'
+xx_hopp_cig_det_vein_20_function,FUNCTION: CIGARETTE VEIN NO. 20,,功能：２０号烟支槽纹'
+xx_hopp_cig_det_vein_20_disable_msm,HOPPER VEIN 20 CHECK DISABLED,,烟库２０号槽检测关闭'
+xx_foil_group_declare_function,FUNCTION DECLARE: FOIL GROUP,,功能定义：铝箔纸部件'
+xx_foil_group,FOIL GROUP,,铝箔纸部件'
+xx_foil_ended_reels_cnt___M,NUMBER OF FOIL REELS USED,,已消耗铝箔纸卷数'
+xx_foil_no_drum_rotation_rem,FOIL DRUM NOT TURNING,,未转动铝箔纸鼓轮'
+xx_foil_mid_cycle_no_position_rem,FOIL CAM AXIS: NO MID-CYCLE,,铝箔纸凸轮轴无循环中点'
+xx_foil_axis_cam_no_end_cycle_rem,FOIL CAM AXIS: NO END-OF-CYCLE,,铝箔纸凸轮轴无循环终点'
+xx_foil_automatic_splice_function,FUNCTION: AUTOMATIC FOIL CHANGE,,功能：铝箔纸自动更换'
+xx_foil_change_speed_cond_ipr,CHANGE SPEED,,换卷速度'
+xx_foil_splice_phase_ipr,FOIL SPLICING PHASE FOR CHANGE,,更换时铝箔纸接头相位'
+xx_foil_no_drum_position_rsm,FOIL DRUM OUT OF POSITION,,铝箔纸鼓轮错位'
+xx_foil_cam_axis_motor_f_rsm,DRIVER FAIL: FOIL CAM AXIS MOTOR - A392,,驱动器故障：铝箔纸凸轮轴电机－Ａ３９２'
+xx_foil_splice_guard_open_rsm___E,FOIL SPLICE GUARD OPEN,,铝箔纸拼接防护罩开启'
+xx_foil_arm_out_of_position_rsm___E,FOIL REEL ARM NOT IN POSITION,,铝箔纸卷摆臂错位'
+xx_foil_drum_torque_regulator_rsm,FOIL DRUM TORQUE REGULATOR,,铝箔纸鼓轮转矩调节器'
+xx_foil_drum_locking_no_position_rsm,FOIL DRUM LOCK OUT OF POSITION,,铝箔纸鼓轮锁定错位'
+xx_foil_arm_cocked_csm,COCK FOIL REEL ARM-LEVER,,扳动铝箔纸卷摆臂'
+xx_foil_reel_missing_rsm___E,NO FOIL REEL,,缺铝箔纸卷'
+xx_foil_autom_splice_funct_disabled_msm,ALUFOIL AUTOMATIC CHANGE STOPS EXCLUDED,,铝箔纸自动换卷停止关闭'
+xx_foil_actuate_adesive_tape_csm,FIT ADHESIVE TAPE FOR FOIL,,安装铝箔纸粘带'
+xx_foil_reel_mount_csm,LOAD FOIL REEL,,装载铝箔纸卷'
+xx_foil_splice_guard_make_csm,CLOSE FOIL SPLICE GUARD,,关闭铝箔纸拼接防护罩'
+xx_foil_reel_loading_blocked_csm,ARM OBSTRUCTS LOADING,,传送臂装载故障'
+xx_foil_missing_adesive_tape_rsm___E,FOIL TAPE NOT LOADED,,铝箔纸缺粘带'
+xx_foil_axis_cam_no_position_rsm,FOIL CAM AXIS OUT OF POSITION,,铝箔纸凸轮轴错位'
+xx_foil_copy_speed_test_dpr,TEST FOR COPYING REFERENCE,,复制参照测试'
+xx_foil_preunwinding_function,FUNCTION: FOIL PRE-UNWINDING,,功能：铝箔纸预松卷'
+xx_foil_reel_diameter_arm_cocked_up_ipr,LINEAR LEVEL FOR ARMED ARM,,摆臂摆动的线性位置'
+xx_foil_reel_diameter_drum_rot_start_ipr,LINEAR LEVEL FOR ROTATION START,,转动开始的线性位置'
+xx_foil_preunwinding_correction_N_ipr,MOTOR SPEED ADJUSTMENT,,电机速度调节'
+xx_foil_reel_max_brake_ref_val_ipr,BRAKE WITH ARM ARMED,,依靠摆臂的摆动制动'
+cb_xx_foil_preunwind_motor_ref_ao_f_rsm,ANALOG OUTPUT DIAGN: N19 10 A491,,模拟量输出点故障: N19 10 A491'
+cb_xx_foil_preun_motor_drv_stop_do_f_rsm,OUTPUT DIAGN: N28 10 A491,,输出点故障: N28 10 A491'
+xx_foil_reserv_full_position_di_f_rsm,INPUT TRANSD. DIAGN: N16 CH2 M2 09 2S326,,传感器故障: N16 CH2 M2 09 2S326'
+xx_foil_preunwinding_platform_open_rsm,FOIL PRE-UNWINDING PLATFORM OPEN,,铝箔纸预松卷平台开启'
+cb_xx_foil_reel_brake_drv_diagn_di_f_rsm,INPUT DIAGN: N21 05 2A820,,输入点故障: N21 05 2A820'
+cb_xx_foil_reservoir_level_ai_f_rsm,ANALOG INPUT DIAGN: N19 09 2A327,,模拟量输入点故障: N19 09 2A327'
+xx_foil_preunwind_platf_open_di_f_rsm,INPUT TRANSD. DIAGN: N16 CH2 M2 06 2S322,,传感器故障: N16 CH2 M2 06 2S322'
+xx_foil_reserv_alarm_posit_di_f_rsm,INPUT TRANSD. DIAGN: N16 CH2 M2 07 2S325,,传感器故障: N16 CH2 M2 07 2S325'
+cb_xx_foil_preunw_mot_drv_diagn_di_f_rsm,INPUT DIAGN: N21 06 A491,,输入点故障: N21 06 A491'
+xx_foil_preunwind_motor_drv_fault_rsm,FOIL PRE-UNWIND MOTOR DRIVER FAIL 0A491,,铝箔纸预松卷电机０Ａ４９１故障'
+xx_foil_reserv_alarm_position_alert_rsm,FOIL RESERVE AT ALARM POSITION,,铝箔纸存储量于警戒位'
+cb_xx_foil_reel_diameter_ai_f_rsm,ANALOG INPUT DIAGN: N19 07 2A311,,模拟量输入点故障: N19 07 2A311'
+xx_foil_reel_brake_driver_fault_rsm,FOIL REEL BRAKE MODULE FAIL 2A820,,铝箔纸卷制动模块２Ａ８２０故障'
+cb_xx_foil_reel_brake_reference_ao_f_rsm,ANALOG OUTPUT DIAGN: N19 08 2A820,,模拟量输出点故障: N19 08 2A820'
+xx_foil_internal_splice_rejects_cnt___R,REJECTS FOR INSIDE FOIL SPLICE,,铝箔纸内侧拼接的剔除'
+xx_foil_int_splice_check_disable_dpr,BYPASS - CONTROL,,关闭检测'
+xx_foil_internal_splice_too_long_rem,INTERNAL FOIL SPLICE TOO LONG,,铝箔纸内侧拼接太长'
+xx_foil_consecutive_internal_splices_rem,TOO MANY CONSECUTIVE INT. FOIL SPLICES,,铝箔纸的连续内侧拼接太多'
+xx_foil_int_splice_not_detected_rem,NO INNER FOIL SPLICE DETECTED,,未测出铝箔纸内侧接头'
+xx_foil_internal_splice_check_function,FOIL INTERNAL SPLICES CHECK FUNCTION,,铝箔纸内侧拼接检测功能'
+xx_foil_int_splice_head_zone_ipr,DOUBLE REJECT ZONE END PHASE,,双包剔除区结束相位'
+xx_foil_int_splice_double_rej_zone_ipr,DOUBLE REJECT ZONE START PHASE,,双包剔除区开始相位'
+xx_foil_int_splice_eff_count_ipr,WAIT STEPS FOR CHANGE SPLICE FOR EFFIC.,,换卷接头能效检测等待工位数'
+xx_foil_intrn_splice_check_disabled_msm,INTERNAL FOIL SPLICES CONTROL EXCLUDED,,关闭铝箔纸内侧拼接的检测'
+xx_foil_reject_force_dpr,FOIL - FORCED REJECT,,铝箔纸－强制剔除'
+xx_foil_reject_forced_rem,FOIL REJECT FORCE ACTIVATED,,开启强制铝箔纸剔除'
+xx_foil_reject_function,FUNCTION: FOIL SLIP REJECTION,,功能：铝箔纸单张剔除'
+xx_foil_reject_low_speed_ipr,PHASE: LOW-SPEED FOIL REJECTION,,低速时铝箔纸剔除开始相位'
+xx_foil_reject_high_speed_ipr,PHASE: HIGH-SPEED FOIL REJECTION,,相位：高速时铝箔纸剔除开始'
+xx_foil_reject_force_one_of_n_ipr,FOIL - REJECT EVERY N STEPS,,铝箔纸－每Ｎ工位剔除'
+cb_xx_foil_reject_do_f_rsm,OUTPUT DIAGN: N28 14 2Y613,,输出点故障: N28 14 2Y613'
+xx_foil_reject_forced_w_stop_en_rsm,FOIL REJ. FORCE: WRAP. LINE STOPS ENAB.,,强制铝箔纸剔除：包装线检测开启时'
+xx_foil_reject_forced_msm,FOIL REJECT FORCED,,强制铝箔纸剔除'
+xx_foil_external_splice_rejects_cnt___R,REJECTIONS DUE TO OUTER SIDE FOIL SPLICE,,铝箔纸外侧拼接的剔除'
+xx_foil_ext_splice_check_disable_dpr,BYPASS - CONTROL,,关闭检测'
+xx_foil_ext_splice_not_detected_rem,NO OUTER FOIL SPLICE DETECTED,,未测出铝箔纸外侧接头'
+xx_foil_external_splice_too_long_rem,EXTERNAL FOIL SPLICE TOO LONG,,铝箔纸外侧拼接太长'
+xx_foil_consecutive_external_splices_rem,TOO MANY EXT. CONSECUTIVE FOIL SPLICES,,铝箔纸的连续外侧拼接太多'
+xx_foil_external_splice_check_function,FUNCTION: OUTER FOIL SPLICE CHECK,,功能：铝箔纸外侧接头检测'
+xx_foil_ext_splice_head_zone_ipr,DOUBLE REJECT ZONE END PHASE,,双包剔除区结束相位'
+xx_foil_ext_splice_double_rej_zone_ipr,DOUBLE REJECT ZONE START PHASE,,双包剔除区开始相位'
+xx_foil_extrn_splice_check_disabled_msm,EXTERNAL FOIL SPLICES CONTROL EXCLUDED,,关闭铝箔纸外侧拼接检测'
+xx_foil_optical_reel_end_dpr,OPTICAL-TYPE END-OF-REEL DETECTION,,光电式卷盘耗尽探测'
+xx_foil_reel_end_function,FUNCTION: END OF REEL CHECK,,功能：卷盘耗尽检测'
+xx_foil_number_of_wraps_to_reel_end_ipr,FOIL WRAPS UNTIL END-OF-REEL,,直到卷盘结束的铝箔纸包装数'
+xx_foil_number_of_wraps_to_reel_end_ipe,FOIL WRAPS UNTIL END-OF-REEL,,直到卷盘结束的铝箔纸包装数'
+xx_foil_group_disengage_rej_cnt___R,REJECTS FOR FOIL GROUP DISENGAGE,,铝箔纸部件脱离而剔除'
+xx_foil_group_not_disengaged_rem,FOIL GROUP DID NOT DISENGAGE,,铝箔纸部件未脱离'
+xx_foil_group_not_engaged_rem,FOIL GROUP DID NOT RE-ENGAGE,,铝箔纸部件未重新啮合'
+xx_foil_group_disengage_function,FUNCTION: FOIL GROUP RELEASE,,功能：铝箔纸部件脱离'
+xx_foil_group_diseng_longstop_ipr,PHASE: FOIL RELEASE DUE TO LONG-STOP,,全排空引起铝箔部件脱离相位'
+xx_foil_group_disengage_sel_request_rsm,FOIL GROUP DISENGAGE REQUEST FROM SEL.,,按钮要求的铝箔纸部件脱离'
+xx_foil_group_disengage_timeout_rsm,BREAKDOWN ON FOIL GROUP RELEASE,,故障：铝箔纸部件脱离'
+xx_foil_group_engage_timeout_rsm,FOIL GROUP DID NOT RE-ENGAGE,,铝箔纸部件未重新啮合'
+xx_foil_group_stop_disable_sdp,FOIL GROUP STOP BYPASS,,关闭铝箔纸部件的停止'
+xx_foil_group_stop_disable_rem,FOIL GROUP STOP BYPASS,,关闭铝箔纸部件的停止'
+xx_foil_group_stop_disable_function,FUNCTION: FOIL GROUP STOP BYPASS,,功能：关闭铝箔纸部件的停止'
+xx_foil_group_stop_disable_ysm,BYPASSED FOIL GROUP STOPS,,关闭铝箔纸部件停机'
+xx_foil_unwinding_oil_enable_sdp,ENABLE: FOIL OILING,,开启铝箔纸润滑'
+xx_foil_oil_flow_function,FUNCTION: FOIL UNWINDING OIL,,功能：铝箔纸松卷润滑油'
+xx_foil_oil_flow_timer_off_ipr,DISABLE TIME - OIL FLOW,,润滑油加注关闭时间'
+xx_foil_oil_flow_timer_on_ipr,ENABLE TIME FOR OIL FLOW,,润滑油加注开启时间'
+xx_foil_oil_flow_rounds_ipr,MACHINE RPM TO ENABLE OIL FLOW,,润滑油流动开启的机器转数'
+xx_foil_oil_flow_do_f_rsm,OUTPUT DIAGN: N16 CH1 M1 11 2Y735,,输出点故障: N16 CH1 M1 11 2Y735'
+xx_foil_oil_level_function,FUNCTION: FOIL OIL-LEVEL CHECK,,功能：铝箔纸润滑油量检测'
+xx_foil_oil_level_check_rsm,FOIL OIL-LEVEL INSUFFICIENT,,铝箔纸润滑油量不足'
+xx_foil_low_oil_level_csm,FILL THE FOIL OIL TANK,,往铝箔纸润滑油缸注油'
+xx_foil_low_oil_level_ysm,FOIL OIL-LEVEL LOW,,铝箔纸润滑油低存量'
+xx_foil_low_oil_level_msm,DISABLED CHECK - FOIL OIL LEVEL,,铝箔纸润滑油位检测关闭'
+xx_foil_unwinding_force_dpr,FOIL - UNWIND FORCE ACTIVATED,,开启铝箔纸强制松卷'
+xx_foil_unwinding_forced_rem,FOIL - UNWIND FORCE ACTIVATED,,开启铝箔纸强制松卷'
+xx_foil_unwinding_block_one_of_n_ipr,FOIL - STOP UNWIND EVERY N STEPS,,铝箔纸－每Ｎ工位停止松卷'
+xx_foil_unw_force_with_stop_enabled_rsm,FOIL UNW. FORCE: WRAP. LINE STOPS ENAB.,,强制铝箔纸松卷：包装线检测开启时'
+xx_foil_unwinding_forced_msm,FOIL UNWIND FORCED,,强制铝箔纸松卷'
+xx_foil_lead_manual_insertion_function,FOIL MANUAL INSERT BUTTON FUNCTION,,铝箔纸手动插入按钮功能'
+xx_foil_manual_advance_blow_function,MATERIAL ADVANCE JET FUNCTION,,材料气动输送功能'
+xx_foil_unwinders_vacuum_stop_do_f_rsm,OUTPUT DIAGN: N16 CH1 M1 08 2Y614,,输出点故障: N16 CH1 M1 08 2Y614'
+xx_foil_automation_interface_function,FUNCTION: FOIL REEL-CHANGE INTERFACE,,功能：铝箔纸更换接口'
+xx_gp_foil_change_stopped_rsm,STOP FOIL CHANGE,,铝箔纸换卷产生的停机'
+xx_gp_foil_change_operator_request_csm,AUTOMATIC FOIL CHANGE: OPERATOR NEEDED,,铝箔纸自动换卷：需操作员介入'
+xx_foil_1w_vertical_misaligned_cnt___R,REJCTS FOR 1ST WHEEL FOIL MISALIGN,,1号轮铝箔纸不齐而剔除'
+xx_foil_1w_vertical_absence_cnt___R,REJECTIONS DUE TO NO 1ST WHEEL FOIL,,1号轮缺失铝箔纸的剔除'
+xx_foil_1w_v_align_check_disable_dpr,BYPASS - CONTROL,,关闭检测'
+xx_foil_1w_absence_rem,1ST WHEEL FOIL ABSENCE,,1号轮铝箔纸缺失'
+xx_foil_1w_undesired_presence_rem,1ST WHEEL FOIL UNDESIRED PRESENCE,,1号轮上存在不期望的铝箔纸'
+xx_foil_1w_vertical_misalignment_rem,FOIL DISALIGNED ON 1ST WHEEL,,1号轮铝箔纸偏移'
+xx_foil_1w_vert_align_check_rem,1ST WHEEL FOIL CHECK FOTOCELL INEFF.,,1号轮铝箔纸检测光电管故障'
+xx_foil_1w_vertical_alignement_function,FUNCTION: 1ST WHEEL FOIL CHECK,,功能：1号轮铝箔纸检测'
+xx_foil_1w_vert_align_phase_ipr,CHECK PHASE: 1ST WHEEL FOIL,,检测相位：1号轮铝箔纸'
+cb_xx_foil_1w_vert_align_di_f_rsm,INPUT DIAGN: N21 09 2B248,,输入点故障: N21 09 2B248'
+xx_foil_1w_alignement_check_disabled_msm,1ST WHEEL FOIL CHECK DISABLED,,1号轮铝箔纸检测关闭'
+xx_foil_chg_cabinet_interface_function,FUNCTION: CABINET INTERFACE,,功能：控制柜接口'
+xx_foil_CS_cabinet_interface_rsm,STOP FROM CABINET,,控制柜引起停机'
+xx_wl_group_declare_function,FUNCTION DECLEAR: WRAPPING LINE GROUP,,功能定义：包装线部件'
+xx_wrapping_line_group,WRAPPING LINE GROUP,,包装线部件'
+xx_wl_bundle_jam_rej_cnt___R,REJECTIONS DUE TO CIGARETTE BUNDLE JAM,,模盒烟支堵塞而剔除'
+xx_wl_bundle_jam_function,FUNCTION: CIGARETTE BUNDLE JAM,,功能：模盒烟支凌乱'
+xx_wl_bundle_jam_di_f_rsm,IN.TRANSD.DIAGN: N16 CH1 M2 07 2S115,,传感器故障: N16 CH1 M2 07 2S115'
+xx_wl_flexible_wall_rej_cnt___R,REJECTS DUE TO LATERAL BUNDLE JAMS,,烟支模盒堵塞而剔除'
+xx_wl_flexible_wall_function,FUNCTION: DISARRANGED CIGARETTE BUNDLE,,功能：烟支模盒错位'
+xx_wl_flexible_wall_di_f_rsm,IN.TRANSD.DIAGN: N16 CH1 M2 11 2S114,,传感器故障: N16 CH1 M2 11 2S114'
+xx_wl_flexible_wall_rsm,JAM: DISARRANGED CIGARETTE BUNDLE,,堵塞：模盒烟支滤嘴凌乱'
+xx_wl_optical_det_inefficiency_cnt___R,REJ.DUE TO OPT.SENS.BOARD SIGNALS FAIL,,光电探测器电路板故障而剔除'
+xx_wl_optical_det_inefficiency_rem,FAIL ON SIGNALS FROM OPT.SENSOR BOARD,,来自光电探测器电路板的出错信号'
+xx_wl_optical_detector_inefficient_rem,FAIL: OPTICAL DETECTORS,,故障：光电探测器'
+xx_wl_optical_detector_function,FUNCTION: OPTICAL DETECTORS,,功能：光电探测器'
+xx_wl_optical_det_encoder_test_off_ipr,END PHASE: OPTICAL SENSOR RESET CYCLE,,相位结束：光电探测器复位循环'
+xx_wl_optical_det_encoder_test_on_ipr,START PHASE: OPTICAL SENSOR RESET CYCLE,,相位开始：光电探测器回零循环'
+xx_wl_loose_ends_rejects_cnt___R,REJECTIONS DUE TO LOOSE-END CIGARETTES,,烟支空头而剔除'
+xx_wl_loose_ends_check_disable_dpr,BYPASS - CONTROL,,关闭检测'
+xx_wl_loose_ends_function,FUNCTION: CHECK FOR LOOSE-END CIGARETTES,,功能：检测空头烟'
+xx_wl_loose_ends_phase_ipr,CHECK PHASE: LOOSE-END CIGARETTES,,检测相位：空头烟'
+xx_wl_loose_ends_check_disabled_msm,LOOSE ENDS CHECK DISABLED,,关闭烟支空头检测'
+cb_xx_wl_loose_ends_opt_detect_di_f_rsm,INPUT DIAGN: N21 32 2A105,,输入点故障: N21 32 2A105'
+xx_wl_cig_missing_rejects_cnt___R,REJECTS DUE TO NO-CIG. FROM OPT.DETECTOR,,光电探测器测出缺烟而剔除'
+xx_wl_cig_missing_check_disable_dpr,BYPASS - CONTROL,,关闭检测'
+xx_wl_too_many_cig_missing_rem,INCOMPLETE CIGARETTE POCKETS,,模盒烟支不全'
+xx_wl_cigarette_missing_function,FUNCTION: NO CIG FROM OPT.DETECTOR CHECK,,功能：光电探测器无烟支存在检测'
+xx_wl_cigarette_missing_phase_ipr,PHASE FOR MISSING CIGARETTE CHECK,,缺烟检测相位'
+xx_wl_cigarette_missing_disabled_msm,CIGARETTE MISSING CHECK DISABLED,,缺支检测关闭'
+cb_xx_wl_filter_missing_opt_det_di_f_rsm,INPUT DIAGN: N21 31 2A105,,输入点故障: N21 31 2A105'
+xx_gp_reject_pocket_entry_cnt___t,POCKETS REJECTED AT ENTRY,,入口处模盒剔除'
+xx_wl_cig_pocket_reject_force_dpr,ENABLE: POCKET CIG. REJECTION FORCED,,开启：强制剔除模盒内烟支'
+xx_wl_cig_pocket_reject_forced_rem,CIGARETTE POCKET REJECT FORCE,,强制模盒剔除'
+xx_wl_pocket_cigarette_reject_function,FUNCTION: CIGARETTE POCKET REJECTION,,功能：烟支模盒剔除'
+xx_wl_cig_reject_low_speed_phase_ipr,PHASE: LOW-SPEED CIGARETTE REJECTION,,低速时烟支剔除开始相位'
+xx_wl_cig_reject_high_speed_phase_ipr,PHASE: HIGH-SPEED CIGARETTE REJECTION,,相位：高速时烟支剔除开始'
+xx_wl_cig_rej_reset_phase_ipr,PHASE: CIGARETTE REJECTION DE-ACTIVATE,,相位：烟支剔除结束'
+xx_wl_cig_pocket_rej_force_one_of_n_ipr,CIG. POCKETS - REJECT EVERY N STEPS,,烟支模盒－每Ｎ步剔除'
+xx_wl_cig_pocket_reject_forced_msm,CIGARETTE POCKET REJECT FORCED,,烟支模盒强制剔除'
+xx_wl_cig_pock_rej_forced_w_stop_en_rsm,CIG. POCKET REJ. FORCE: WL STOPS ENABLED,,检测开启时强制烟支模盒剔除'
+xx_wl_empty_pocket_unwanted_pres_cnt___R,REJECTS FOR UNDES.POCK.FROM EMP. POCKETS,,空模盒产生的不期望的模盒剔除'
+xx_gp_emptied_bad_pocket_entry_cnt___t,NON VALID POCKETS EMPTIED AT ENTRY,,入口处剔除的不合格烟包'
+xx_wl_empty_pockets_check_disable_dpr,EMPTY CIGARETTE POCKET CHECK BY-PASS,,模盒内烟支空头检测关闭'
+xx_wl_empty_pockets_check_fault_rem,EMPTY POCKETS: CHECK FAILURE,,空模盒检测故障'
+xx_wl_empty_pockets_check_function,FUNCTION: EMPTY CIGARETTE POCKETS,,功能：模盒缺烟'
+xx_wl_empty_pockets_end_check_phase_ipr,EMPTY POCKETS CHECK END PHASE,,空模盒检测结束相位'
+xx_wl_empty_pockets_chk_effic_phase_ipr,EFFICIENCY PHASE FOR EMPTY POCKET CHECK,,空模盒能效检测相位'
+xx_wl_empty_pockets_start_chk_phase_ipr,PHASE START: EMPTY POCKET CHECK,,空载模盒检测开始相位'
+xx_wl_empty_pockets_check_disabled_msm,EMPTY CIGARETTE POCKETS CHECK DISABLED,,模盒内烟支空头检测被关闭'
+xx_wl_entry_reject_pot_function,FUNCTION: INCOMING REJECTS TRAY,,功能：入口剔除废品箱'
+xx_wl_entry_reject_number_ipr,MAX.NO. REJECTS WITH REJECT TRAY REMOVED,,废品箱移开时，剔除的最大数'
+xx_wl_entry_reject_pot_rsm,MAX. NO. REJECTS WITHOUT ENTRY BIN,,无入口废品箱时超过最大剔除数'
+xx_wl_entry_reject_pot_csm,SET-IN ENTRY REJECT POT,,插入入口废品箱'
+xx_wl_entry_reject_pot_ysm,INCOMING REJECTS TRAY ABSENT,,无进口废品箱'
+xx_wl_entry_pot_reject_level_function,FUNCTION: ENTRY BIN REJECTS LEVEL,,功能：入口废品箱剔除料位'
+xx_wl_entry_pot_reject_level_rsm,ENTRY BIN REJECTS LEVEL EXCESSIVE,,剔除废物箱料位过高'
+xx_wl_entry_pot_reject_level_csm,CHECK ENTRY REJECTS TRAY LEVEL,,检查入口处废品箱的装满程度'
+xx_wl_entry_pot_reject_level_ysm,ENTRY BIN REJECTS LEVEL EXCESSIVE,,剔除废物箱料位过高'
+xx_wl_pocket_reject_level_function,FUNCT: LEVEL CHECK FOR POCKET REJECTS,,功能：模盒剔除物料位检测'
+xx_wl_pocket_reject_level_rsm,LEVEL TOO HIGH FOR CIG. POCKET REJECTS,,烟支模盒剔除累积过高'
+xx_wl_pocket_cig_rej_check_function,FUNCTION: POCKET REJECTION EFFICIENCY,,功能：模盒剔除能效检测'
+xx_wl_pocket_cig_rej_check_di_f_rsm,IN.TRANSD.DIAGN: N16 CH1 M1 06 2S227,,传感器故障: N16 CH1 M1 06 2S227'
+xx_wl_pocket_cig_rej_check_rsm,BREAKDOWN: CIGARETTE REJECT PUSHER,,故障：烟支剔除推杆'
+xx_wl_cig_pocket_jam_speed_cond_function,FUNCT.: SPEED GOVERN FOR CIG.POCKET JAMS,,烟支模盒堵塞速度管理功能'
+xx_wl_2w_foils_misaligned_cnt___R,REJECTS DUE TO 2ND WHEEL FOIL MISALIGN.,,2号轮铝箔纸不齐而产生的剔除'
+xx_wl_2w_foil_absences_cnt___R,REJECTS DUE TO 2ND WHEEL FOIL ABSENCE,,2号轮缺铝箔纸而产生的剔除'
+xx_wl_2w_foil_presence_check_dis_dpr,CHECK BYPASS: 2ND WHEEL FOIL PRESENCE,,关闭检测：2号轮铝箔纸存在'
+xx_wl_2w_foil_alignement_check_dis_dpr,CHECK BYPASS: 2ND WHEEL FOIL ALIGNMENT,,关闭检测：2号轮铝箔纸对齐'
+xx_wl_2w_foil_pres_align_inner_check_rem,2ND WHEEL FOIL INTERNAL CHECK INEFF.,,2号轮铝箔纸内侧检测故障'
+xx_wl_2w_undesired_foil_presence_rem,2ND WHEEL FOIL UNDESIRED PRESENCE,,2号轮存在不期望的铝箔纸'
+xx_wl_2w_foil_misalignment_rem,FOIL DISALIGNED ON 2ND WHEEL,,2号轮上铝箔纸偏移'
+xx_wl_2w_foil_pres_align_outer_check_rem,2ND WHEEL FOIL EXTERNAL CHECK INEFF.,,2号轮铝箔纸外侧检测故障'
+xx_wl_2w_foil_absence_rem,NO FOIL ON 2ND WHEEL,,2号轮缺铝箔纸'
+xx_wl_2w_remove_foil_cem,REMOVE FOIL SLIP ON 2ND WHEEL,,取走2号轮铝箔纸'
+xx_wl_2w_foil_pres_and_align_function,FUNCTION: PRES./ALIGN FOIL 2-WHEEL,,功能：2号轮铝箔纸存在／对齐'
+xx_wl_2w_foil_pres_align_phase_ipr,PHASE: 2ND WHEEL FOIL CHECK,,相位：2号轮铝箔纸检测'
+cb_xx_wl_2w_foil_pres_align_out_di_f_rsm,INPUT DIAGN: N21 30 2B218,,输入点故障: N21 30 2B218'
+xx_wl_2w_foil_presence_check_dis_msm,2ND WHEEL FOIL PRESENCE BYPASSED,,2号轮铝箔纸存在检测关闭'
+cb_xx_wl_2w_foil_pres_align_in_di_f_rsm,INPUT DIAGN: N21 26 2B219,,输入点故障: N21 26 2B219'
+xx_wl_2w_foil_align_check_dis_msm,2ND WHEEL FOIL ALIGNEMENT BYPASSED,,2号轮铝箔纸对齐检测关闭'
+xx_wl_stop_disable_sdp,WRAPPING LINE STOP BYPASS,,包装线停顿关闭'
+xx_wl_stop_disable_rem,WRAPPING LINE STOP BYPASS,,包装线停顿关闭'
+xx_wl_stop_disable_function,WRAP LINE STOP EXCLUSION FUNCTION,,包装线停顿关闭功能'
+xx_wl_stop_disable_ysm,WRAPPING LINE STOPS DISABLED,,包装线停顿被关闭'
+xx_exit_group_declare_function,FUNCTION DECLARE: EXIT GROUP,,功能定义：出口部件'
+xx_exit_group,EXIT GROUP,,出口部件'
+xx_umi_group_declare_function,FUNCTION DECLARE: UPSTREAM INTERFACE GRP,,功能定义：上游机连接部件'
+xx_upstream_machinery_interface_group,UPSTREAM INTERFACE GROUP,,上游机接口部件'
+xx_umi_cigarette_buffer_wl_emptying_dpr,X LONGSTOP SELECT.FROM CIG.RESERVE STOP,,烟支缓冲器停机引起全程排空'
+xx_umi_cigarette_buffer_stop_function,FUNCTION: STOP FROM CIGARETTE RESERVE,,功能：烟支缓冲器引起停机'
+xx_umi_cigarette_buffer_stop_rsm___EU,STOP FROM CIGARETTE RESERVE,,烟支缓冲器引起停机'
+xx_umi_packer_set_ref_for_buffer_dpr,ADJUSTING THE REFERENCE FOR CIG. BUFFER,,调整给烟支缓冲器的参考值'
+xx_umi_packer_speed_info_function,FUNCTION: REAL SPEED OF PACKER,,功能：小包机实际速度'
+xx_umi_packer_set_ref_for_buffer_rsm,SET REFERENCE ADJUSTM. FOR CIG. BUFFER,,设置烟支缓冲器调整的参考值'
+xx_dmi_group_declare_function,FUNCTION:DOWNSTREAM MACHINERY INTERFACE,,功能：下游机接口'
+xx_downstream_machinery_interface_group,DOWNSTREAM MACHINERY INTERFACE GROUP,,下游机连接部件'
+xx_dmi_packer_min_speed_function,FUNCTION: CELLOPHANER INTERFACE,,小包透明纸包装机接口功能'
+xx_dmi_immediate_exit_belt_stop_dis_dpr,BYPASS - CONTROL,,关闭检测'
+xx_sg_group_declare_function,FUNCTION DECLARE: SAFETY GUARD GROUP,,功能定义：安全防护罩部件'
+xx_safety_guard_group,SAFETY GUARD GROUP,,安全防护罩部件'
+xx_sg_guard_open_detect_f_rem,RELAY FAULT 2K20 - GUARD,,防护罩继电器２Ｋ２０故障'
+xx_sg_safety_guard_line_function,FUNCTION: SAFETY GUARD SET,,功能：系列安全防护罩'
+xx_sg_safety_guard_line_rsm,SAFETY GUARD SET FAIL,,安全防护罩装置故障'
+cb_xx_sg_safety_guard_line_di_f_rsm,INPUT DIAGN: N21 19 2K020,,输入点故障: N21 19 2K020'
+xx_sg_hopper_safety_guard_function,FUNCTION: HOPPER GUARD,,功能：烟库防护罩'
+xx_sg_hopper_safety_guard_rsm,HOPPER PUSHER GUARD OPEN,,烟库推烟排防护罩打开'
+xx_sg_lateral_right_guard_function,FUNCTION: RIGHT LATERAL GUARD,,功能：右侧防护罩'
+xx_sg_lateral_right_guard_rsm,RIGHT LATERAL XE GUARD,,右机身右侧防护罩'
+xx_sg_upper_centr_safety_guard_function,FUNCTION: CENTRAL FRONT GUARD,,功能：正前防护罩'
+xx_sg_upper_centr_guard_rsm,TOP CENTRE SAFETY GUARD,,正前安全防护罩'
+xx_sg_safety_guard_unlock_function,FUNCTION: GUARD RELEASE,,功能：安全防护罩松锁'
+xx_sg_move_manual_mode_function,FUNCTION SELECT OPEN/CLOSE GUARD,,选择开／关防护罩功能'
+xx_sg_up_move_manual_mode_ysm,SELECTION: GUARD LIFT,,选择：防护罩提升'
+xx_sg_dw_move_manual_mode_ysm,SELECTION: GUARD DOWN,,选择：防护罩下降'
+xx_sg_dw_move_manual_mode_lock_ysm,MAIN GUARD DESCENT NOT AUTHORIZED,,主防护罩下降禁止'
+xx_sg_descending_zone_to_be_clear_csm,FREE MAIN GUARD DESCENT OF OBSTACLES,,清除主防护罩下降障碍物'
+xx_sg_hopper_guard_unlock_function,FUNCTION: HOPPER SAFETY GUARD RELEASE,,功能：料库安全防护罩松开'
+xx_sg_hopper_guard_doesnt_lock_rsm,HOPPER GUARD DOES NOT LOCK,,烟库防护罩未锁定'
+xx_sg_hopper_grd_doesnt_unlock_rsm,HOPPER GUARD DOES NOT UNLOCK,,烟库防护罩未松开'
+xx_sg_hopper_guard_locked_rsm,BLOCKED PUSHER GUARD,,推烟排防护罩被锁定'
+xx_sg_later_right_guard_unlock_function,FUNCTION: XE RH. LATERAL GUARD RELEASE,,功能：右机身右侧防护罩松开'
+xx_sg_later_right_guard_unlocked_rsm,RELEASED XE RH. LATERAL GUARD,,右机身右侧防护罩松开'
+xx_sg_later_right_guard_doesnt_lock_rsm,XE RIGHT SIDE GUARD DOES NOT LOCK,,右机身右侧防护罩未锁定'
+xx_sg_later_right_guard_locked_rsm,BLOCKED XE RH. LATERAL GUARD,,机器右侧防护罩锁定'
+xx_sg_later_right_grd_doesnt_unlock_rsm,XE RIGHT SIDE GUARD DOES NOT UNLOCK,,右机身右侧防护罩未松开'
+xx_sg_upper_centr_guard_move_function,FUNCTION: UPPER CENTRAL GUARD MOVEMENT,,功能：中上防护罩移动'
+cb_xx_sg_up_centr_guard_up_move_do_f_rsm,OUTPUT DIAGN: N28 17 2Y1000,,输出点故障: N28 17 2Y1000'
+cb_xx_sg_up_centr_guard_dw_move_do_f_rsm,OUTPUT DIAGN: N28 18 2Y1000,,输出点故障: N28 18 2Y1000'
+xx_sg_upper_centr_guard_sft_bar_rem,UPPER CENTRAL GUARD SAFETY BAR,,中上防护罩安全杆'
+xx_sg_upper_centr_guard_sft_bar_function,FUNCTION: UPPER CENTRAL GUARD SAFETY BAR,,功能：中上防护罩安全杆'
+cb_xx_sg_upper_centr_guard_bar_di_f_rsm,INPUT DIAGN: N21 10 2K4032,,输入点故障: N21 10 2K4032'
+xx_sg_upper_centr_guard_air_cut_function,GUARD MOVEMENT PNEUMATIC SAFETY FUNCTION,,防护罩移动气动安全功能'
+cb_xx_sg_upper_ce_guard_air_cut_do_f_rsm,OUTPUT DIAGN: N28 19 2Y1001,,输出点故障: N28 19 2Y1001'
+xx_sg_upper_centr_guard_reset_rem,GUARD SAFETY CIRCUIT RESET FAIL,,防护罩安全电路复位失败'
+xx_sg_upper_centr_guard_reset_function,GUARD PNEUM. SAFETY CIRCUIT RESET FUNC.,,防护罩气动安全电路复位功能'
+xx_sg_upper_centr_guard_sft_bar_fail_rsm,FAULT: CENTRAL UPPER GUARD SAFETY DEVICE,,故障：中上防护罩安全装置'
+xx_sg_upper_centr_guard_res_wait_msm,GUARD CIRCUIT RESET WAIT,,防护罩电路复位等待'

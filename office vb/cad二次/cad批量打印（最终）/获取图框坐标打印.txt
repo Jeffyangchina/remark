@@ -1,0 +1,73 @@
+Sub bplot()
+
+Dim MyFile, MyPath, MyName
+ Dim objDoc As AutoCAD.AcadDocument
+ Dim blnRet As Boolean
+Dim resl As Boolean
+ Dim point1 As Variant, point2 As Variant
+ Dim pickobj As AcadEntity
+ Dim n As Integer
+  Dim UpperRight(0 To 1) As Double, LowerLeft(0 To 1) As Double
+  
+MyPath = "E:\BITMAP\yang\"
+MyFile = Dir(MyPath & "*.dwg")
+
+n = 0
+Do While MyFile <> ""
+
+
+Set objDoc = Documents.Open(MyPath & MyFile)
+Set objlayout = ThisDrawing.ModelSpace.Layout
+objlayout.ConfigName = "\\Pcj4615\HP LJ 5200"
+'If automedia Then '随图纸大小 不加就是自定义大小
+ThisDrawing.ModelSpace.Layout.CanonicalMediaName = "A4"
+'End If
+objlayout.CenterPlot = True '居中打印
+objlayout.StyleSheet = "烟机0.3-0.18.ctb"
+
+For Each pickobj In ThisDrawing.ModelSpace
+ If pickobj.ObjectName = "AcDbBlockReference" Then
+     n = 1
+     pickobj.GetBoundingBox point1, point2 '取得图框坐标
+  Exit For
+  On Error Resume Next
+End If
+
+ Next pickobj
+ 
+
+LowerLeft(0) = point1(0)
+LowerLeft(1) = point1(1)
+UpperRight(0) = point2(0)
+UpperRight(1) = point2(1)
+If Abs(UpperRight(0) - LowerLeft(0)) < Abs(UpperRight(1) - LowerLeft(1)) Then
+   objlayout.PlotRotation = ac0degrees
+   Else
+     objlayout.PlotRotation = ac90degrees
+End If
+
+
+'objlayout.PlotType = acExtents '打印当前选定空间范围内的所有对象。
+
+
+'If n = 1 Then
+'objlayout.PlotType = acWindow '打印当前选定窗口内的所有对象。
+'objlayout.SetWindowToPlot LowerLeft, UpperRight
+'End If
+ ' If n = 0 Then '还是得范围打印否则不行
+   objlayout.PlotType = acExtents
+   'End If
+objDoc.SetVariable "BACKGROUNDPLOT", 0 '这条很重要 是后台打印
+
+Set objPlot = objDoc.Plot
+
+
+blnRet = objPlot.PlotToDevice("\\Pcj4615\HP LJ 5200")
+
+objDoc.Save
+objDoc.Close
+
+MyFile = Dir
+On Error Resume Next
+Loop
+End Sub

@@ -1,0 +1,17 @@
+https://blog.csdn.net/u012436149/article/details/79310176
+
+torchtext.datasets: 包含了常见的数据集.
+加载不同文件格式的 corpus
+Tokenization: 将句子 分解成 词列表。
+ Vocab: 构建 当前 corpus 的词汇表
+Numericalize/Indexify: 将 词 映射成 index
+Word Vector: 词向量
+Batching: generate batches of training sample (padding is normally happening here)
+
+数据集划分和embdedding lookup不支持,这个可以使用 pytorch 的 Embedding Layer解决
+
+torchtext.data.Field
+
+TEXT.build_vocab(train, vectors="glove.6B.100d")构建语料库的 Vocabulary,同时，加载预训练的 word-embedding.  解释为： 从预训练的 vectors 中，将当前 corpus 词汇表的词向量抽取出来，构成当前 corpus 的 Vocab（词汇表）。
+
+torchtext 使用了动态 padding，意味着 batch内的所有句子会 pad 成 batch 内最长的句子长度。

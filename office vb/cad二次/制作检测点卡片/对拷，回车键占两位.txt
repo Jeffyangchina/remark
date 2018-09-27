@@ -1,0 +1,70 @@
+Sub bplot()
+
+
+Dim i As Integer
+
+Dim wdapp As Word.Application '定义word接口
+Dim wdbook As Word.Document
+
+Dim wdbook2 As Word.Document
+
+ 
+    Dim daima As String, v As String, o As String, p As String, w As String, pic As String, bj As String, daima2 As String, daima3 As String
+    
+
+    Dim j As Integer, n As Integer, l As Integer, num As Integer, num1 As Integer, num2 As Integer
+
+
+   
+Set wdapp = CreateObject("Word.Application") '定义Word
+Set wdbook = Documents.Open("E:\BITMAP\1\X6S检测点卡片.doc")
+Set wdbook2 = Documents.Open("E:\BITMAP\1\X6S检测点卡片-FY.doc")
+
+    For i = 1 To 158
+    Set hyrange = wdbook2.Tables(i).Range
+    Set hyrange1 = hyrange.Rows(2).Cells(4).Range
+        daima = hyrange1.Text
+           n = InStrRev(daima, "")
+           daima = Left(daima, n - 2)
+    Set hyrange1 = hyrange.Rows(4).Cells(2).Range
+         daima2 = hyrange1.Text
+          n = InStrRev(daima2, "")
+           daima2 = Left(daima2, n - 2)
+    Set hyrange1 = hyrange.Rows(5).Cells(2).Range
+         daima3 = hyrange1.Text
+          n = InStrRev(daima3, "")
+           daima3 = Left(daima3, n - 2)
+         
+      Set myrange = wdbook.Tables(i + 329).Range
+     Set myrange1 = myrange.Rows(2).Cells(4).Range '选中第六行的第一个单元格
+          myrange1.Text = daima
+       Set myrange1 = myrange.Rows(4).Cells(2).Range '选中第六行的第一个单元格
+          myrange1.Text = daima2
+     Set myrange1 = myrange.Rows(5).Cells(2).Range '选中第六行的第一个单元格
+          myrange1.Text = daima3
+          
+          
+
+
+Set hyrange1 = hyrange.Rows(6).Cells(1).Range '选中第六行的第一个单元格
+hyrange1.Copy
+
+
+Set myrange1 = myrange.Rows(6).Cells(1).Range
+Set myrange1 = myrange1.Paragraphs(2).Range
+myrange1.Paste
+    
+   
+On Error Resume Next
+  Next i
+wdbook.Save
+wdbook.Close
+
+
+wdbook2.Close
+
+wdapp.Quit
+End Sub
+
+
+

@@ -1,0 +1,81 @@
+Private Declare Function FindWindow Lib "user32" Alias "FindWindowA" (ByVal lpClassName As String, ByVal lpWindowName As String) As Long
+Public Declare Function PostMessage Lib "user32" Alias "PostMessageA" (ByVal hwnd As Long, ByVal wMsg As Long, ByVal wParam As Long, lParam As Any) As Long
+Private Declare Sub Sleep Lib "kernel32.DLL" (ByVal dwMilliseconds As Long) '延迟程序sleep(1000)=1秒
+
+Sub bplot()
+
+Dim MyFile, MyPath, MyName
+ Dim objDoc As AutoCAD.AcadDocument
+ Dim blnRet As Boolean
+Dim resl As Boolean
+ Dim point1 As Variant, point2 As Variant
+ Dim pickobj As AcadEntity
+ Dim n As Variant
+ Dim i As Integer
+Dim n1 As Variant
+  Dim UpperRight(0 To 1) As Double, LowerLeft(0 To 1) As Double
+  Dim hwnd  As Long
+MyPath = "E:\BITMAP\yang\"
+MyFile = Dir(MyPath & "*.dwg")
+
+Sleep (1000)
+Do While MyFile <> ""
+i = 0
+
+Set objDoc = Documents.Open(MyPath & MyFile)
+Set objlayout = ThisDrawing.ModelSpace.Layout
+objlayout.ConfigName = "Adobe PDF" '"\\Pcj4615\HP LJ 5200"
+'If automedia Then '随图纸大小 不加就是自定义大小
+'ThisDrawing.ModelSpace.Layout.CanonicalMediaName = "A4"  '指定图纸大小 如果随图纸大小则不要这条 不要这条下面要布满图纸
+'End If
+objlayout.CenterPlot = True '居中打印
+objlayout.StyleSheet = "烟机0.3-0.18.ctb"
+
+
+ 
+
+'objlayout.PlotType = acExtents '打印当前选定空间范围内的所有对象。
+
+objlayout.StandardScale = acScaleToFit '这条是指布满图纸 如果指定了图纸大小 则不用这条
+
+   objlayout.PlotType = acExtents
+   
+'objDoc.SetVariable "BACKGROUNDPLOT", 0 '这条很重要 是后台打印
+
+Set objPlot = objDoc.Plot
+
+
+blnRet = objPlot.PlotToDevice("Adobe PDF") '"\\Pcj4615\HP LJ 5200"
+On Error Resume Next
+'Application.Wait Now + TimeValue("0:00:01") '这条程序只能在excel里跑
+Sleep (2000)
+hwnd = FindWindow(vbNullString, "另存 PDF 文件为")
+
+
+
+
+Do While hwnd = 0
+Sleep (1000)
+i = i + 1
+hwnd = FindWindow(vbNullString, "另存 PDF 文件为")
+ '如果跑偏则在5秒内跳出
+ If i > 5 Then
+  
+  Exit Do
+  End If
+Loop
+
+If hwnd <> 0 Then
+      SendKeys ("~"), True
+End If
+objDoc.Save
+objDoc.Close
+
+MyFile = Dir
+On Error Resume Next
+Loop
+End Sub
+
+
+
+

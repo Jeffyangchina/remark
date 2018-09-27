@@ -1,0 +1,222 @@
+Sub bplot()
+
+Dim sstext As AcadSelectionSet
+Dim filtert(0) As Integer
+Dim filterd(0) As Variant
+
+Dim objDoc As AutoCAD.AcadDocument
+ 
+Dim pdfpth As String
+Dim pos As Integer
+Dim h As String
+Dim nh As String
+'Dim x As AcadHyperlinks
+Dim xh As AcadHyperlink
+Dim hs As String
+
+Dim exl As Excel.Application
+Dim wb As Excel.Workbook
+Dim sht As Excel.Worksheet
+Dim i As Integer
+Dim pickobj As AcadEntity
+
+
+Set exl = CreateObject("Excel.Application") '定义excel
+Set wb = exl.Workbooks.Open("E:\BITMAP\" & "xit.xls")
+Set sht = wb.Worksheets("sheet1")
+
+MyPath = "E:\BITMAP\"
+MyFile = Dir(MyPath & "*.dwg")
+
+
+Do While MyFile <> ""
+
+Set objDoc = Documents.Open(MyPath & MyFile)
+Set sstext = objDoc.SelectionSets.Add("ss")
+filtert(0) = 0
+filterd(0) = "TEXT"
+sstext.Select acSelectionSetAll, , , filtert, filterd
+
+For Each pickobj In sstext
+  If pickobj.ObjectName = "AcDbText" Then'这里找的是单行字，多行子另有其他
+  hs = pickobj.TextString
+  
+  For i = 1 To 450
+    If hs = exl.Cells(i, 1) Then
+    pickobj.Color = acGreen
+    h = exl.Cells(i, 1)
+    nh = ".\" & h & ".dwg"
+   Set xh = pickobj.Hyperlinks.Add("AutoDesk")  '超级链接赋值
+    xh.URL = "e:\BITMAP\" & h & ".dwg"
+     xh.URLNamedLocation = h
+    Exit For
+    End If
+  Next
+  End If
+  
+Next
+On Error Resume Next
+objDoc.Close
+wb.Close
+
+MyFile = Dir
+
+Loop
+End Sub
+/////////////////////////最新版（有问题，有些线号也会超级链接）
+
+Sub bplot()
+
+Dim sstext As AcadSelectionSet
+Dim filtert(0) As Integer
+Dim b As Integer
+Dim c As Integer
+Dim filterd(0) As Variant
+
+Dim objDoc As AutoCAD.AcadDocument
+ 
+Dim pdfpth As String
+Dim pos As Integer
+Dim h As String
+Dim nh As String
+Dim x As AcadHyperlinks
+Dim xh As AcadHyperlink
+Dim hs As String
+Dim a As Integer
+
+Dim exl As Excel.Application
+Dim wb As Excel.Workbook
+Dim sht As Excel.Worksheet
+Dim i As Integer
+Dim pickobj As AcadEntity
+
+
+Set exl = CreateObject("Excel.Application") '定义excel
+Set wb = exl.Workbooks.Open("E:\BITMAP\" & "bit.xls")
+Set sht = wb.Worksheets("sheet1")
+
+MyPath = "E:\BITMAP\"
+MyFile = Dir(MyPath & "*.dwg")
+
+
+Do While MyFile <> ""
+
+Set objDoc = Documents.Open(MyPath & MyFile)
+Set sstext = objDoc.SelectionSets.Add("ss")
+filtert(0) = 0
+filterd(0) = "TEXT"
+sstext.Select acSelectionSetAll, , , filtert, filterd
+Set c = 0
+For Each pickobj In sstext
+ If pickobj.ObjectName = "AcDbText" Then'这里找的是单行字，多行子另有其他
+  hs = pickobj.TextString
+  If hs <> "" Then
+  
+  a = Asc(Mid(hs, 1, 1))'取单行字的第一个单元，这里判断是不是1-6，再做超级链接
+  End If
+  If a < 55 And a > 47 Then'这里是1-6的ascii
+   For i = 1 To 443
+    h = exl.Cells(i, 1)
+    b = InStr(h, hs)'可以使用b >=1 And b <=2 And hs<>"" Then
+     If b >= 1 And hs <> "" Then'hs是cad中字符，h是excel中字符，如果在h中找到hs则返回位置，这里就是出问题的地方，其实只是为了防止有的多个0'
+       pickobj.Color = acGreen
+       c = c + 1
+      nh = ".\" & h & ".dwg"
+      Set xh = pickobj.Hyperlinks.Add("c")  '超级链接
+      
+      
+      xh.URL = nh '"e:\BITMAP\" & h & ".dwg"
+       'xh.URLNamedLocation = h
+     
+      
+      
+       Exit For
+     End If
+     Next i
+ End If
+ End If
+ 
+  Next pickobj
+
+On Error Resume Next
+objDoc.Save
+
+objDoc.Close
+MyFile = Dir
+Loop
+
+wb.Close
+End Sub
+////////////////////////////////////////////////////////////////////删除cad所有的超级链接
+Sub bplot()
+
+Dim sstext As AcadSelectionSet
+Dim filtert(0) As Integer
+Dim b As Integer
+Dim c As Integer
+Dim filterd(0) As Variant
+
+Dim objDoc As AutoCAD.AcadDocument
+ 
+Dim pdfpth As String
+Dim pos As Integer
+Dim h As String
+Dim nh As String
+Dim x As AcadHyperlinks
+Dim xh As AcadHyperlink
+Dim hs As String
+Dim a As Integer
+
+Dim exl As Excel.Application
+Dim wb As Excel.Workbook
+Dim sht As Excel.Worksheet
+Dim i As Integer
+Dim pickobj As AcadEntity
+
+
+
+MyPath = "E:\BITMAP\bit\"
+MyFile = Dir(MyPath & "*.dwg")
+
+
+Do While MyFile <> ""
+
+Set objDoc = Documents.Open(MyPath & MyFile)
+Set sstext = objDoc.SelectionSets.Add("ss")
+filtert(0) = 0
+filterd(0) = "TEXT"
+sstext.Select acSelectionSetAll, , , filtert, filterd
+ 
+For Each pickobj In sstext
+ If pickobj.ObjectName = "AcDbText" Then
+  hs = pickobj.TextString
+  If hs <> "" Then
+  Set x = pickobj.Hyperlinks
+  Set xh = x.Add("")
+     For Each xh In x
+      xh.Delete
+      Next
+  
+  End If
+  
+    
+ End If
+
+ 
+  Next pickobj
+
+On Error Resume Next
+objDoc.Save
+
+objDoc.Close
+MyFile = Dir
+Loop
+
+wb.Close
+End Sub
+
+
+
+
+
+

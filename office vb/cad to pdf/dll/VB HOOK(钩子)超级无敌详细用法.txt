@@ -1,0 +1,149 @@
+hook是WINDOWS提供的一种消息处理机制，它使得程序员可以使用子过程来监视系统消息，并在消息到达目标过程前得到处理。 
+下面将介绍WINNDOWS HOOKS并且说明如何在WINDOWS 程序中使用它。
+
+关于HOOKS 
+使用HOOK 将会降低系统效率，因为它增加了系统处量消息的工作量。建议在必要时才使用HOOK，并在消息处理完成后立即移去该HOOK。
+
+
+HOOK链 
+WINDOWS提供了几种不同类型的HOOKS；不同的HOOK可以处理不同的消息。例如，WH_MOUSE HOOK用来监视鼠标消息。 
+WINDOWS为这几种HOOKS维护着各自的HOOK链。HOOK链是一个由应用程序定义的回调函数队列，当某种类型的消息发生时，WINDOWS向此种类型的HOOK链的第一个函数发送该消息，在第一函数处理完该消息后由该函数向链表中的下一个函数传递消息，依次向下。如果链中某个函数没有向下传送该消息，那么链表中后面的函数将得不到此消息。（对于某些类型的HOOK，不管HOOK链中的函数是否向下传递消息，与此类型HOOK联系的所有HOOK函数都会收到系统发送的消息）
+
+
+HOOK过程 
+为了拦截特定的消息，你可以使用SetWindowsHookEx函数在该类型的HOOK链中安装你自己的HOOK函数。该函数语法如下： 
+public function MyHook(nCode,wParam,iParam) as long 
+‘加入代码 
+end function 
+其中MyHook可以随便命名，其它不能变。该函数必须放在模块段。nCode指定HOOK类型。wParam,iParam的取值随nCode不同而不同，它代表了某种类型的HOOK的某个特定的动作。 
+SetWindowsHookEx总是将你的HOOK函数放置在HOOK链的顶端。你可以使用CallNextHookEx函数将系统消息传递给HOOK链中的下一个函数。 
+[注释]对于某些类型的HOOK，系统将向该类的所有HOOK函数发送消息，这时，HOOK函数中的CallNextHookEx语句将被忽略。 
+全局HOOK函数可以拦截系统中所有线程的某个特定的消息（此时该HOOK函数必须放置在DLL中），局部HOOK函数可以拦截指定线程的某特定消息（此时该HOOK函数可以放置在DLL中，也可以放置在应用程序的模块段）。 
+[注释] 建议只在调试时使用全局HOOK函数。全局HOOK函数将降低系统效率，并且会同其它使用该类HOOK的应用程序产生冲突。
+
+
+HOOK类型 
+WH_CALLWNDPROC 和 WH_CALLWNDPROCRET HOOK 
+WH_C ALLWNDPROC 和WH_CALLWNDPROCRET HOOK可以监视SendMessage发送的消息。系统在向窗体过程发送消息前，将调用WH_CALLWNDPROC；在窗体过程处理完该消息后系统将调用WH_CALLWNDPROCRET。 
+WH_CALLWNDPROCRET HOOK会向HOOK过程传送一个CWPRETSTRUCT结构的地址。该结构包含了窗体过程处理系统消息后的一些信息。 
+WH_CBT Hook 
+系统在激活，创建，消毁，最小化，最大化，移动，改变窗体前；在完成一条系统命令前；在从系统消息队列中移去鼠标或键盘事件前；在设置输入焦点前，或同步系统消息队列前，将调用WH_CBT HOOK。你可以在你的HOOK 过程拦截该类HOOK，并返回一个值，告诉系统，是否继续执行上面的操作。 
+WH_DEBUG HOOK 
+系统在调用与某种HOOK类型联系的HOOK过程前，将调用WH_DEBUG ，应用程序可以使用该HOOK决定是否让系统执行某种类型的HOOK。 
+WH_FOREGROUNDIDLE Hook 
+系统在空闲时调用该HOOK，在后台执行优先权较低的应用程序。 
+WH_GETMESSAGE Hook 
+WH_GETMESSAGE Hook使应用程序可以拦截GetMessage 或 PeekMessage的消息。应用程序使用WH_GETMESSAGE HOOK监视鼠标、键盘输入和发送到队列中的其它消息。 
+WH_JOURNALRECORD Hook 
+WH_JOURNALRECORD Hook使应用程序可以监视输入事件。典型地，应用程序使用该HOOK记录鼠标、键盘输入事件以供以后回放。该HOOK是全局HOOK，并且不能在指定线程中使用。 
+WH_JOURNALPLAYBACK Hook 
+` WH_JOURNALPLAYBACK Hook使应用程序可以向系统消息队列中插入消息。该HOOK可以回放以前由WH_JOURNALRECORD HOOK录制的鼠标、键盘输入事件。在WH_JOURNALPLAYBACK Hook安装到系统时，鼠标、键盘输入事件将被屏蔽。该HOOK同样是一个全局HOOK，不能在指定线程中使用。 
+WH_JOURNALPLAYBACK Hook返回一个时间暂停值，它告诉系统，在处理当前回放的消息时，系统等待百分之几秒。这使得此HOOK可以控制在回放时的时间事件。 
+WH_KEYBOARD Hook 
+WH_KEYBOARD Hook使应用程序可以监视由GetMessage和PeekMessage返回的WM_KEYDOWN 及WM_KEYUP消息。应用程序使用该HOOK监视发送到消息队列中的键盘输入。 
+WH_MOUSE Hook 
+WH_MOUSE Hook 使应用程序可以监视由GetMessage和PeekMessage返回的消息。应用程序使用该HOOK监视发送到消息队列中的鼠标输入。 
+WH_MSGFILTER and WH_SYSMSGFILTER Hooks 
+WH_MSGFILTER 和WH_SYSMSGFILTER Hooks使应用程序可以监视菜单、滚动条、消息框、对话框，当用户使用ALT+TAB或ALT+ESC来切换窗体时，该HOOK也可以拦截到消息。WH_MSGFILTER仅在应用程序内部监视菜单、滚动条、消息框、对话框，而WH_SYSMSGFILTER则可以在系统内监视所有应用程序的这些事件。 
+WH_SHELL Hook 
+一个SHELL程序可以使用WH_SHELL Hook来接收重要的信息。当一个SHELL程序被激活前或当前窗体被创建、消毁时，系统会调用WH_SHELL Hook过程。 
+使用HOOK 
+安装、消毁HOOK过程 
+监视系统事件
+
+安装、消毁HOOK过程 
+使用SetWindowsHookEx函数，指定一个HOOK类型，自己的HOOK过程是全局还是局部HOOK，同时给出HOOK过程的进入点，就可以轻松的安装你自己的HOOK过程。
+
+Declare Function SetWindowsHookEx Lib "user32" Alias "SetWindowsHookExA" _
+             (ByVal idHook As Long, _
+               ByVal lpfn As Long,         _
+               ByVal hmod As Long,         _
+               ByVal dwThreadId As Long) As Long
+
+idHook代表是何种Hook，有以下几种
+           Public Const WH_CALLWNDPROC = 4
+           Public Const WH_CALLWNDPROCRET = 12
+           Public Const WH_CBT = 5
+           Public Const WH_DEBUG = 9
+           Public Const WH_FOREGROUNDIDLE = 11
+           Public Const WH_GETMESSAGE = 3
+           Public Const WH_HARDWARE = 8
+           Public Const WH_JOURNALPLAYBACK = 1
+           Public Const WH_JOURNALRECORD = 0
+           Public Const WH_KEYBOARD = 2
+           Public Const WH_MOUSE = 7
+           Public Const WH_MSGFILTER = (-1)
+           Public Const WH_SHELL = 10
+           Public Const WH_SYSMSGFILTER = 6
+
+lpfn代表Hook Function所在的Address，这是一个CallBack Fucnction，当挂上某个Hook时，我们便得定义一个Function来当作某个讯息产生时，来处理它的Function，这个Hook Function有一定的叁数格式
+
+           Private Function HookFunc(ByVal nCode As Long, _
+                                   ByVal wParam As Long, _
+                                   ByVal lParam As Long ) As Long
+
+               nCode 代表是什麽请况之下所产生的Hook，随Hook的不同而有不同组的可能值。
+               wParam lParam 传回值则随Hook的种类和nCode的值之不同而不同。
+           因这个叁数是一个 Function的Address所以我们固定将Hook Function放在.Bas中，并以AddressOf HookFunc传入。至於Hook Function的名称我们可以任意给定，不一定叫 HookFunc
+
+hmod 代表.DLL的hInstance，如果是Local Hook，该值可以是Null(VB中可传0进去)，而如果是Remote Hook，则可以使用GetModuleHandle(".dll名称")来传入。
+
+dwThreadId 代表执行这个Hook的ThreadId，如果不设定是那个Thread来做，则传0(所以一般来说，Remote Hook传0进去)，而VB的Local Hook一般可传App.ThreadId进去。
+
+值回值 如果SetWindowsHookEx()成功，它会传回一个值，代表目前的Hook的Handle，这个值要记录下来。
+
+因为A程式可以有一个System Hook(Remote Hook)，如KeyBoard Hook，而B程式也来设一个Remote的KeyBoard Hook，那麽到底KeyBoard的讯息谁所拦截？答案是，最後的那一个所拦截，也就是说A先做keyboard Hook，而後B才做，那讯息被B拦截，那A呢？就看B的Hook Function如何做。如果B想让A的Hook Function也得这个讯息，那B就得呼叫CallNextHookEx()将这讯息Pass给A，於是产生Hook的一个连线。如果B中不想Pass这讯息给A，那就不要呼叫CallNextHookEx()。
+
+Declare Function CallNextHookEx Lib "user32" Alias "CallNextHookEx" _
+               (ByVal hHook As Long, _
+               ByVal ncode As Long, _
+               ByVal wParam As Long, _
+               lParam As Any) As Long
+
+hHook值是SetWindowsHookEx()的传回值，nCode, wParam, lParam则是Hook Procedure中的三个叁数。
+
+最後是将这Hook去除掉，请呼叫UnHookWindowHookEx()
+
+Declare Function UnhookWindowsHookEx Lib "user32" Alias "UnhookWindowsHookEx"         _
+               (ByVal hHook As Long) As Long
+
+hHook便是SetWindowsHookEx()的传回值。此时，以上例来说，B程式结束Hook，则换A可以直接拦截讯息。
+
+
+KeyBoard Hook的范例
+
+Hook Function的三个叁数
+
+nCode               wParam                            lParam                   传回值
+===========         ========================== ==============           ================
+HC_ACTION           表按键Virtual Key                 与WM_KEYDOWN同         若讯息要被处理传0
+或                                                               反之传1
+HC_NOREMOVE
+
+
+Public hHook as Long
+
+Public Sub UnHookKBD()
+If hnexthookproc <> 0 Then
+           UnhookWindowsHookEx hHook
+           hHook = 0
+End If
+End Sub
+
+Public Function EnableKBDHook()
+If hHook <> 0 Then
+           Exit Function
+End If
+hhook = SetWindowsHookEx(WH_KEYBOARD, AddressOf _
+                   MyKBHFunc, App.hInstance, App.ThreadId)
+End Function
+
+Public Function MyKBHFunc(ByVal iCode As Long, _
+           ByVal wParam As Long, ByVal lParam As Long) As Long
+         MyKBHfunc = 0 '表示要处理这个讯息
+
+         If wParam = vbKeySnapshot Then         '侦测 有没有按到PrintScreen键
+           MyKBHFunc = 1 '在这个Hook便吃掉这个讯息
+         End If
+         Call CallNextHookEx(hHook, iCode, wParam, lParam) '传给下一个Hook
+End Function

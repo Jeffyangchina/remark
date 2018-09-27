@@ -1,0 +1,80 @@
+Sub match()
+
+   
+    Dim i As Integer, a As Integer, n As Integer, b As Integer, t As Integer, x As Integer
+   
+    Dim xlsapp As New Excel.Application
+
+    Dim xlsbook1 As Excel.Workbook
+
+    Dim xlssheet1 As Excel.Worksheet
+
+ 
+    
+ Dim daima As String, miaoshu As String, tuhao1 As String, tuhao As String, miaoshu1 As String, daima1 As String
+    Set xlsbook1 = xlsapp.Workbooks.Open("E:\BITMAP\52BCL1010100.xlsx")
+
+    Set xlssheet1 = xlsbook1.Worksheets("52BCL1010100")
+   
+    'Set xlssheet3 = xlsbook1.Worksheets("BCH BOM")
+    a = 1
+   
+   i = 4
+    While i < 2000
+    
+     daima = xlssheet1.Cells(i, "A")
+     tuhao = xlssheet1.Cells(i, "B")
+     daima1 = Right(tuhao, 1)
+     tuhao1 = xlssheet1.Cells(i - 3, "B")
+     If tuhao <> "" Then
+        If tuhao <> tuhao1 Then
+        If a < 10 Then
+        
+        miaoshu = Left(daima, 4) & "00"
+        miaoshu1 = Right(daima, 2)
+         xlssheet1.Cells(i, "A") = miaoshu & a & miaoshu1
+         
+         End If
+         If a >= 10 And a < 100 Then
+           
+          miaoshu = Left(daima, 4) & "0"
+        miaoshu1 = Right(daima, 2)
+         xlssheet1.Cells(i, "A") = miaoshu & a & miaoshu1
+         
+         End If
+         
+          If a >= 100 Then
+           
+          miaoshu = Left(daima, 4)
+        miaoshu1 = Right(daima, 2)
+         xlssheet1.Cells(i, "A") = miaoshu & a & miaoshu1
+        
+         End If
+         a = a + CInt(daima1) * 2
+         
+         End If
+         
+         If tuhao = tuhao1 Then
+          xlssheet1.Cells(i, "A") = xlssheet1.Cells(i - 3, "A")
+          End If
+       End If
+       
+         
+       
+      
+
+       i = i + 3
+           
+      
+     Wend
+     
+      
+     xlsbook1.Save
+ 
+    xlsbook1.Close
+
+    xlsapp.Quit
+
+End Sub
+
+

@@ -1,0 +1,23 @@
+1、df['temperature']=df['temperature'].fillna(df.mean()['temperature'])
+只给一列填充
+
+2、df['day']=df['day'].apply(lambda x:str(x))
+只给一列应用函数
+
+3、pd.get_dummies(df)
+将dataframe的所有字符串列进行独热编码。df=df.join(pd.get_dummies(df['星期'],prefix=列名前缀)) 将一列独热后加入
+
+4、df.iloc[0]展示第一行 df.columns 展示所有列名
+
+5、df=df.drop('day',1)删除一列
+
+6、df.iloc[:2][['year','load']] 取行和取列  等价于 df.loc[:2，['year','load']]
+
+7、df = pd.concat([df1,df2], axis=1) 左右连接
+
+8、labels = df.iloc[:,[0，1]].values.astype(np.int64)#可以这样取列
+9、df[0].astype(str) #取第一列
+
+10、fdata=pd.read_csv(r'D:\test.csv', header=None,chunksize=2)#这个chunksize加不加很不一样，
+
+	for i, r in enumerate(fdata):#影响到这个r，这里r还是dataframe

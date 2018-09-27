@@ -1,0 +1,71 @@
+1、conda create -n tensorflow python=3.5.2
+提示连接网络失败，把代理服务器关掉,创建环境
+2、激活
+activate tensorflow
+此时可以输入python --version 查看工作环境
+3、安装并测试tensorflow
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple/ https://mirrors.tuna.tsinghua.edu.cn/tensorflow/windows/cpu/tensorflow-1.1.0-cp35-cp35m-win_amd64.whl
+
+更改下载源：
+conda config --add channels https://mirrors.ustc.edu.cn/anaconda/pkgs/free/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/ #清华镜像
+conda config --set show_channel_urls yes
+#http://pypi.doubanio.com/simple/# 豆瓣的源
+4、测试
+进入到 Anaconda 安装目录下 /envs /tensorflow 文件夹，继续在 Anaconda Prompt 窗口输入输入：
+到python环境下
+import tensorflow as tf
+hello = tf.constant('Hello, TensorFlow!')
+sess = tf.Session()
+>>> sess.run(hello)
+>>> a = tf.constant(10)
+>>> b= tf.constant(32)
+>>> sess.run(a+b)
+>>>输出：
+
+...
+b'Hello, TensorFlow!'
+...
+42 
+
+5、有些坑
+一定要改国内源。
+
+如果使用 py 文件编写tensorflow 脚本，文件名不能使用 tensorflow.py
+目前 API 变动比较大，例如tf.mul、tf.sub 和 tf.neg 被弃用，现在使用的是 tf.multiply、
+tf.subtract 和 tf.negative. 使用不当会输出 AttributeError: module 'tensorflow' has no 
+attribute 'mul' 等错误，需要我们经常 github 上查看更新日志。
+
+6、解决tensorflow 提示TensorFlow library wasn't compiled to use SSE4.1 instructions
+
+import os  
+# 3级  
+import os  
+os.environ['TF_CPP_MIN_LOG_LEVEL']='3' # 只显示 Error  
+
+7、Anaconda创建环境：
+//下面是创建python=3.6版本的环境，取名叫py36
+conda create -n py36 python=3.6 
+
+删除环境（不要乱删啊啊啊）
+conda remove -n py36 --all
+
+激活环境ac
+//下面这个py36是个环境名
+source activate py36
+
+退出环境
+deactivate 环境名称
+
+安装
+conda install 库名称
+
+
+
+ubuntu：
+conda config --add channels https://mirrors.ustc.edu.cn/anaconda/pkgs/free/
+conda config --set show_channel_urls yes
+conda create -n fastai python=3.6.4
+source activate fastai
+
+pip install mkl https://pypi.tuna.tsinghua.edu.cn/simple/#用这个源才能安装

@@ -1,0 +1,109 @@
+
+Sub bplot()
+
+Dim sstext As AcadSelectionSet
+Dim filtert(0) As Integer
+Dim b As Integer
+Dim c As Integer
+Dim filterd(0) As Variant
+Dim array1 As Variant
+Dim objDoc As AutoCAD.AcadDocument
+ 
+Dim pdfpth As String
+Dim pos As Integer
+Dim cnt As Integer
+Dim h As String
+Dim nh As String
+
+Dim hs As String
+ Dim xlsapp As New Excel.Application '校对功能
+
+    Dim xlsbook1 As Excel.Workbook
+
+   Dim xlssheet1 As Excel.Worksheet
+
+
+
+Dim i As Integer, j As Integer
+Dim pickobj As AcadEntity
+
+
+Set xlsbook1 = xlsapp.Workbooks.Open("E:\新建文件夹\1.xlsx")
+
+   
+  Set xlssheet1 = xlsbook1.Worksheets("sheet1")
+
+
+MyPath = "E:\新建文件夹\"
+MyFile = Dir(MyPath & "*.dwg")
+j = 1
+
+
+
+Do While MyFile <> ""
+
+
+
+'pos = InStr(MyFile, ".")
+'h = Left(MyFile, pos - 1)
+
+Set objDoc = Documents.Open(MyPath & MyFile)
+     
+  For Each pickobj In ThisDrawing.ModelSpace
+
+ If pickobj.ObjectName = "AcDbBlockReference" Then
+  If pickobj.Name = "FC800_TITLE" Or pickobj.Name = "烟机TITLE" Then
+  
+  If pickobj.HasAttributes Then
+  array1 = pickobj.GetAttributes
+  
+ 
+  
+       If array1(21).TagString = "A" Then
+       array1(21).TextString = "A"
+         xlssheet1.Cells(j, 1) = MyFile
+       j = j + 1
+       Exit For
+      End If
+    
+ 
+
+End If
+ End If
+ End If
+
+
+  Next pickobj
+'ThisDrawing.ModelSpace.Save
+ On Error Resume Next
+  
+       'sht.Cells(i, 1) = MyFile
+     'i = i + 1
+  ' End If
+   ' End If
+    'End If
+ 
+Set objlayout = ThisDrawing.ModelSpace.Layout
+objlayout.PlotType = acExtents
+objlayout.StyleSheet = "烟机0.3-0.18.ctb"
+
+objDoc.Save
+objDoc.Close
+
+
+   
+ MyFile = Dir
+Loop
+xlsbook1.Save
+  
+   xlsbook1.Close
+    xlsapp.Quit
+
+End Sub
+
+
+
+
+
+
+

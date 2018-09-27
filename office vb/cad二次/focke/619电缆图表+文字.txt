@@ -1,0 +1,100 @@
+Sub y()
+
+
+Dim sstext As AcadSelectionSet
+Dim filtert(0) As Integer
+Dim b As Integer
+Dim c As Integer
+Dim filterd(0) As Variant
+
+Dim objDoc As AutoCAD.AcadDocument
+ 
+Dim pdfpth As String
+Dim pos As Integer
+Dim h As String
+Dim nh As String
+Dim x As AcadHyperlinks
+Dim xh As AcadHyperlink
+Dim hs As String
+Dim a As Integer
+
+Dim exl As Excel.Application
+Dim wb As Excel.Workbook
+Dim sht As Excel.Worksheet
+Dim i As Integer
+Dim pickobj As AcadEntity
+Dim array1 As Variant
+
+Set exl = CreateObject("Excel.Application") '定义excel
+Set wb = exl.Workbooks.Open("F:\VB\cad二次\focke\" & "yang.xlsx")
+Set sht = wb.Worksheets("sheet1")
+
+
+MyPath = "E:\BITMAP\YB619\电缆图表新版778.17.0008\"
+MyFile = Dir(MyPath & "*.dwg")
+
+
+
+Do While MyFile <> ""
+
+Set objDoc = Documents.Open(MyPath & MyFile)
+  
+ 
+For Each pickobj In ThisDrawing.ModelSpace
+nh = pickobj.ObjectName
+
+If pickobj.ObjectName = "AcDbText" Then
+If pickobj.TextString = "" Then
+ 
+  pickobj.TextString = "竺海斌"
+  End If
+  If pickobj.TextString = "" Then
+ 
+  pickobj.TextString = "彭琛杰"
+  End If
+
+End If
+
+
+
+ If pickobj.ObjectName = "AcDbAttributeDefinition" Then '这个是2010里的图框
+  If pickobj.TagString = "52CBS6070003" Then
+  sht.Cells(j, 1) = pickobj.TagString
+  j = j + 1
+  pickobj.TagString = "52CBT6070003"
+  End If
+ 
+  If pickobj.TagString = "YB618硬条及条外透明纸包装机" Then
+ 
+  pickobj.TagString = "YB619硬条及条外透明纸包装机"
+  End If
+  
+   If pickobj.TagString = "20120618" Then
+ 
+  pickobj.TagString = "20150704"
+  End If
+  
+ End If
+On Error Resume Next
+  Next pickobj
+
+
+
+  
+
+ 
+
+objDoc.Save
+
+objDoc.Close
+MyFile = Dir
+Loop
+
+wb.Save
+  
+   wb.Close
+    exl.Quit
+
+End Sub
+
+

@@ -1,0 +1,97 @@
+保存：
+model.wv.save_word2vec_format(r'C:\Users\XUEJW\Desktop\兴业数据\mymodel.txt',binary=False)
+model.save(r'C:\Users\XUEJW\Desktop\兴业数据\mymodel')
+
+1、model.save('/tmp/mymodel')  方法保存的文件不能利用文本编辑器查看但是保存了训练的全部信息，
+可以在读取后追加训练：
+model = gensim.models.Word2Vec.load('/tmp/mymodel')  
+model.train(more_sentences) 
+ 
+2、model.save_word2vec_format('/tmp/mymodel.txt',binary=False)  
+方法保存为word2vec文本格式但是保存时丢失了词汇树等部分信息，不能追加训练
+
+3、加载：
+model = gensim.models.Word2Vec.load('/tmp/mymodel') 
+model = gensim.models.KeyedVectors.load_word2vec_format('/tmp/vectors.txt', 
+
+
+计算：
+4、计算一个词的最近似的词，倒排序
+model.most_similar(['man']) 
+
+5、选出集合中不同类的词语；model.doesnt_match('breakfast cereal dinner lunch'.split()) 
+计算两个集合之间的余弦似度：list_sim1=model.n_similarity(list1,list2) 
+计算两词之间的余弦相似度：model.most_similar(positive=['woman', 'king'], negative=['man'], topn=2)  
+
+训练：
+6、训练模型定义：from gensim.models import Word2Vec
+model = Word2Vec(sentences, sg=1, size=100,  window=5,  min_count=5,  negative=3, sample=0.001, hs=1, workers=4)  
+其中的sentences是句子列表，而每个句子又是词语的列表，即list[list]类型。 切记！！
+size是embedding纬度，即每个词的向量纬度
+min_count用来做筛选，去除总的词频小于该值的词语
+
+from gensim.models.word2vec import Word2Vec
+model=Word2Vec() 
+model.build_vocab(text)  
+model.train(text,total_examples=model.corpus_count,epochs=model.iter) 
+
+4 注意编码
+
+训练用的编码格式要与使用model时的编码格式一致。 
+例如，如果文件是utf-8的文件，读取时没有转成unicode，则model使用时也要使用utf-8格式，
+例如model.wv[‘球队’]; 训练是用unicode，则使用model.wv[u’球队’]
+
+7、训练的txt文件，可以使用LineSentence
+
+8、稀疏矩阵，会被压缩，要看全需要.toarray()
+
+9、jieba分词，有个jieba.analyse.extract_tags(sentence, topK=20, withWeight=False, allowPOS=())取高频关键字
+
+10、中文维基百科数据特殊处理一下，包括繁简转换，中文分词，去除非utf-8字符等。
+process_wiki.py处理这个XML压缩文件，xml.bz2是该文件
+执行：python process_wiki.py zhwiki-latest-pages-articles.xml.bz2 wiki.zh.text#只是提取
+再繁体字处理：安装opencc，然后将wiki.zh.text中的繁体字转化位简体字：
+opencc -i wiki.zh.text -o wiki.zh.text.jian -c zht2zhs.ini
+再就是分词。文件中还包含非utf-8字符，又用iconv处理了一下这个问题：
+iconv -c -t UTF-8 < wiki.zh.text.jian.seg > wiki.zh.text.jian.seg.utf-8
+
+
+英文数据xml：gensim里的
+    wiki = WikiCorpus(inp, lemmatize=False, dictionary={})
+    for text in wiki.get_texts():
+
+英文词向量：斯坦福有glove的版本，可以word2vec直接加载模型。
+只需要在vectors.txt这个文件的最开头，加上两个数，第一个数指明一共有多少个向量，
+第二个数指明每个向量有多少维，就能直接用word2vec的load函数加载了
+
+model=gensim.models.Word2Vec.load_word2vec_format(' vectors.txt',binary=False) #GloVe Model 
+glove训练完是txt模型。
+
+进入glove目录下，首先先参考README.txt,里面主要介绍这个程序包含了四部分子程序，按步骤分别是vocab_count、cooccur、shuffle、glove：
+
+1.vocab_count:用于计算原文本的单词统计（生成vocab.txt,每一行为：单词  词频）
+
+2.cooccur：用于统计词与词的共现，目测类似与word2vec的窗口内的任意两个词（生成的是cooccurrence.bin,二进制文件，呵呵）
+
+3. shuffle：对于2中的共现结果重新整理（一看到shuffle瞬间想到Hadoop，生成的也是二进制文件cooccurrence.shuf.bin）
+
+4.glove：glove算法的训练模型，会运用到之前生成的相关文件（1&3），最终会输出vectors.txt和vectors.bin（前者直接可以打开，下文主要针对它做研究，后者还是二进制文件）
+
+
+KeyedVectors.load_word2vec_format (instead ofWord2Vec.load_word2vec_format)
+word2vec_model.wv.save_word2vec_format (instead of  word2vec_model.save_word2vec_format)
+model.wv.syn0norm instead of  (model.syn0norm)
+model.wv.syn0 instead of  (model.syn0)
+model.wv.vocab instead of (model.vocab)
+model.wv.index2word instead of (model.index2word)
+
+加载模型时：AttributeError: 'EuclideanKeyedVectors' object has no attribute 'negative'
+是因为该模型是生成方式是word2vec_model.wv.save_word2vec_format；所以需要KeyedVectors.load_word2vec_format 
+该方法加载。
+
+from gensim.models import KeyedVectors
+w=KeyedVectors.load_word2vec_format(r'C:\Users\XUEJW\Desktop\兴业数据\分类用数据集\word2vec\word2vec\中文的词向量\news_12g_baidubaike_20g_novel_90g_embedding_64.bin', binary=True)
+
+加载60维中文时：'Word2Vec' object has no attribute 'trainables'
+可能是gensim版本过高。it seems like the version of python and gensim generated the model must be same
+

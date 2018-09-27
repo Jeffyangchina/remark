@@ -1,0 +1,412 @@
+sub mysearch()
+dim fs,i,arr(1 to 10000)
+set fs = application.filesearch
+with fs
+.lookin="e:\bit\"
+.filename="*.dwg"
+.searchsubfolders=true
+if .execute>0 then
+msgbox"there were"& .foundfiles.count &"files found."
+for i=1 to .foundfiles.count
+arr(i)=.foundfiles(i)
+next i
+'
+'
+'
+else
+  msgbox"there were no files found."
+ end if
+end with
+end sub
+//////////////////测试通过
+Sub bplot()
+Dim MyFile, MyPath, MyName
+ Dim objDoc As AutoCAD.AcadDocument
+ Dim blnRet As Boolean
+
+ 
+MyPath = "D:\bit\"
+MyFile = Dir(MyPath & "*.dwg")
+pos = InStr(MyFile, ".dwg")
+newfile = Left(MyFile, pos - 1)
+Do While MyFile <> ""
+'ThisDrawing.Open (MyPath & MyFile)
+'///////////
+Set objDoc = Documents.Open(MyPath & MyFile)
+
+ThisDrawing.Application.ZoomExtents '缩放到合适大小
+
+Set objlayout = objDoc.Layouts.Item("Model")
+
+Set objPlot = objDoc.Plot
+'objlayout.StandardScale = acScaleToFit '打印比例因为选择了A4默认打印 所以比例不要选择否则会图像不对
+'resl = objPlot.PlotTofile("Adobe PDF.pc3")
+blnRet = objPlot.PlotToDevice("Adobe PDF")
+
+'如果打印成功则blnRet为True
+objDoc.Close False
+
+MyFile = Dir
+Loop
+End Sub
+
+///////////////////最后用的这个程序
+Sub bplot()
+
+Dim MyFile, MyPath, MyName
+ Dim objDoc As AutoCAD.AcadDocument
+ Dim blnRet As Boolean
+Dim resl As Boolean
+ 
+MyPath = "E:\BITMAP\"
+MyFile = Dir(MyPath & "*.dwg")
+'pos = InStr(MyFile, ".dwg")
+
+Do While MyFile <> ""
+'ThisDrawing.Open (MyPath & MyFile)
+'///////////
+Set objDoc = Documents.Open(MyPath & MyFile)
+'newfile = Left(MyFile, pos - 1)
+ThisDrawing.Application.ZoomExtents '缩放到合适大小
+Set objlayout = ThisDrawing.ModelSpace.Layout
+'Set objlayout = objDoc.Layouts.Item("Model")
+objlayout.PlotType = acExtents'打印当前选定空间范围内的所有对象。
+
+'objlayout.PlotType = acDisplay'打印当前显示的所有对象
+
+'objlayout.CenterPlot = True
+objlayout.StandardScale = acScaleToFit '打印比例因为选择了A4默认打印 所以比例不要选择否则会图像不对
+objlayout.PlotRotation = ac0degrees
+Set objPlot = objDoc.Plot
+'resl = objPlot.PlotToFile(MyPath & newfile & ".pdf")
+blnRet = objPlot.PlotToDevice("Adobe PDF")
+'如果打印成功则blnRet为True
+objDoc.Close
+
+MyFile = Dir
+Loop
+
+
+End Sub
+///////////////////////////pdfmaker使用
+Sub bplot()
+Dim obj As PDFMAKERAPILib.PDFMakerApp
+Dim cadpth As String
+Dim pdfpth As String
+Dim PDFConvert As New PDFMakerApp
+Dim exl As Excel.Application
+Dim wb As Excel.Workbook
+Dim sht As Excel.Worksheet
+Dim i As Integer
+i = 0
+Set exl = CreateObject("Excel.Application") '定义excel
+Set wb = exl.Workbooks.Open("d:\bit\" & "bit.xls")
+Set sht = wb.Worksheets("sheet1")
+
+MyPath = "E:\BITMAP\"
+MyFile = Dir(MyPath & "*.dwg")
+
+
+Do While MyFile <> ""
+cadpth = MyPath & MyFile
+pos = InStr(MyFile, ".dwg")
+pdfpth = "d:\bit\" & Left(MyFile, pos - 1) & ".pdf"
+PDFConvert.CreatePDF cadpth, pdfpth, True, True, False '利用pdfmaker创建pdf文件
+
+i = i + 1
+exl.Cells(i, 1) = Left(MyFile, pos - 1) '将文件名写入excel
+
+On Error Resume Next
+MyFile = Dir
+
+Loop
+End Sub
+///////////////
+Sub bplot()
+'Dim obj As PDFMAKERAPILib.PDFMakerApp
+Dim cadpth As String
+Dim pdfpth As String
+'Dim PDFConvert As New PDFMakerApp
+Dim exl As Excel.Application
+Dim wb As Excel.Workbook
+Dim sht As Excel.Worksheet
+Dim i As Integer
+i = 0
+Set exl = CreateObject("Excel.Application") '定义excel
+Set wb = exl.Workbooks.Open("e:\BITMAP\pdf" & "bit.xls")
+Set sht = wb.Worksheets("sheet1")
+sht.Selection.NumberFormatLocal = "@"
+
+
+MyPath = "E:\BITMAP\pdf\"
+MyFile = Dir(MyPath & "*.dwg")
+
+
+Do While MyFile <> ""
+cadpth = MyPath & MyFile
+pos = InStr(MyFile, ".dwg")
+pdfpth = "d:\bit\" & Left(MyFile, pos - 1) & ".pdf"
+
+i = i + 1
+exl.Cells(i, 1) = Left(MyFile, pos - 1) '将文件名写入excel
+
+On Error Resume Next
+MyFile = Dir
+
+Loop
+End Sub
+
+/////////////
+Dim StartPoint As ariant, EndPoint As ariant
+Dim seta As AcadSelectionSet
+Dim dataTYPE(0 To 1) As Integer
+Dim dataalue(0 To 1) As ariant
+Dim aa As Integer
+Dim bb As String
+Dim Docname As String
+Dim docObj As AcadDocument
+Set aCADapp = GetObject(, “AutoCAD.Application.16″)
+‘ Set ThisDrawing = AcadApp.ActieDocument
+For aa = 0 To ListBox1.ListCount – 1
+bb = ListBox1.List(aa)
+Docname = dirc & bb
+Set ThisDrawing = aCADapp.Documents.Open(Docname)
+dataTYPE(0) = 2
+dataTYPE(1) = 8
+‘dataTYPE(2) = 8
+‘dataalue(0) = “AcDbBlockReference”
+dataalue(0) = “T*” ‘块参照的名称
+dataalue(1) = “BORDER” ‘图层名
+Set seta = ThisDrawing.SelectionSets.Add(“Chen”) ‘添加一选择集
+ZoomAll
+seta.Select acSelectionSetAll, , , dataTYPE, dataalue ‘过滤条件
+‘seta.SelectOnScreen dataTYPE, dataalue ‘在屏幕上选取过滤条件(图框)
+Dim bl As AcadBlockReference
+For i = 0 To seta.Count – 1
+‘MsgBox seta.Item(i).ObjectName
+seta.Highlight True
+If i = 0 Then
+Set bl = seta.Item(i)
+Else
+Set bl = seta.Item(i – 1)
+End If
+‘MsgBox bl.Name
+Next
+‘Dim oPlot As AcadPlot
+Dim AddedLayouts() As String
+Dim LayoutList As ariant
+Dim oLayout As AcadLayout
+Dim ArraySize As Integer, BatchCount As Integer
+For Each oLayout In ThisDrawing.Layouts
+ArraySize = ArraySize + 1
+ReDim Presere AddedLayouts(1 To ArraySize)
+AddedLayouts(ArraySize) = oLayout.Name
+Next
+LayoutList = AddedLayouts
+bl.GetBoundingBox StartPoint, EndPoint ‘得到图框尺寸
+‘ThisDrawing.ActieLayout.PlotType = acWindow
+ThisDrawing.ModelSpace.Layout.GetWindowToPlot StartPoint, EndPoint
+‘打印到文件
+Dim plotFileName As String
+Dim result As Boolean
+Dim currentPlot As AcadPlot
+Set currentPlot = ThisDrawing.Plot
+plotFileName = “c:\MyPlot\MyPlot” & aa & “.plt”
+‘currentPlot.SetLayoutsToPlot
+currentPlot.SetLayoutsToPlot LayoutList
+‘ 验证活动空间是模型空间
+If ThisDrawing.ActieSpace = acPaperSpace Then
+ThisDrawing.MSpace = True
+ThisDrawing.ActieSpace = acModelSpace
+End If
+Dim ACADPref As AcadPreferencesOutput
+Dim originalalue As Boolean
+‘ 设置打印区域的范围和比例
+ThisDrawing.ModelSpace.Layout.PlotType = acExtents
+‘ ThisDrawing.ModelSpace.Layout.GetPaperSize 420, 297
+ThisDrawing.ModelSpace.Layout.StandardScale = acScaleToFit
+‘ 设置打印区域的范围和比例
+ThisDrawing.ModelSpace.Layout.PlotType = acExtents
+ThisDrawing.ModelSpace.Layout.StandardScale = acScaleToFit
+‘ 将打印份数设置为 1
+ThisDrawing.Plot.NumberOfCopies = 1
+‘ 初始化打印
+Dim PlotConfigurations As AcadPlotConfigurations
+Dim PlotConfiguration As AcadPlotConfiguration
+Dim NewPC1 As AcadPlotConfiguration, NewPC2 As AcadPlotConfiguration
+‘ Get PlotConfigurations collection from document object
+Set PlotConfigurations = ThisDrawing.PlotConfigurations
+‘ Add NewPC1 and customize some of the properties
+Set NewPC1 = PlotConfigurations.Item(0)
+NewPC1.PlotRotation = ac270degrees
+NewPC1.PlotHidden = True
+NewPC1.PaperUnits = acMillimeters
+‘ ThisDrawing.Plot.PlotToFile plotFileName, NewPC1
+‘ This example will access the PlotConfigurations collection for the current drawing,
+‘ add a plot configuration, and list basic information about the
+‘ plot configurations in the drawing.
+Dim msg As String
+‘ Get PlotConfigurations collection from document object
+Set PlotConfigurations = ThisDrawing.PlotConfigurations
+‘ If there aren’t any plot configurations, then add one
+If PlotConfigurations.Count = 0 Then
+‘*** Customize the new configuration to your satisfaction ***
+PlotConfigurations.Add “NEW_CONFIGURATION”
+End If
+msg = bCrLf & bCrLf ‘ Start with a space
+‘ Get the names of the plot configurations in this drawing
+For Each PlotConfiguration In PlotConfigurations
+msg = msg & PlotConfiguration.Name & bCrLf
+Next
+‘ Display a list of aailable plot configurations
+MsgBox “There are ” & PlotConfigurations.Count & ” plot configuration(s) in ” & ThisDrawing.WindowTitle & “:” & msg
+‘============================打印预览==========================
+‘ This example creates a circle and then performs a plot preiew.
+‘ Create the circle
+Dim circleObj As AcadCircle
+Dim center(0 To 2) As Double
+Dim radius As Double
+center(0) = 2: center(1) = 2: center(2) = 0
+radius = 1
+Set circleObj = ThisDrawing.ModelSpace.AddCircle(center, radius)
+ZoomAll
+‘ Preiew the plot of the circle
+‘ ThisDrawing.Plot.DisplayPlotPreiew acFullPreiew
+‘ ==========================打印到文件============================
+‘ Define the output file name.
+‘ Use “” to use the drawing name as the file name.
+result = currentPlot.PlotToFile(plotFileName)
+‘ 初始化打印cbx
+‘ThisDrawing.Plot.PlotToDeice
+‘currentPlot.PlotToDeice ‘输出到当前打印设备
+seta.Delete ‘删除选择集
+ThisDrawing.Close ‘关闭当前文档
+‘ThisDrawing.Application.Documents.Close ‘关闭所有文档
+Next aa
+‘打印或页面设置开始前调用GetPrintName过程 Priate Sub AcadDocument_BeginCommand(Byal CommandName As String) If CommandName = “PAGESETUP” Or CommandName = “PLOT” Then Call GetPrintName End If End Sub
+Priate Sub GetPrintName() On Error Resume Next Dim Layout As AcadLayout Set Layout = ThisDrawing.ActieLayout With Layout .ConfigName = ThisDrawing.Application.Preferences.Output.DefaultOutputDeice ‘ cad默认打印机的名称 .StyleSheet = ThisDrawing.Application.Preferences.Output.DefaultPlotStyleTable ‘设置默认打印样式 .CenterPlot = True .StandardScale = acScaleToFit .PlotRotation = ac270degrees .PaperUnits = acMillimeters End With End Sub ‘本程序在cad2002上运行通过。作用是在打印的时候，总是使用cad默认的打印机和默认的打印样子来打印。
+///////////////////////////////''''''''''''''''''''''''''''''''''''''''''''
+Sub bplot()
+
+Dim MyFile, MyPath, MyName
+ Dim objDoc As AutoCAD.AcadDocument
+ Dim blnRet As Boolean
+Dim resl As Boolean
+ 
+MyPath = "E:\BITMAP\"
+MyFile = Dir(MyPath & "*.dwg")
+'pos = InStr(MyFile, ".dwg")
+
+Do While MyFile <> ""
+'ThisDrawing.Open (MyPath & MyFile)
+'///////////
+Set objDoc = Documents.Open(MyPath & MyFile)
+
+Dim sp As AcadModelSpace
+Set sp = objDoc.ModelSpace
+
+''''取得模型空间中的块属性
+
+Dim index As Integer
+
+For index = 0 To sp.Count - 1
+
+Dim name As String
+
+name = sp.Item(index).ObjectName
+
+''''判断模型空间中的项目是否是一个块引用
+
+If name Like "AcDbBlock*" Then
+
+Dim blockRef As AcadBlockReference
+
+Set blockRef = sp.Item(index)
+
+''''块引用的插入点
+
+Dim insertPoint As Variant
+
+insertPoint = blockRef.InsertionPoint
+
+''''放大比例
+
+Dim xScale, yScale As Integer
+
+xScale = blockRef.XScaleFactor
+
+yScale = blockRef.YScaleFactor
+
+''''宽高基数
+
+Dim width, height As Double
+
+width = 297
+
+height = 210
+
+''''打印区域
+
+Dim UpperRight(0 To 1) As Double, LowerLeft(0 To 1) As Double
+
+UpperRight(0) = insertPoint(0)
+
+UpperRight(1) = insertPoint(1)
+
+LowerLeft(0) = insertPoint(0) + width * xScale
+
+LowerLeft(1) = insertPoint(1) - height * yScale
+
+'list.AddItem "inserPoint:X=" & UpperRight(0) & " Y:" & UpperRight(1)
+
+'list.AddItem "lowerLeft :X=" & LowerLeft(0) & " Y:" & LowerLeft(1)
+
+Dim plotConfs As AcadPlotConfigurations
+
+Set plotConfs = ThisDrawing.PlotConfigurations
+
+'list.AddItem plotConfs.Count
+
+Dim plotconf As AcadPlotConfiguration
+
+Set plotconf = plotConfs.Add("plot")
+
+''''list.AddItem plotconf.GetPlotDeviceNames(5)
+
+''''Set plotConf = ThisDrawing.PlotConfigurations.Add
+
+''''设置定义要打印的布局范围的坐标
+
+ThisDrawing.ActiveLayout.SetWindowToPlot LowerLeft, UpperRight
+
+''''指定布局或打印配置的类型
+
+ThisDrawing.ActiveLayout.PlotType = acWindow
+''
+'Set objlayout = ThisDrawing.ModelSpace.Layout
+'newfile = Left(MyFile, pos - 1)
+'objlayout.PlotRotation = ac0degrees
+'ThisDrawing.Application.ZoomExtents '缩放到合适大小
+'objlayout.PlotType = acExtents
+Set objPlot = objDoc.Plot
+'Set objlayout = objDoc.Layouts.Item("Model")
+
+'objlayout.CenterPlot = True
+'objlayout.StandardScale = acScaleToFit '打印比例
+
+
+'resl = objPlot.PlotToFile(MyPath & newfile & ".pdf")
+blnRet = objPlot.PlotToDevice("Adobe PDF")
+End If
+
+Next index
+'如果打印成功则blnRet为True
+objDoc.Close
+
+MyFile = Dir
+Loop
+
+
+End Sub
+
+

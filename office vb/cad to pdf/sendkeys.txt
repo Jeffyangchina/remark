@@ -1,0 +1,79 @@
+Private Declare Function FindWindow Lib "user32" Alias "FindWindowA" (ByVal lpClassName As String, ByVal lpWindowName As String) As Long
+ 
+Sub bplot()
+
+
+Dim pos1 As Integer
+Dim pos2 As Integer
+Dim pos As Double
+Dim cadpth As String
+Dim pth As String
+Dim n As Variant
+Dim n1 As Variant
+
+Dim hwnd  As Long
+
+'Set PDFApp = New Acrobat.AcroPDDoc
+'filename = "F:\VB\dll\1\ya.pdf"
+
+
+
+MyPath = "F:\VB\dll\1\"
+MyFile = Dir(MyPath & "*.txt")
+
+
+Do While MyFile <> ""
+
+
+cadpth = MyPath & MyFile
+
+
+'If Shell("explorer /select,F:\VB\dll\1\ya.txt", 1) Then
+pos1 = Shell("explorer /n,/select, " & cadpth, 1)
+'pos1 = Shell("explorer /n,/root,/select, " & cadpth, 1)
+'pos1 = Shell("explorer /n,/root,/select, " & cadpth, 1)
+Application.Wait Now + TimeValue("0:00:01") '一定要加 不然程序还没回来
+
+  ' Selection.Save
+SendKeys ("+{f10}D"), True
+Application.Wait Now + TimeValue("0:00:01")
+hwnd = FindWindow(vbNullString, "确认文件删除")
+n = Time
+Do While hwnd = 0
+n1 = Time
+hwnd = FindWindow(vbNullString, "确认文件删除")
+ If (DateDiff("s", n, n1)) > 5 Then '如果跑偏则在5秒内跳出
+  Exit Do
+  End If
+Loop
+
+  If hwnd <> 0 Then
+  Application.Wait Now + TimeValue("0:00:01")
+    SendKeys ("~"), True
+    Application.Wait Now + TimeValue("0:00:01")
+   
+   SendKeys "%{F4}", True
+
+    On Error Resume Next
+    End If
+'Application.Wait Now + TimeValue("0:00:01")
+
+'SendKeys ("(+^s)~"), True
+
+
+'Application.Wait Now + TimeValue("0:00:01")
+'SendKeys "%{F4}", True
+
+
+
+On Error Resume Next
+'End If
+MyFile = Dir
+Loop
+
+
+
+End Sub
+
+
+

@@ -1,0 +1,100 @@
+Sub bplot()
+
+Dim sstext As AcadSelectionSet
+Dim filtert(0) As Integer
+Dim filterd(0) As Variant
+
+Dim objDoc As AutoCAD.AcadDocument
+ 
+Dim pdfpth As String
+Dim pos As Integer
+Dim h As String
+Dim nh As String
+Dim x As String
+
+Dim exl As Excel.Application
+Dim wb As Excel.Workbook
+Dim sht As Excel.Worksheet
+Dim i As Integer
+Dim pickobj As AcadEntity
+
+
+Set exl = CreateObject("Excel.Application") '定义excel
+Set wb = exl.Workbooks.Open("E:\BITMAP\" & "xit.xls")
+Set sht = wb.Worksheets("sheet1")
+
+MyPath = "E:\BITMAP\"
+MyFile = Dir(MyPath & "*.dwg")
+
+
+Do While MyFile <> ""
+
+Set objDoc = Documents.Open(MyPath & MyFile)
+Set sstext = objDoc.SelectionSets.Add("ss")
+filtert(0) = 0
+filterd(0) = "TEXT"
+sstext.SelectOnScreen filtert, filterd
+For Each pickobj In sstext
+
+  For i = 1 To 3
+    If pickobj.TextString = exl.Cells(i, 1) Then
+    pickobj.Color = acGreen
+    h = exl.Range(i, 1)
+    nh = ".\" & h & ".dwg"
+    'pickobj.Hyperlinks.Add(h, , nh) '超级链接赋值
+    
+    Exit For
+    End If
+  Next
+Next
+
+On Error Resume Next
+objDoc.Close
+
+MyFile = Dir
+
+Loop
+wb.Close
+End Sub
+
+/////////////将cad图纸的名称以文本的格式写入excel
+Sub bplot()
+'Dim obj As PDFMAKERAPILib.PDFMakerApp
+Dim cadpth As String
+Dim pdfpth As String
+'Dim PDFConvert As New PDFMakerApp
+Dim exl As Excel.Application
+Dim wb As Excel.Workbook
+Dim sht As Excel.Worksheet
+Dim i As Integer
+i = 0
+Set exl = CreateObject("Excel.Application") '定义excel
+Set wb = exl.Workbooks.Open("e:\BITMAP\pdf\" & "bit.xls")
+Set sht = wb.Worksheets("sheet1")
+sht.range("A1:A500").Select
+
+Selection.NumberFormatLocal = "@"   '设定单元格为文本格式就可以显示首位0了
+
+
+MyPath = "E:\BITMAP\"
+MyFile = Dir(MyPath & "*.dwg")
+
+
+Do While MyFile <> ""
+cadpth = MyPath & MyFile
+pos = InStr(MyFile, ".dwg")
+pdfpth = "d:\bit\" & Left(MyFile, pos - 1) & ".pdf"
+
+i = i + 1
+exl.Cells(i, 1) = Left(MyFile, pos - 1) '将文件名写入excel
+
+On Error Resume Next
+MyFile = Dir
+Loop
+wb.Close
+exl.Close
+
+
+End Sub
+
+/////////////////////////////

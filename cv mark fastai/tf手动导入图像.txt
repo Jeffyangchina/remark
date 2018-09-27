@@ -1,0 +1,90 @@
+import os
+import numpy as np
+import tensorflow as tf
+from alexnet import AlexNet
+from datagenerator import ImageDataGenerator
+from datetime import datetime
+import glob
+from tensorflow.contrib.data import Iterator
+
+filewriter_path = "./tmp/tensorboard"  # 存储tensorboard文件
+checkpoint_path = "./tmp/checkpoints"  # 训练好的模型和参数存放目录
+
+if not os.path.isdir(checkpoint_path): #如果没有存放模型的目录，程序自动生成
+    os.mkdir(checkpoint_path)
+
+接着调用图片生成器，来生成图片数据，并初始化数据：
+
+train_image_path = 'train/'  # 指定训练集数据路径（根据实际情况指定训练数据集的路径）
+test_image_cat_path = 'test/cat/'  # 指定测试集数据路径（根据实际情况指定测试数据集的路径）
+test_image_dog_path = 'test/dog/'
+
+# 打开训练数据集目录，读取全部图片，生成图片路径列表
+image_filenames_cat = np.array(glob.glob(train_image_path + 'cat.*.jpg'))
+image_filenames_dog = np.array(glob.glob(train_image_path + 'dog.*.jpg'))
+
+# 打开测试数据集目录，读取全部图片，生成图片路径列表
+test_image_filenames_cat = np.array(glob.glob(test_image_cat_path + '*.jpg'))
+test_image_filenames_dog = np.array(glob.glob(test_image_dog_path + '*.jpg'))
+
+image_path = []
+label_path = []
+test_image = []
+test_label = []
+
+# 遍历训练集图片URL，并把图片对应的实际标签和路径分别存入两个新列表中
+for catitem in image_filenames_cat:
+    image_path.append(catitem)
+    label_path.append(0)
+for dogitem in image_filenames_dog:
+    image_path.append(dogitem)
+    label_path.append(1)
+
+# 遍历测试集图片URL，并把图片路径存入一个新列表中
+for catitem in test_image_filenames_cat:
+    test_image.append(catitem)
+    test_label.append(0)
+
+for dogitem in test_image_filenames_cat:
+    test_image.append(dogitem)
+    test_label.append(1)
+
+# 调用图片生成器，把训练集图片转换成三维数组
+tr_data = ImageDataGenerator(
+    images=image_path,
+    labels=label_path,
+    batch_size=batch_size,
+    num_classes=num_classes)
+
+# 调用图片生成器，把测试集图片转换成三维数组
+test_data = ImageDataGenerator(
+    images=test_image,
+    labels=test_label,
+    batch_size=batch_size,
+    num_classes=num_classes,
+    shuffle=False)
+##########
+这步可以用keras：
+from keras.preprocessing import image
+gen=image.ImageDataGenerator()
+gen.flow_from_directory(）
+##########
+
+# 定义迭代器
+iterator = Iterator.from_structure(tr_data.data.output_types,
+                                   tr_data.data.output_shapes)
+# 定义每次迭代的数据
+next_batch = iterator.get_next()
+
+# 初始化数据
+training_initalize = iterator.make_initializer(tr_data.data)
+testing_initalize = iterator.make_initializer(test_data.data)
+训练数据准备好以后，让数据通过AlexNet。
+
+x = tf.placeholder(tf.float32, [batch_size, 227, 227, 3])
+y = tf.placeholder(tf.float32, [batch_size, num_classes])
+keep_prob = tf.placeholder(tf.float32) # dropout概率
+
+
+# 图片数据通过AlexNet网络处理
+model = AlexNet(x, keep_prob, num_classes, train_layers)

@@ -1,0 +1,43 @@
+Sub match()
+
+    Dim xlsapp As New Excel.Application
+
+    Dim xlsbook1 As Excel.Workbook
+
+    Dim xlssheet1 As Excel.Worksheet
+
+ 
+   
+
+    Set xlsbook1 = xlsapp.Workbooks.Open("E:\BITMAP\bit\1.xls")
+
+    Set xlssheet1 = xlsbook1.Worksheets("PB15")
+    Set xlssheet2 = xlsbook1.Worksheets("sheet6")
+    
+    Dim daima As String, miaoshu As String, daima2 As String
+
+    Dim i As Integer, j As Integer, n As Integer
+    
+     For i = 2 To 290 'hang£¬
+      If xlssheet1.Cells(i, "B") <> "" Then
+        daima = xlssheet1.Cells(i, "B")
+         
+         Set c = xlssheet2.Range("D2", "D1738").Find(daima)
+        
+        j = c.Row
+        
+        xlssheet1.Cells(i, "I") = xlssheet2.Cells(j, "F")
+        xlssheet1.Cells(i, "J") = xlssheet2.Cells(j, "E")
+        On Error Resume Next
+       End If
+           
+      Next i
+    xlsbook1.Save
+   
+
+
+    xlsbook1.Close
+
+    xlsapp.Quit
+
+End Sub

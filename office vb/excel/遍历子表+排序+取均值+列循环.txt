@@ -1,0 +1,120 @@
+Private Sub CommandButton1_Click()
+Dim xlsapp As New Excel.Application
+
+    Dim xlsbook1 As Excel.Workbook
+
+    Dim xlssheet1 As Excel.Worksheet
+    Dim xx As Excel.Worksheet
+ Dim pos1 As Integer
+Dim n As Integer
+Dim i As Integer
+Dim m As Integer
+Dim pos As Integer
+Dim cadpth As String
+Dim pth As String
+Dim a As String
+Dim newname As String
+ Dim daima As String, tuhao As String, minchen As String, waidai As String, daima1 As String, daima2 As String, daima3 As String
+
+    Set xlsbook1 = xlsapp.Workbooks.Open("D:\编程执行文档\download\需要的名字.xls")
+
+    Set xlssheet1 = xlsbook1.Worksheets("组别")
+    Set xlssheet2 = xlsbook1.Worksheets("汇总")
+    MyPath = "D:\编程执行文档\download\"
+    MyFile = Dir(MyPath & "*.xls")
+    h = 2 '黏贴位置
+   Application.DisplayAlerts = False '关闭警告
+    Do While MyFile <> "" And MyFile <> "需要的名字.xls"
+  
+
+  
+cadpth = MyPath & MyFile
+
+pos1 = InStr(MyFile, ".xls")
+pth = Left(MyFile, pos1 - 1) '月份
+
+Set xlsbook2 = xlsapp.Workbooks.Open(cadpth)
+
+
+ For Each xx In xlsbook2.Worksheets
+ n = 3
+   If xx.Name <> "" Then
+   
+    With xx
+     While .Cells(n, "A") <> "在线比"
+         minchen = .Cells(n, "B")
+         If minchen <> "" Then
+          Set c = xlssheet1.Range("B2", "B150").Find(minchen)
+           
+            If Not c Is Nothing Then
+            If .Cells(n, "C") <> "" Then
+            .Rows(n).Copy
+            
+            xlssheet2.Range("A" & h).PasteSpecial
+            xlssheet2.Cells(h, "X") = pth
+            xlssheet2.Cells(h, "W") = .Name
+            h = h + 1
+             End If
+             End If
+             End If
+     On Error Resume Next
+  n = n + 1
+  Wend
+  End With
+ On Error Resume Next
+End If
+Next xx
+
+On Error Resume Next
+
+xlsbook2.Save
+xlsbook2.Close (False)
+MyFile = Dir
+Loop
+ i = 2
+ 
+ 
+xlssheet2.Range("A2", "X" & h).Sort (xlssheet2.Range("B1"))
+
+ 
+ 
+  b = 2
+  daima = xlssheet2.Cells(i, "B")
+ While daima <> ""
+   daima1 = xlssheet2.Cells(b, "B")
+ If daima <> daima1 Then
+ xlssheet2.Rows(b).Insert (xlShiftDown)
+ 
+ xlssheet2.Cells(b, "B") = "平均"
+ xlssheet2.Cells(b, "A") = daima
+ xlssheet2.Cells(b, "B").Interior.ColorIndex = 6 '变颜色
+ 
+ For d = 3 To 21
+ 
+ xlssheet2.Cells(b, d) = Application.WorksheetFunction.Average(xlssheet2.Range(Chr(64 + d) & i, Chr(64 + d) & (b - 1))) '列变量要从65开始
+
+ 
+ On Error Resume Next
+ Next d
+ i = b + 1
+ b = i
+ 
+ End If
+ b = b + 1
+ 
+ daima = xlssheet2.Cells(i, "B")
+ Wend
+
+ 
+    xlsbook1.SaveAs ("D:\编程执行文档\最终汇总.xls")
+  
+ 
+ 
+
+
+    xlsbook1.Close (True)
+   
+   ' xlsbook2.Close (False)
+    xlsapp.Quit
+a = MsgBox("工作完成", vbOKOnly, "提示")  '输出
+End Sub

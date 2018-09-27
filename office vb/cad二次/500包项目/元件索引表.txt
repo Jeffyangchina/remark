@@ -1,0 +1,146 @@
+Sub match()
+
+    Dim daima As String, tuhao As String, minchen As String, waidai As String
+
+    Dim i As Integer, a As Integer, n As Integer, b As Integer, c As Integer, t As Integer, x As Integer
+     n = 1
+     t = 1
+     a = 2
+     b = 2
+     c = 1
+     x = 1
+    Dim xlsapp As New Excel.Application
+
+    Dim xlsbook1 As Excel.Workbook
+
+    Dim xlssheet1 As Excel.Worksheet
+
+ 
+    
+
+    Set xlsbook1 = xlsapp.Workbooks.Open("E:\x6s\500包项目\yxj\52BCN7011102.xlsx")
+
+    Set xlssheet1 = xlsbook1.Worksheets("Sheet1")
+    Set xlssheet2 = xlsbook1.Worksheets("索引表")
+    'Set xlssheet3 = xlsbook1.Worksheets("BCH BOM")
+    
+   
+     For i = 4 To 4581
+      If c = 1 And xlssheet1.Cells(i, "A") <> "" Then
+          daima = xlssheet1.Cells(i, "A")
+          tuhao = Left(xlssheet1.Cells(i, "D"), 7)
+          minchen = xlssheet1.Cells(i + 1, "B")
+             While minchen = ""
+              
+              
+               minchen = xlssheet1.Cells(x + i, "B")
+                 x = x + 1
+               If minchen <> "" Then
+                  x = 1
+                  End If
+             
+             Wend
+          
+          waidai = xlssheet1.Cells(i, "F")
+          
+        If t = 1 And xlssheet1.Cells(i, "A") <> "" Then
+          
+          xlssheet2.Cells(a, "B") = daima
+          xlssheet2.Cells(a, "C") = tuhao
+         
+          xlssheet2.Cells(a, "D") = minchen
+          xlssheet2.Cells(a, "E") = waidai
+          
+          n = n + 1
+          a = a + 1
+          If n = 37 Then
+            t = 2
+            n = 1
+           i = i + 1
+          End If
+        End If
+        
+         If t = 2 And xlssheet1.Cells(i, "A") <> "" Then
+                    
+          xlssheet2.Cells(b, "H") = daima
+          xlssheet2.Cells(b, "I") = tuhao
+          xlssheet2.Cells(b, "J") = minchen
+          xlssheet2.Cells(b, "K") = waidai
+          
+          n = n + 1
+          b = b + 1
+          If n = 37 Then
+            t = 1
+            n = 1
+            c = 2
+             i = i + 1
+          End If
+         End If
+       End If
+       
+      If c = 2 And xlssheet1.Cells(i, "A") <> "" Then
+          daima = xlssheet1.Cells(i, "A")
+          tuhao = Left(xlssheet1.Cells(i, "D"), 7)
+               minchen = xlssheet1.Cells(i + 1, "B")
+             While minchen = ""
+              
+              
+               minchen = xlssheet1.Cells(x + i, "B")
+               x = x + 1
+                If minchen <> "" Then
+                  x = 1
+                  End If
+             Wend
+          waidai = xlssheet1.Cells(i, "F")
+         If t = 1 And xlssheet1.Cells(i, "A") <> "" Then
+          
+          xlssheet2.Cells(a, "B") = daima
+          xlssheet2.Cells(a, "C") = tuhao
+          xlssheet2.Cells(a, "D") = minchen
+          xlssheet2.Cells(a, "E") = waidai
+          
+          n = n + 1
+          a = a + 1
+          If n = 37 Then
+            t = 2
+            n = 1
+            i = i + 1
+          End If
+        End If
+        
+         If t = 2 And xlssheet1.Cells(i, "A") <> "" Then
+                    
+          xlssheet2.Cells(b, "H") = daima
+          xlssheet2.Cells(b, "I") = tuhao
+          xlssheet2.Cells(b, "J") = minchen
+          xlssheet2.Cells(b, "K") = waidai
+          
+          n = n + 1
+          b = b + 1
+          If n = 37 Then
+            t = 1
+            n = 1
+              i = i + 1
+           End If
+         End If
+        
+      End If
+        On Error Resume Next
+       
+           
+      
+      Next i
+      
+     xlsbook1.Save
+ 
+    xlsbook1.Close
+
+    xlsapp.Quit
+
+End Sub
+
+
+
+
+
+

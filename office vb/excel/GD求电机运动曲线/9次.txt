@@ -1,0 +1,111 @@
+Sub match()
+
+    Dim xlsapp As New Excel.Application
+
+    Dim xlsbook1 As Excel.Workbook
+
+    Dim xlssheet2 As Excel.Worksheet
+
+ Dim xlssheet1 As Excel.Worksheet
+   
+
+    Set xlsbook1 = xlsapp.Workbooks.Open("E:\上海大熊猫项目\XC_CAMS\yang\bit.xls")
+  Set xlssheet1 = xlsbook1.Worksheets("Sheet1")
+    Set xlssheet2 = xlsbook1.Worksheets("Sheet2")
+ Set xlsbook2 = xlsapp.Workbooks.Open("E:\上海大熊猫项目\XC_CAMS\yang\test.xls")
+ Set xlssheet3 = xlsbook2.Worksheets("Run")
+ xlsbook1.Activate
+    Dim BeiSu As Double
+    'On Error GoTo err1
+ 
+     Dim a As Double, b As Double, c As Double, d As Double
+    Dim XiSu() As Double, jie() As Double
+    h = 9 'Val(InputBox("请输入方程组元数（未知数个数）："))四次最高
+    ReDim XiSu(h - 1, h)
+    ReDim jie(h - 1)
+    
+    For i = 0 To h - 1  '输入系数
+        For j = 0 To h - 1
+            XiSu(i, j) = (xlssheet2.Cells(i + 1, "B")) ^ (j + 1) 'Val(InputBox("请输入方程系数：" & vbCrLf & "第" & i + 1 & "行,第" & j + 1 & "列:"))
+        Next '输入的数字是要从一次开始例如ax+bx^2+cx^3+dx^4=y
+        If j = h Then
+        XiSu(i, j) = xlssheet2.Cells(i + 1, "C")
+        End If
+    Next
+
+   
+     m = UBound(XiSu, 1)    '行数
+    n = UBound(XiSu, 2)    '列数
+ 
+    For i = 1 To m                                                 '行
+        For k = i To m                                             '行
+            BeiSu = XiSu(k, i - 1) / XiSu(i - 1, i - 1)
+            For j = i - 1 To n                                     '列数据处理
+                XiSu(k, j) = XiSu(k, j) - BeiSu * XiSu(i - 1, j)
+            Next
+        Next
+    Next
+    
+    For i = m - 1 To 0 Step -1 '一般for next 是省略step的此时默认为+1，而这里因为要-1
+        For k = i To 0 Step -1
+            BeiSu = XiSu(k, i + 1) / XiSu(i + 1, i + 1)
+            For j = i To n
+                XiSu(k, j) = XiSu(k, j) - BeiSu * XiSu(i + 1, j)
+            Next
+        Next
+    Next
+    
+    For i = 0 To m
+        
+        jie(i) = XiSu(i, n) / XiSu(i, i) '出来的系数是一次开始到四次
+        xlssheet2.Cells(i + 1, "F") = jie(i)
+    Next
+     
+     a5 = jie(8)
+     a4 = jie(7)
+     a3 = jie(6)
+     
+    a2 = jie(5)
+  a1 = jie(4)
+    a = jie(3)
+
+    b = jie(2)
+    c = jie(1)
+    d = jie(0)
+     For i = 0 To 360 'hang，
+       
+       xlssheet1.Cells(i + 1, "B") = a5 * (i ^ 9) + a4 * (i ^ 8) + a3 * (i ^ 7) + a2 * (i ^ 6) + a1 * (i ^ 5) + a * (i ^ 4) + b * (i ^ 3) + c * (i ^ 2) + d * (i)
+        xlssheet1.Cells(i + 1, "C") = 9 * a5 * (i ^ 8) + 8 * a4 * (i ^ 7) + 7 * a3 * (i ^ 6) + 6 * a2 * (i ^ 5) + 5 * a1 * (i ^ 4) + 4 * a * (i ^ 3) + 3 * b * (i ^ 2) + 2 * c * i + d
+         xlssheet1.Cells(i + 1, "D") = 72 * a5 * (i ^ 7) + 56 * a4 * (i ^ 6) + 42 * a3 * (i ^ 5) + 30 * a2 * (i ^ 4) + 20 * a1 * (i ^ 3) + 12 * a * (i ^ 2) + 6 * b * i + 2 * c
+         xlssheet1.Cells(i + 1, "E") = 7 * 72 * a5 * (i ^ 6) + 336 * a4 * (i ^ 5) + 210 * a3 * (i ^ 4) + 120 * a2 * (i ^ 3) + 60 * a1 * (i ^ 2) + 24 * a * i + 6 * b
+    
+        On Error Resume Next
+     
+       Next i
+
+xlssheet1.Range("B1", "E361").Copy
+
+ xlsbook2.Activate
+
+xlssheet3.Range("H6", "K366").PasteSpecial
+
+ xlsbook2.Save
+ xlsbook2.Close
+ 
+ xlsbook1.Activate
+ xlsbook1.Save
+   
+         
+ 
+
+    xlsbook1.Close
+
+    xlsapp.Quit
+
+End Sub
+
+
+
+
+
+

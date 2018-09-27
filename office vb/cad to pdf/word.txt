@@ -1,0 +1,16 @@
+Sub IsWorkBookOpen()
+Dim wBook As Workbook
+    On Error Resume Next
+    Set wBook = Workbooks("test.xls")
+    If wBook Is Nothing Then
+        MsgBox "Workbook is not open"
+        Set wBook = Nothing
+        On Error GoTo 0
+///
+'
+Dim wb As Workbook
+For Each wb In Workbooks
+ If wb.Name = "¼¼ÇÉ.xls" Then Exit For
+Next wbËÑË÷
+If wb.Name <> "¼¼ÇÉ.xls" Then Workbooks.Open ("¼¼ÇÉ.xls")
+End Sub

@@ -1,0 +1,9 @@
+1¡¢fast.ai use the theano,the order of the input is diff from tensorflow,so the pretrained model should be different too.
+
+2¡¢use the model of vgg16_weights_tf_dim_ordering_tf_kernels.h5  and changed some place in vgg16.py, it works.
+vgg=Vgg16()
+first:vgg.finetune(batches),batches is train_batches
+second:vgg.fit(batches,val_batches), val_batches is val_batches
+
+3¡¢then i try to remove the 3 dropout layers,like the turiol,get the layers=vgg.model.layers
+it is a list,pick out layers before the last con2d layer and predict_generator them in train and valid data output features,and layers after it set_weights(half weight),then model.compile the last several layers and compile them and put the con2d output feature to fit .but maybe my data is too small acc is always 0.5. and  when i get_batches() just not shuffle.

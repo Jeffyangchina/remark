@@ -1,0 +1,5 @@
+就是keras的后端支持，可以修改$HOME/.keras/keras.json 该文件，如果运行过keras就会有。
+或者用这个切换,我的初始是tensoflow,Theano/Tensorflow/CNTK
+fast.ai用的是theano
+improt keras.backend as K
+K.set_image_dim_ording('th')

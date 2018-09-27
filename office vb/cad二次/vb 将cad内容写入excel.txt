@@ -1,0 +1,79 @@
+
+Sub bplot()
+
+Dim sstext As AcadSelectionSet
+
+Dim filtert(0) As Integer
+Dim filterd(0) As Variant
+Dim c As Integer
+
+
+Dim value As String
+Dim pro As String
+Dim array1 As Variant 'AcadBlockReference
+Dim blkelem As AcadEntity
+Dim objDoc As AutoCAD.AcadDocument
+ 
+Dim pdfpth As String
+Dim pos As Integer
+Dim h As String
+Dim nh As String
+Dim bobs As AcadBlocks
+Dim bob As AcadBlock
+
+
+Dim hs As String
+Dim a As Integer
+
+Dim exl As Excel.Application
+Dim wb As Excel.Workbook
+Dim sht As Excel.Worksheet
+Dim i As Integer
+Dim pickobj As AcadBlock
+
+Set exl = CreateObject("Excel.Application") '定义excel
+Set wb = exl.Workbooks.Open("E:\BITMAP\bit\" & "YB516 name.xls") '将修改过的文件写入excel
+Set sht = wb.Worksheets("sheet1")
+
+MyPath = "E:\BITMAP\bit\"
+MyFile = Dir(MyPath & "*.dwg")
+pos = InStr(MyFile, ".dwg")
+
+Do While MyFile <> ""
+
+Set objDoc = Documents.Open(MyPath & MyFile)
+
+For Each blkelem In ThisDrawing.ModelSpace
+ With blkelem
+ If StrComp(.EntityName, "AcDbBlockReference", 1) = 0 Then
+  If .HasAttributes Then
+  
+array1 = .GetAttributes
+hs = array1(3).TextString
+  If hs <> "" Then
+    value = array1(3).TextString
+   
+   End If
+   
+
+ End If
+ End If
+ End With
+Next blkelem
+
+On Error Resume Next
+If value <> "" Then
+i = i + 1
+exl.Cells(i, 1) = Left(MyFile, pos - 1)
+exl.Cells(i, 2) = value
+'objDoc.SaveAs (MyPath & value & ".dwg")'另存为文件名、保存类型、安全设置
+End If
+
+objDoc.Close
+MyFile = Dir
+Loop
+
+wb.Close
+exl.Close
+
+End Sub

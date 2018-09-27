@@ -1,0 +1,33 @@
+#在jupyter qtconsole中导入数据 
+import pandas as pd
+path='C:/Users/XUEJW/Desktop/'
+df=pd.read_csv(path+'datingTestSet.txt',names=['fly','play','eat','class'],delim_whitespace=True)
+
+import matplotlib.pyplot as plt
+plt.style.use('ggplot')
+%matplotlib inline
+plt.hist#直方图
+plt.scatter#散点图
+plt.plot#线图 
+plt.plot(df['play'][:10],color='blue')#取前10
+
+程序中才能出图 ：
+fig, ax=plt.subplots(figsize=(8,6))
+        ax.hist(df['fly'],color='black');
+        ax.set_ylabel('count',fontsize=12)
+        plt.title('yang',fontsize=14,y=1.01)
+        plt.show()
+
+///////////////////////////////////在qtconsole中
+import seaborn as sns
+sns.pairplot(df,hue='class')
+
+from sklearn.multiclass import OneVsRestClassifier
+from sklearn.svm import SVC
+from sklearn.model_selection import train_test_split
+clf=OneVsRestClassifier(SVC(kernel='linear'))
+X=df.ix[:,:3]
+y=df.ix[:,3]
+X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.3)
+
+

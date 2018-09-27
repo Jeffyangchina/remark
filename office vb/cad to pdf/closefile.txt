@@ -1,0 +1,23 @@
+Public Declare Function FindWindow Lib "user32" Alias "FindWindowA" (ByVal lpClassName As String, ByVal lpWindowName As String) As Long
+Public Declare Function PostMessage Lib "user32" Alias "PostMessageA" (ByVal hwnd As Long, ByVal wMsg As Long, ByVal wParam As Long, lParam As Any) As Long
+Public Const WM_CLOSE = &H10
+
+Sub appExit(formName As String) 'formName为要关闭的程序名
+Dim winHwnd As Long
+Dim RetVal As Long
+winHwnd = FindWindow(vbNullString, formName) 
+If winHwnd <> 0 Then 
+RetVal = PostMessage(winHwnd, WM_CLOSE, 0&, 0&)
+If RetVal = 0 Then 
+MsgBox "Error posting message."
+End If
+Else '这个程序没打开
+MsgBox "并未开启" & formName & "程序."
+End If
+End Sub
+
+试试这个Sub，你先打开一个计算器，然后回到VB中，在一个Command的Click事件中加入如下代码：
+
+Private Sub Command1_Click()
+       appExit "计算器"
+End Sub

@@ -1,0 +1,265 @@
+Sub bplot()
+
+
+Dim i As Integer
+
+Dim wdapp As Word.Application '定义word接口
+Dim wdbook As Word.Document
+
+Dim xlsapp As New Excel.Application
+
+    Dim xlsbook1 As Excel.Workbook
+
+    Dim xlssheet1 As Excel.Worksheet
+
+ Dim xlssheet2 As Excel.Worksheet
+ 
+    Dim daima As String, v As String, o As String, p As String, w As String, pic As String, bj As String
+    
+
+    Dim j As Integer, n As Integer, l As Integer, num As Integer, num1 As Integer, num2 As Integer
+
+    Set xlsbook1 = xlsapp.Workbooks.Open("E:\BITMAP\1\1.xls")
+
+    Set xlssheet1 = xlsbook1.Worksheets("sheet1")
+    
+   
+Set wdapp = CreateObject("Word.Application") '定义Word
+Set wdbook = Documents.Open("E:\BITMAP\1\检测点卡片.doc")
+
+  For i = 2 To 245
+    daima = xlssheet1.Cells(i, 2)
+    
+    v = xlssheet1.Cells(i, "F") '功能名称
+    
+    bj = xlssheet1.Cells(i, "C")
+    o = xlssheet1.Cells(i, "I") '型号
+    
+    p = xlssheet1.Cells(i, "E") '功能图号
+    w = xlssheet1.Cells(i, "G") '外来代码
+   
+    If i < 245 Then
+      Set myrange = wdbook.Tables(i - 1).Range
+      myrange.Copy
+      Set myrange = wdbook.Content
+
+      myrange.Paragraphs.Add '添加一个空白段落，就是加个回车
+      myrange.Paragraphs.Add
+      myrange.Collapse (wdCollapseEnd)
+
+      myrange.Paste
+     End If
+    If daima <> "" Then
+      Set myrange = wdbook.Tables(i - 1).Range
+      With myrange
+      n = .Words.Count
+      l = 1
+     j = 1
+      While j < n
+      
+       If l < 7 Then
+      If .Words(j).Text = "yang" And l = 1 Then
+     .Words(j).Text = daima
+     n = .Words.Count
+     l = l + 1
+      End If
+      
+       If .Words(j).Text = "yang" And l = 2 Then
+        .Words(j).Text = bj
+        l = l + 1
+        n = .Words.Count
+      End If
+      
+      If .Words(j).Text = "yang" And l = 3 Then
+        .Words(j).Text = v
+        l = l + 1
+        n = .Words.Count
+      End If
+      
+      If .Words(j).Text = "yang" And l = 4 Then
+      .Words(j).Text = w
+      l = l + 1
+      n = .Words.Count
+      End If
+      
+    
+      If .Words(j).Text = "yang" And l = 5 Then
+       .Words(j).Text = o
+       l = l + 1
+       n = .Words.Count
+      End If
+      
+     If .Words(j).Text = "yang" And l = 6 Then
+      .Words(j).Text = "  " & p & "  "
+          l = l + 1
+          
+      End If
+     
+      
+     End If
+     j = j + 1
+    Wend
+     
+               'MyPath = "E:\BITMAP\1\"  '遍历照片名
+               'MyFile = Dir(MyPath & "*.jpg")
+                'Do While MyFile <> ""
+                   '  num = InStrRev(MyFile, daima)
+                  ' if num >1 then
+                 ' pic = MyPath & MyFile
+                    ' end if
+                
+              ' MyFile = Dir
+              '  Loop
+                 'if pic<>"" then
+                '再加照片
+     End With
+     '加照片，如果不存在照片则会报错 ，需加搜索程序，在插入图片的程序中
+   'pic="E:\BITMAP\pic\" & daima & ".jpg"
+    'Set myrange = wdbook.Tables(i-1).Range  '选中第一个图表
+   'Set myrange = myrange.Rows(6).Cells(1).Range '选中第六行的第一个单元格
+   'Set myrange = myrange.Paragraphs(4).Range '在第六行内的第4段内插入图片
+   'myrange.InlineShapes.AddPicture (pic)  '在选定区域内插入图片
+
+    End If
+On Error Resume Next
+  Next i
+wdbook.Save
+wdbook.Close
+
+
+ xlsbook1.Close
+
+    xlsapp.Quit
+wdapp.Quit
+End Sub
+
+
+
+/////////////
+Sub bplot()
+
+
+Dim i As Integer
+
+Dim wdapp As Word.Application '定义word接口
+Dim wdbook As Word.Document
+
+Dim xlsapp As New Excel.Application
+
+    Dim xlsbook1 As Excel.Workbook
+
+    Dim xlssheet1 As Excel.Worksheet
+
+ Dim xlssheet2 As Excel.Worksheet
+ 
+    Dim daima As String, v As String, o As String, p As String, w As String, pic As String, bj As String
+    
+
+    Dim j As Integer, n As Integer, l As Integer, num As Integer
+
+    Set xlsbook1 = xlsapp.Workbooks.Open("E:\BITMAP\1\1.xls")
+
+    Set xlssheet1 = xlsbook1.Worksheets("sheet1")
+    
+   
+Set wdapp = CreateObject("Word.Application") '定义Word
+Set wdbook = Documents.Open("E:\BITMAP\1\检测点卡片.doc")
+
+  For i = 2 To 245
+    daima = xlssheet1.Cells(i, 2)
+    
+    v = xlssheet1.Cells(i, "F") '功能名称
+    bj = xlssheet1.Cells(i, "C")
+    o = xlssheet1.Cells(i, "I") '型号
+    p = xlssheet1.Cells(i, "E") '功能图号
+    w = xlssheet1.Cells(i, "G") '外来代码
+   
+    If i < 245 Then
+      Set myrange = wdbook.Tables(i - 1).Range
+      myrange.Copy
+      Set myrange = wdbook.Content
+
+      myrange.Paragraphs.Add '添加一个空白段落，就是加个回车
+      myrange.Paragraphs.Add
+      myrange.Collapse (wdCollapseEnd)
+
+      myrange.Paste
+     End If
+    If daima <> "" Then
+      Set myrange = wdbook.Tables(i - 1).Range
+      With myrange
+      n = myrange.Words.Count
+      l = 1
+      For j = 15 To n
+      
+       If l < 7 Then
+      If .Words(j).Text = "yang" And l = 1 Then
+     .Words(j).Text = daima
+     l = l + 1
+      End If
+      
+       If .Words(j).Text = "yang" And l = 2 Then
+        .Words(j).Text = bj
+        l = l + 1
+      End If
+      
+      If .Words(j).Text = "yang" And l = 3 Then
+        .Words(j).Text = v
+        l = l + 1
+      End If
+      
+      If .Words(j).Text = "yang" And l = 4 Then
+      .Words(j).Text = w
+      l = l + 1
+      End If
+      
+    
+      If .Words(j).Text = "yang" And l = 5 Then
+       .Words(j).Text = o
+       l = l + 1
+      End If
+      
+     If .Words(j).Text = "yang" And l = 6 Then
+      .Words(j).Text = "  " & p & "  "
+          l = l + 1
+      End If
+     
+      
+     End If
+     Next j
+     
+               'MyPath = "E:\BITMAP\1\"  '遍历照片名
+               'MyFile = Dir(MyPath & "*.jpg")
+                'Do While MyFile <> ""
+                   '  num = InStrRev(MyFile, daima)
+                  ' if num >1 then
+                 ' pic = MyPath & MyFile
+                    ' end if
+                
+              ' MyFile = Dir
+              '  Loop
+                 'if pic<>"" then
+                '再加照片
+     End With
+     '加照片，如果不存在照片则会报错 ，需加搜索程序，在插入图片的程序中
+   'pic="E:\BITMAP\pic\" & daima & ".jpg"
+    'Set myrange = wdbook.Tables(i-1).Range  '选中第一个图表
+   'Set myrange = myrange.Rows(6).Cells(1).Range '选中第六行的第一个单元格
+   'Set myrange = myrange.Paragraphs(4).Range '在第六行内的第4段内插入图片
+   'myrange.InlineShapes.AddPicture (pic)  '在选定区域内插入图片
+
+    End If
+On Error Resume Next
+  Next i
+wdbook.Save
+wdbook.Close
+
+
+ xlsbook1.Close
+
+    xlsapp.Quit
+wdapp.Quit
+End Sub
+
+
+
